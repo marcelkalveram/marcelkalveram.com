@@ -11,12 +11,16 @@ export const article = {
   date: '2019-12-30',
   title: 'Common cross-platform pitfalls to avoid in React Native',
   description:
-    'Three things that people often get wrong when developing apps for iOS and Android',
+    'Companies choose React Native because of its shallow learning curve, but what often gets missed is that you’re still catering to two different platforms.',
 }
 
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://medium.com/@marcelkalveram/common-pitfalls-i-run-into-on-every-react-native-project-7ea2e7c1d88',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />

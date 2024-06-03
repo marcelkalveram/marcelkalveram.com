@@ -15,6 +15,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://medium.com/swlh/a-bullet-proof-approach-to-storing-sensitive-user-data-in-react-native-ab3f7a2779f9',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
