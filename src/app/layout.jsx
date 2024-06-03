@@ -1,6 +1,6 @@
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
-
+import { GoogleAnalytics } from '@next/third-parties/google'
 import '@/styles/tailwind.css'
 
 export const metadata = {
@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
           </div>
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-FPHLQDQXC5" />
     </html>
   )
 }
