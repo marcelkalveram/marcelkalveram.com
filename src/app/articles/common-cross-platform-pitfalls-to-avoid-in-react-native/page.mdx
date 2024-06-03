@@ -1,0 +1,129 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import screenshotAndroidIosAndroidFacebook from './screenshot-mobile-ios-android-facebook.jpeg'
+import nativeBottomBarAndroid from './native-bottom-bar-android.png'
+import navigationHeaderIosAndroid from './navigation-header-ios-android.png'
+import backButtonAndroid from './back-button-android.png'
+import safeAreasIos from './safe-areas-ios.jpeg'
+import displayCutOutAndroid from './displayCutOutAndroid.jpeg'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2019-12-30',
+  title: 'Common cross-platform pitfalls to avoid in React Native',
+  description:
+    'Three things that people often get wrong when developing apps for iOS and Android',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+---
+
+![](https://cdn-images-1.medium.com/max/800/0*GhaWmhwa-8vFHX9R)
+_Photo by [Artem Maltsev](https://unsplash.com/@art_maltsev?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+
+## Three things that people often get wrong when developing apps for iOS and Android
+
+One of the biggest troubles I often come across when building mobile apps in React Native isn’t necessarily technical: it’s that people design iOS apps for Android, or vice-versa.
+
+Many companies choose React Native over native development because of its shallow learning curve. But what often falls by the sideway is that you’re still developing for two entirely different environments.
+
+We should craft a user experience that follows each platform’s respective design guidelines.
+
+For those unfamiliar with mobile, you should check out the [Material Design](https://material.io/design/) guidelines for Android and the [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/overview/themes/) for iOS. You don’t need to know them inside out, but it’s worth taking a look and familiarizing yourself with the core principles.
+
+---
+
+If you’re a React Native—or any kind of—mobile developer, you also often don’t have the leverage, authority or skills to actively shape the design process, so here are some questions you may want to throw at the designers in your team to make sure they’re concerned about the most critical platform differences:
+
+- are we creating a flat or paper-based design?
+- do we stick to the default navigation behaviour, including transitions and gestures?
+- do we take into account how visual hierarchy is expressed differently on each platform?
+- what do icons and typography usually look like on iOS and Android?
+- how do form elements (radio buttons, switches) differ on each platform?
+
+For an exhaustive list of differences between iOS and Android, I can also recommend the following articles:
+
+- [Android VS. iOS: Compare 20 UI Components & Patterns (Part 1)](https://medium.com/@chunchuanlin/android-vs-ios-compare-20-ui-components-patterns-part-1-ad33c2418b45)
+
+- [Android VS. iOS: Compare 20 UI Components & Patterns (Part 2)](https://medium.com/@chunchuanlin/android-vs-ios-compare-20-ui-components-patterns-part-2-3edba2076b25)
+
+---
+
+With that in mind, let me walk you through some of the common pitfalls of cross-platform development that I run into on almost every React Native project.
+
+## Navigation
+
+On Android, it’s more common than on iOS for the tab bar to sit at the top of the screen. Let’s take a look at the Facebook app as an example.
+
+<Image src={screenshotAndroidIosAndroidFacebook} />
+_The Facebook app on iOS (left) and Android (right)_
+
+That’s on purpose because some apps don’t want you to accidentally tap on the native bottom bar on Android.
+
+<Image src={nativeBottomBarAndroid} />
+_The native bottom bar on Android_
+
+Another important navigation-related detail is the header bar. On Android, its content is often left-aligned. Let’s take a look at the Twitter app:
+
+<Image src={navigationHeaderIosAndroid} />
+_The navigation header bar on iOS (top) and Android (bottom)_
+
+Many mobile designers unfamiliar with Android consider this a bug and will tell you to fix it. But unless you have a strong reason to, it’s usually safe to stick to the default.
+
+## The Android back button
+
+When adding custom screens like modals, bottom sheets, or any other custom screen that you can navigate to, most Android users will expect that they can discard it using the default Android back button.
+
+Let’s take a look at the native bottom bar again.
+
+<Image src={backButtonAndroid} />
+_The back button in the native Android bottom bar_
+
+I’ve seen React Native apps where tapping it would take you back to the previous route _underneath_ the overlay or—even worse—quit the app!
+
+Now, whenever you create a route that’s not hooked up to your navigation stack’s _default_ behavior (usually provided by `react-navigation`) you have to know very well what you’re doing.
+
+While it seems that you only have to add the missing [BackHandler](https://facebook.github.io/react-native/docs/backhandler) to the new component, it may often entail a lot more work: since the screen won’t be added to the underlying navigation stack, it won’t show up in **navigation history** either, so a lot of unexpected things may happen as you go back and forth in your navigation stack and include custom routes this way.
+
+You may actually want to familiarise yourself with [custom Android back button handling](https://reactnavigation.org/docs/en/custom-android-back-button-handling.html) and how to [build your own navigator](https://reactnavigation.org/docs/en/custom-navigator-overview.html) to get a deeper understanding of this topic.
+
+## Safe areas
+
+Something that can be equally confusing—but this time on iOS—are the so-called safe areas.
+
+Since the introduction of the iPhone X there are several areas on the screen where you should avoid putting any critical or interactive content. The reason is that these are reserved for native gestures, like swiping up from the bottom to switch between apps.
+
+<Image src={safeAreasIos} />
+
+_Hardware constraints on iOS: safe areas on iPhone 11 (left) and iPad Pro (right)_
+
+It’s easy to avoid these by using `SafeAreaView` as a wrapper for _all_ your screens (e.g. using a wrapper). But that also results in a poor user experience because the protected areas are now completely empty.
+
+If you still want to leverage a shiny full-screen experience while making sure to not interfere with the phone’s native gestures (something that may lead to app store rejections, actually), you have to wrap your head around [handling safe areas](https://reactnavigation.org/docs/en/handling-iphonex.html).
+
+I highly recommend you to get the hang of it as soon as possible in the process since dealing with it at a later point can result in a lot of painful refactoring.
+
+**The Android display cut-out**
+
+On top of that, you may have come across Android phones that share a similar layout peculiarity: the Android display cut-out.
+
+<Image src={displayCutOutAndroid} />
+
+_The Anroid display cut-out on phones like the Pixel 3 XL_
+
+To deal with this particular issue, you actually need to go one level deeper and dig into the native layer. But before I go into any further here, let me point you to an [article by Bruno Lemos](https://dev.to/brunolemos/adding-notch-support-to-your-react-native-android-app-3ci3) which does a very good job of explaining how...
+
+## Design, design, design!
+
+Taking those things into account, you’ll already craft a much better native user experience on iOS or Android as a React Native developer.
+
+But that doesn’t prevent us from the fact that we have to _think_ in iOS or Android from the start, and not just throw an iOS design at Android, or the other way around.
+
+The React Native ecosystem offers plenty of tools and libraries to design great user experiences for both platforms, but it is not a silver bullet solution that automatically transforms your design from one platform’s UI into another.
+
+**Thanks a lot for reading! If you have any feedback regarding the cross-platform quirks mentioned above, feel free to drop a comment below, or get in touch with me via** [**Twitter**](https://twitter.com/marcelkalveram)**.**
