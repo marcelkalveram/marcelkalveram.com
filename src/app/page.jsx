@@ -178,7 +178,7 @@ function Resume() {
   let resume = [
     {
       company: 'MVPR',
-      title: 'Engineering Lead / Product Owner',
+      title: 'Product Owner',
       logo: logoMVPR,
       start: '2021',
       end: {
@@ -188,7 +188,7 @@ function Resume() {
     },
     {
       company: 'Self-employed',
-      title: 'Freelance React Native Developer',
+      title: 'React Native Developer',
       logo: logoFreelancer,
       start: '2018',
       end: '2021',
@@ -272,18 +272,18 @@ export default async function Home() {
             Hello, I&apos;m Marcel, a software engineer with over 15 years of
             experience based in Valencia, Spain. I have a passion for building
             and optimizing web and mobile applications. Throughout my career,
-            I&apos;ve had the privilege of working as both an engineer and a
-            team lead in a diverse range of companies, from early-stage startups
-            to full-service agencies.
+            I&apos;ve worked as both an engineer and a team lead in a diverse
+            range of companies, from early-stage startups to full-service
+            agencies.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="#"
+              href="https://github.com/marcelkalveram"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="#"
+              href="https://www.linkedin.com/in/marcelkalveram/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
@@ -299,7 +299,7 @@ export default async function Home() {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
+            {/* <Newsletter /> */}
             <Resume />
           </div>
         </div>
