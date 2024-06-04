@@ -3,7 +3,12 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+import {
+  GitHubIcon,
+  GoodreadsIcon,
+  LinkedInIcon,
+  MediumIcon,
+} from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
@@ -101,6 +106,20 @@ export default function About() {
               className="mt-4"
             >
               Follow on LinkedIn
+            </SocialLink>
+            <SocialLink
+              href="https://medium.com/@marcelkalveram"
+              icon={MediumIcon}
+              className="mt-4"
+            >
+              Follow on Medium
+            </SocialLink>
+            <SocialLink
+              href="https://www.goodreads.com/user/show/41759252-marcel"
+              icon={GoodreadsIcon}
+              className="mt-4"
+            >
+              Follow on Goodreads
             </SocialLink>
             <SocialLink
               href="mailto:marcel.kalveram@gmail.com"

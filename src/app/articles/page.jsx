@@ -35,7 +35,7 @@ function Article({ article }) {
 export const metadata = {
   title: 'Articles',
   description:
-    'I talk about web and mobile apps, JavaScript, programming, design thinking, and more, in random order and with no guarantee for longevity.',
+    'Writing is a way for me to structure my thoughts and reinforce my learnings. Topics I cover are web and mobile apps, JavaScript, programming in general, and best practices.',
 }
 
 export default async function ArticlesIndex() {
@@ -43,8 +43,8 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="Writing about challenges and insights from my daily work life."
-      intro="I talk about web and mobile apps, JavaScript, design thinking, and more, in random order and without guarantee for longevity."
+      title="Sharing my challenges and insights from daily work life."
+      intro="Writing is a way for me to structure my thoughts and reinforce my learnings. Topics I cover here are web and mobile apps, JavaScript, best practices and things I learned the hard way."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">

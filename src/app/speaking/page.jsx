@@ -33,7 +33,7 @@ export default function Speaking() {
   return (
     <SimpleLayout
       title="I love sharing the expertise I've acquired with a wider audience."
-      intro="I was never comfortable on stage, but the confidence I gained from my local Toastmasters club helped me overcome those challenges. It allowed me to share my passion for web and mobile technologies with larger audiences and become a better leader and communicator."
+      intro="I was never comfortable on stage, but the confidence I gained from my local Toastmasters club helped me overcome my fears. It allowed me to share my passion for web and mobile technologies with larger audiences and become a better leader and communicator."
     >
       <div className="space-y-20">
         <SpeakingSection title="International events">
@@ -78,7 +78,7 @@ export default function Speaking() {
             title="“Leveraging hood.ie to build for the offline state"
             description="I gave the audience a quick overview over the topic of iteration and pairing, and then conducted a group exercise where we could see those two concepts in action."
             event="Codemotion Madrid, November 2014"
-            cta="Watch video"
+            cta="See slides on slideshare.net"
           />
         </SpeakingSection>
         <SpeakingSection title="Local events">

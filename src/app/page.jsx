@@ -5,7 +5,12 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
-import { GitHubIcon, LinkedInIcon, MediumIcon } from '@/components/SocialIcons'
+import {
+  GitHubIcon,
+  GoodreadsIcon,
+  LinkedInIcon,
+  MediumIcon,
+} from '@/components/SocialIcons'
 
 import logoHanno from '@/images/logos/work/hanno.png'
 import logoJungmut from '@/images/logos/work/jungmut.png'
@@ -249,6 +254,11 @@ export default async function Home() {
               href="https://medium.com/@marcelkalveram"
               aria-label="Follow on Medium"
               icon={MediumIcon}
+            />
+            <SocialLink
+              href="https://www.goodreads.com/user/show/41759252-marcel"
+              aria-label="Follow on Goodreads"
+              icon={GoodreadsIcon}
             />
           </div>
         </div>

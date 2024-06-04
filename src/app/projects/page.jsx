@@ -36,7 +36,7 @@ const projects = [
     name: 'VLC Tech Hub app',
     year: '2018',
     description:
-      'A mobile app featuring events and jobs provided by the vlctechhub.org API. It was a prototype bootstrapped using Create React Native App and Expo to showcase some these tools’ capabilities.',
+      'A mobile app featuring events and jobs provided by the vlctechhub.org API. It was a prototype bootstrapped using Create React Native App and Expo to showcase some of these tools’ capabilities.',
     link: {
       href: 'https://github.com/VLCTechHub/VLCTechHub-app',
       label: 'github.com',
@@ -122,7 +122,7 @@ export default function Projects() {
   return (
     <SimpleLayout
       title="Projects I worked on out of curiosity and passion."
-      intro="These are initiatives I pursued outside of work to challenge myself, explore new technologies, and simply have fun. I love engaging in projects purely for the joy and learning they bring, without financial motivation."
+      intro="These are initiatives I pursued outside of work, and without any financial incentives, to challenge myself, explore new technologies, and simply have fun. Some of these have been shut down a long time ago while others are still alive today."
     >
       <ul
         role="list"
