@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
+// import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
@@ -25,28 +25,28 @@ import image5 from '@/images/photos/image-5.jpg'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
-function MailIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
-}
+// function MailIcon(props) {
+//   return (
+//     <svg
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       strokeWidth="1.5"
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
+//       aria-hidden="true"
+//       {...props}
+//     >
+//       <path
+//         d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
+//         className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+//       />
+//       <path
+//         d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
+//         className="stroke-zinc-400 dark:stroke-zinc-500"
+//       />
+//     </svg>
+//   )
+// }
 
 function BriefcaseIcon(props) {
   return (
@@ -229,15 +229,16 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Full-Stack Developer, Engineering Lead
+            Full-Stack Developer,{' '}
+            <span className="whitespace-nowrap">Product Engineer</span>
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Hello, I&apos;m Marcel, a software engineer with over 15 years of
-            experience based in Valencia, Spain. I have a passion for building
-            and optimizing web and mobile applications. Throughout my career,
-            I&apos;ve worked as both an engineer and a team lead in a diverse
-            range of companies, from early-stage startups to full-service
-            agencies.
+            Hi, I&apos;m Marcel. I have been developing web and mobile
+            experiences for over 15 years. I have a passion for both product and
+            engineering, and I love working at the intersection of the two.
+            Throughout my career, I&apos;ve gained experience in a diverse range
+            of roles, from freelance web developer to engineering lead to
+            product owner.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink

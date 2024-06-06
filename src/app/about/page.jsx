@@ -58,36 +58,42 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I&apos;m Marcel. I build digital products and lead engineering
-            teams.
+            I&apos;m an engineer at 🖤 with a passion for great product
+            experiences.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
               I began experimenting with the World Wide Web in 1998, and in
-              2006, I pursued my passion further by studying &quot;Media and
-              Applied IT,&quot; a degree with a focus on digital media.
+              2006, I decided to turn my hobby into a profession by studying
+              Media and Applied IT, a computer science degree with a focus on
+              digital media.
             </p>
 
             <p>
-              In 2008, I started working as a freelancer, building digital user
-              experiences in various engineering and product roles for startups
+              In 2008, I started working as a freelancer, building websites and
+              rich web applications in various engineering roles for startups
               and agencies across Europe.
             </p>
 
             <p>
               Much of my career has been centered around front-end development,
-              driven by my passion for creating intuitive user experiences.
-              I&apos;ve also delved into backend technologies such as Node.js,
-              Python, and Cloud Computing, and I&apos;ve experimented with Big
-              Data through the lense of Machine Learning Algorithms and Data
-              Science Fundamentals.
+              driven by my obsession for visually pleasing user interfaces. From
+              that emerged my interest in strategy, inspiring me to think beyond
+              code and components, and understanding what makes great products.
+            </p>
+            <p>
+              I never neglected my deep interest in emerging technologies
+              though, and have always tried to level up my engineering skills in
+              areas like machine learning, cloud computing and data science.
+              Apart from JavaScript on the frontend, I&apos;m also comfortable
+              with node.js on the backend, and have tinkered with Java, Python
+              and Ruby.
             </p>
 
             <p>
-              As a senior engineer, I&apos;ve managed teams of up to three
-              people and taken on product owner and manager roles, which have
-              enriched my understanding of strategic thinking, business, and
-              leadership.{' '}
+              As a senior engineer, I&apos;ve taken on product owner roles and
+              managed small teams of 2-3 people, which have enriched my
+              understanding of strategic thinking, business, and leadership.{' '}
             </p>
           </div>
         </div>
