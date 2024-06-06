@@ -76,24 +76,23 @@ export default function About() {
             </p>
 
             <p>
-              Much of my career has been centered around front-end development,
-              driven by my obsession for visually pleasing user interfaces. From
-              that emerged my interest in strategy, inspiring me to think beyond
-              code and components, and understanding what makes great products.
+              Much of my career has centered around front-end development,
+              driven by my obsession with visually pleasing user interfaces.
+              This led to my interest in strategy, inspiring me to think beyond
+              code and components and understand what makes great products.
             </p>
             <p>
-              I never neglected my deep interest in emerging technologies
-              though, and have always tried to level up my engineering skills in
-              areas like machine learning, cloud computing and data science.
-              Apart from JavaScript on the frontend, I&apos;m also comfortable
-              with node.js on the backend, and have tinkered with Java, Python
-              and Ruby.
+              I have never neglected my deep interest in emerging technologies
+              though and have always sought to level up my engineering skills in
+              areas like machine learning, DevOps and cloud computing. Besides
+              JavaScript on the frontend, I&apos;m also comfortable with Node.js
+              on the backend and have tinkered with Java, Python, and Ruby.
             </p>
 
             <p>
               As a senior engineer, I&apos;ve taken on product owner roles and
-              managed small teams of 2-3 people, which have enriched my
-              understanding of strategic thinking, business, and leadership.{' '}
+              managed small teams of 2-3 people, further enriching my
+              understanding of strategy, business, and leadership.
             </p>
           </div>
         </div>
