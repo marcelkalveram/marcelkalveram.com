@@ -12,6 +12,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://medium.com/swlh/a-bullet-proof-approach-to-storing-sensitive-user-data-in-react-native-ab3f7a2779f9',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -225,3 +229,5 @@ That’s probably all you need for many smaller projects. But if your app gets a
 Have you ever translated a React Native app to multiple languages? What has your experience been like? Which tools did you use and what kind of issues did you run into?
 
 Hope you enjoyed this post and found it helpful. If you have any feedback, please feel free to add a comment. Thanks!
+
+_Originally published in [ITNEXT](https://itnext.io/supporting-multiple-languages-in-react-native-with-expos-localization-module-9611f9e3b6a0) on November 5, 2018._

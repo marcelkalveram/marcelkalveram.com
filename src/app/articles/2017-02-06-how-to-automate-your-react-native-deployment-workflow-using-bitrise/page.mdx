@@ -11,6 +11,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/how-to-automate-your-react-native-deployment-workflow-using-bitrise-60621312fea8',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -160,3 +164,5 @@ Apart from the time you save with the automated build process (according to Bitr
 **Setting up a rock solid deployment workflow like this is a massive time and stress saver that I can’t recommend highly enough!**
 
 You might also be interested in a recent blog post by Bitrise which provides some statistics on the platform’s most popular integrations, the number of deploys that people made last year, and (surprise!) the most common issues with iOS Code Signing.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/how-to-automate-your-react-native-deployment-workflow-using-bitrise-60621312fea8) on February 6, 2017._

@@ -11,6 +11,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/why-offline-first-matters-and-what-developers-should-know-about-it-3da2da1685d5',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -138,3 +142,5 @@ Of course it’s impossible to force offline-first everywhere. That’s why in t
 - take some very _well-considered decisions_ about _which parts_ of your app you want to cache.
 
 With this in mind, let’s work on this together and make the web more accessible by allowing more users to use your products when they’re offline. And in case you’re running a conference or a meet-up and want me to spread the word, please feel free to get in touch on [Twitter](https://twitter.com/marcelkalveram).
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/why-offline-first-matters-and-what-developers-should-know-about-it-3da2da1685d5) on July 1, 2015._

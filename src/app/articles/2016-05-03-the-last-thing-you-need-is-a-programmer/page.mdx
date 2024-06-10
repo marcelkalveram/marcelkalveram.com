@@ -11,6 +11,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/the-last-thing-you-need-is-a-programmer-4f082ae16ec1',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -145,3 +149,5 @@ Perhaps Famo.us’ mistake wasn’t completely down to their decision to focus a
 Luckily, minimising that risk can be done without a lot of hassle. And there are a lot of really good resources out there to help you get to the point where you can certainly say: “This is a problem I need to solve”. And there are even more resources out there that can get you to a point where you can say: “This is the solution I want to build”.
 
 I hope this post will make you think twice next time you’re planning to hire a programmer, and will help you explore leaner, more affordable ways to testing and validating your potential idea.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/the-last-thing-you-need-is-a-programmer-4f082ae16ec1) on May 3, 2016._

@@ -12,6 +12,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://itnext.io/the-intricacies-of-nesting-navigators-in-react-native-using-react-navigation-fef52ca72964',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -292,3 +296,5 @@ But taking into account all the possible user scenarios and API issues that surf
 The actual work that goes into shipping a battle-tested, bug-free mobile app can grow exponentially if you have to deal with third-party APIs, community-driven libraries and a cutting edge technology like React Native.
 
 If you happen to be in Spain, you can find the app in the [iOS](https://itunes.apple.com/us/app/uncovercity/id1394531362?l=es&ls=1&mt=8) and [Google](https://play.google.com/store/apps/details?id=com.uncovercity.app&hl=de) app stores. Just make sure to book a table on to get the full app experience :)
+
+_Originally published on [Medium](https://itnext.io/the-intricacies-of-nesting-navigators-in-react-native-using-react-navigation-fef52ca72964) on December 3, 2018._

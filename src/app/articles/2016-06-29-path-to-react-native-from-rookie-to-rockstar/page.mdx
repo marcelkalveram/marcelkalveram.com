@@ -11,6 +11,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/path-to-react-native-from-rookie-to-rockstar-4f1fd457add2',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -91,3 +95,5 @@ Again, it’s useful to let someone guide you and explain why certain things are
 - [Build Apps with React Native](https://www.udemy.com/reactnative/) on Udemy is an 8-hour introduction to React Native that you can complete without needing any React.js knowledge. The author, Stephen Grider, walks you through the nuts and bolts of JSX, components and properties before jumping into React Native, Flexbox styling and some more advanced topics like fetching remote data and authentication. If you want to take a shortcut and don’t want to bother looking into React.js in detail first, then this course is probably for you.
 
 We’ve been building apps with React and React Native for a while now and have been getting steadily more impressed with the way the ecosystem is developing. The community is strong and the resources out there are steadily improving. Why wait? React looks like it has a very bright future ahead of it.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/path-to-react-native-from-rookie-to-rockstar-4f1fd457add2) on June 29, 2016._

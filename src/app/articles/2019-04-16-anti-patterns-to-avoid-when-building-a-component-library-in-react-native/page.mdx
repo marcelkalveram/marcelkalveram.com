@@ -12,6 +12,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://levelup.gitconnected.com/anti-patterns-to-avoid-when-building-a-component-library-in-react-native-61f11d8c9797',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -186,3 +190,5 @@ If all of this is familiar to you, there are some additional building blocks tha
 - **Continuous integration**: on most bigger projects, developers set up a deployment pipeline to help automate repetitive tasks. If you’re in the lucky position to have a continuous integration process, you should automate things like unit, integration and regression testing, and potentially include a tool like Code Climate that can help identify some of the inconsistencies or duplications in your codebase automatically.
 
 That’s it! Hope you enjoyed this post. Please feel free to share your experience with building reusable component libraries, or drop a question if anything in this post has been unclear. Thanks a lot for reading!
+
+_Originally published in [Level Up Coding](https://levelup.gitconnected.com/anti-patterns-to-avoid-when-building-a-component-library-in-react-native-61f11d8c9797) on April 16, 2019._

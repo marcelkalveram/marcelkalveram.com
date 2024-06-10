@@ -12,6 +12,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://itnext.io/speeding-up-the-build-of-a-surprise-dinner-app-in-react-native-using-expo-2c18beabaaa7',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -110,3 +114,5 @@ To wrap up, testing the app on your phone is a piece of cake as well. [Expo Clie
 ## Future posts about this project
 
 I’m going to publish another post soon where I talk about my journey of building this app. It’ll cover how we did the API integration and what I learned from doing some real life user testing by living the experience as an uncovercity user myself.
+
+_Originally published in [ITNEXT](https://itnext.io/speeding-up-the-build-of-a-surprise-dinner-app-in-react-native-using-expo-2c18beabaaa7) on September 27, 2018._

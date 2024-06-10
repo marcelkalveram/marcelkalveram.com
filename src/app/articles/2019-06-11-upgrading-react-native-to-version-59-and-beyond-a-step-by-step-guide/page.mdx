@@ -12,6 +12,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/upgrading-react-native-to-version-0-59-and-beyond-a-step-by-step-guide-d4c2926dd482',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -221,3 +225,5 @@ This is the latest version and should be used with care, as it’s still just a 
 If you think I missed anything essential or run into an issue that I haven’t documented and you think should be included in this article, please let me know.
 
 Thanks for reading and I appreciate your comments.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/upgrading-react-native-to-version-0-59-and-beyond-a-step-by-step-guide-d4c2926dd482) on June 11, 2019._

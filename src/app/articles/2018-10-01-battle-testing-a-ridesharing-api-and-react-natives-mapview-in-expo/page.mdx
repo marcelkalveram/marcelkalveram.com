@@ -11,6 +11,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://itnext.io/battle-testing-a-ride-sharing-api-and-react-natives-mapview-in-expo-c0ce5d50cbf0',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -191,3 +195,5 @@ As you can imagine, the first few attempts of properly syncing the API responses
 What worked in our favour though was that the ride-sharing service provides a 30-second courtesy time of cancelling a ride, not the most ideal feature for drivers, but at least it would allow us to adjust and fine-tune our system, with the minor downside of sending drivers to random destinations all the time.
 
 I actually ended up in the car of a driver who complained about our request/cancel approach of bulletproofing their service’s API. But despite making some drivers really mad at us and even though we didn’t develop the most elegant solution (using polling, testing in production, relying on cron jobs), it actually works solidly now, and we managed to bootstrap our way through limited resources and unexpected constraints to a production-ready app.
+
+_Originally published in [ITNEXT](https://itnext.io/battle-testing-a-ride-sharing-api-and-react-natives-mapview-in-expo-c0ce5d50cbf0) on October 1, 2018._

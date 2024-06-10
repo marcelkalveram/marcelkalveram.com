@@ -11,6 +11,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/a-simple-experiment-a-huge-impact-3f2b326d7d2',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -126,3 +130,5 @@ We know all about iteration. We do it constantly on all sorts of projects. And y
 And guess what? This experiment has already changed the way we approach new projects, in that we are even more committed to testing even the most basic ideas, and to start experimenting with very low fidelity prototypes.
 
 As a result, we’re now able to gather user feedback at an earlier stage, even if it feels a bit sloppy and disorganised to be doing so, which helps us evaluate if we’re on to something, or if we’re wasting our time on yet another fragile spaghetti tower.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/a-simple-experiment-a-huge-impact-3f2b326d7d2) on April 24, 2015._

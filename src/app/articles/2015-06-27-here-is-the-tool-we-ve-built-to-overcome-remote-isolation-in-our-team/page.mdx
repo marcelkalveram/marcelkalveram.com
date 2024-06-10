@@ -11,6 +11,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/here-s-the-tool-we-ve-built-to-overcome-remote-isolation-in-our-team-531a133c8308',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -115,3 +119,5 @@ Beside the common bugs and weird behavior of the bot we have already tracked eno
 As a next step, we’re planning to make Oskar sound a bit more human, because his current tone is a bit dull and repetitive. We’re also planning to implement notifications, so that other people on the team can see when someone’s mood is going downhill.
 
 So far, we think that Oskar is really beneficial for our team. The idea was to prevent people from slipping into remote isolation, and the result is that we can now follow team satisfaction more easily, because it is transparent and visible to anyone. Actually, I’ve found that just sharing your status with Oskar gives a little relief, and helps you to feel better, knowing that the team is now in the loop and ‘has your back’.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/here-s-the-tool-we-ve-built-to-overcome-remote-isolation-in-our-team-531a133c8308) on June 27, 2015._

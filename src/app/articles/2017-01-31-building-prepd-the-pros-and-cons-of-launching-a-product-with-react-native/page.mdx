@@ -12,6 +12,10 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/building-prepd-the-pros-and-cons-of-launching-a-product-with-react-native-d79dd5acef6e',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
@@ -175,3 +179,5 @@ If, on the other hand you just want to build an app to test and validate an idea
 On this project, we knew that we needed true native performance and we had the budget and timeline to build a proper app. We didn’t want to build a prototype to validate the idea, because the Prepd team had clear ideas about how they wanted to build their business and it was clear that the app was a central part of this. We wanted to make sure that we had a robust codebase and solid engineering stack that could be built upon as the app and their business grew.
 
 Regardless of the different issues we ran into (and some of them were really frustrating at the time they occurred), developing and deploying a production-ready app with React Native was a lot of fun and a very rewarding experience. We’re betting on React Native continuing to be a strong platform for mobile app development and are confident that we’ll be working on many more projects with it in the future.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/building-prepd-the-pros-and-cons-of-launching-a-product-with-react-native-d79dd5acef6e) on January 31, 2017._
