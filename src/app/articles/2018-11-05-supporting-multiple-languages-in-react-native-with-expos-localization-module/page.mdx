@@ -1,0 +1,227 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2018-11-05',
+  title:
+    'Supporting multiple languages in React Native with Expo’s Localization module',
+  description:
+    'Hi! Here’s another post about my experience of building the iOS and Android app for the surprise dinner startup uncovercity. Today, I’m...',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    width="4032"
+    height="3024"
+    src="https://cdn-images-1.medium.com/max/2560/0*nSzr8tnGo9QEXqhQ"
+  />
+  <figcaption>
+    “Hola LED signage” by [Jon
+    Tyson](https://unsplash.com/@jontyson?utm_source=medium&amp;utm_medium=referral)
+    on [Unsplash](https://unsplash.com?utm_source=medium&amp;utm_medium=referral)
+  </figcaption>
+</figure>
+
+**This is the third post in a 4-part series about building the iOS and Android app for** [**uncovercity**](https://uncovercity.com/) **using React Native. You can find the other ones here:**
+
+1.  [Speeding up the build of a surprise dinner app in React Native using Expo](/articles/2018-09-27-speeding-up-the-build-of-a-surprise-dinner-app-in-react-native-using-expo)
+2.  [Battle testing a ridesharing API and React Native’s MapView in Expo](/articles/2018-10-01-battle-testing-a-ridesharing-api-and-react-natives-mapview-in-expo)
+3.  Supporting multiple languages in React Native with Expo Localization
+4.  [The intricacies of nesting navigators in React Native using react-navigation](/articles/2018-12-03-the-intricacies-of-nesting-navigators-in-react-native-using-react-navigation)
+
+---
+
+Hi! Here’s another post about my experience of building the iOS and Android app for the surprise dinner startup [uncovercity](https://uncovercity.com/). Today, I’m going to walk you through the challenge of translating all the app’s content (texts, videos, images) from Spanish to English.
+
+Since the app is based on [React Native](https://facebook.github.io/react-native/) and [Expo](https://expo.io/), the most obvious thing to do was to look for some existing solution in the ecosystems of these two tools.
+
+And voilà, Expo has a [Localization](https://docs.expo.io/versions/v30.0.0/sdk/localization) module. Though it’s still in the `DangerZone` (a namespace that Expo uses to group features that haven’t been fully approved yet), I was pleased to have a solid starting point for my challenge.
+
+> **IMPORTANT: this blog post is based on Expo version 30.0.0 and below. Expo recently released** [**version 31.0.0**](https://blog.expo.io/expo-sdk-v31-0-0-is-now-available-cad6d0463f49) **which includes a complete overhaul of the** [**Localization**](https://docs.expo.io/versions/v31.0.0/sdk/localization) **module. The most significant change is that you can now retrieve localisation information from your device synchronously instead of the asynchronous way I’ll be covering in this blog post**
+
+If you’re already familiar with the basics, you can directly skip to the [Common pitfalls](#ddd6) where I talk about some more advanced localisation topics.
+
+> If you’re using React Native without Expo, you can get something similar to the Localization module with [react-native-languages](https://github.com/react-community/react-native-languages). However for the actual task of string translation you’d still need something like [react-i18next](https://github.com/i18next/react-i18next).
+
+## The basics of localisation
+
+The [documentation that Expo provides](https://docs.expo.io/versions/v30.0.0/sdk/localization) for this module is very bare-bones and convoluted (which is what motivated me to write this post). But implementing it is actually pretty straightforward. All you need to do is:
+
+1.  create a JSON file for each language you want to provide
+2.  initialise the language store using Expo’s `Localizaton` module
+3.  set the user’s current language on the store
+4.  replace all the content in your app with the store’s corresponding keys
+
+> **For a complete example of the following code in action, please check out the** [**Snack I’ve created**](https://snack.expo.io/@marcelkalveram/localizaton-example) **where I initialise a string store from a separate file and add a little toggle button to switch between US English and Spanish.**
+
+Now let me walk you through each of these steps in more detail:
+
+### 1. Create a JSON file for each language
+
+The first thing you need to do is put all of your translatable strings into a JSON store. It doesn’t matter if you do that in the same file, or if you import them from a separate file using `import`. I’ll explain why I prefer the latter in step 2.
+
+```js
+const localizedStrings = {
+  en_GB: { title: 'Hello', subtitle: 'Welcome' },
+  es_ES: { title: 'Hola', subtitle: 'Bienvenido' },
+}
+```
+
+The keys of this object are the language/region identifiers (ie. `en_GB` stands for English/Great Britain) and the value of a key are all the translatable strings you will have available after the store has been initialised, ie. `localeStore.subtitle` will output “Bienvenido” if your language has been set to Spanish (`es_ES`).
+
+### 2. Initialise the store using Expo’s Localizaton module
+
+Second, we initialise the store and run the initialisation logic on it. Import the `Localization` module from Expo like this:
+
+```js
+import { DangerZone } from 'expo'
+const { Localization } = DangerZone
+// localizedStrings is the object we created in step 1
+const localeStore = new Localization.LocaleStore(localizedStrings)
+```
+
+It’s easier if you put this line of code where your localised strings reside, so you have access to them anywhere you need. So instead of exporting the JSON object directly, export the instantiated store like this:
+
+```js
+const localeStore = new Localization.LocaleStore(localizedStrings)
+```
+
+This `localeStore` now gives us access to two important functions:
+
+- setting the current locale we want to show to our users (see next step)
+- using the localised strings in our views like this: `{ **localeStore**.title }`
+
+### 3. Set the user’s current language on the store
+
+Next, we need to figure out what the user’s preferred language is. We can use the `getCurrentLocaleAsync` function from the `Localization` module which returns a language/region identifier. Then, we pass this value on to our previously initialised store using `setLocale`.
+
+```js
+import { localeStore } from "./localeStore"
+...
+constructor() {
+  super();
+  Localization.getCurrentLocaleAsync().then(currentLocale =>
+    localeStore.setLocale(locale)
+  );
+}
+```
+
+The `getCurrentLocaleAsync` function returns the user device’s language/region identifier as a string (which you should be familiar with by now), ie: `en_GB` It’s an asynchronous call, so we need to make sure that wherever we place this, it needs to be executed this way, either using `async`/`await` or a `Promise`.
+
+> Keep in mind that instead of using `_getCurrentLocaleAsync_`, you could as well get access to the device’s **country code** or **preferred locales** by using their respective functions `_getCurrentDeviceCountryAsync_` or `_getPreferredLocalesAsync_`.
+
+In addition to that, you probably want to use some kind of state management solution or the React Context API to make your current locale available elsewhere and not only in the root component’s state.
+
+### 4. Replace all translatable strings
+
+Last but not least, we need to make sure to use the localised strings from our store instead of the hardcoded strings in our UI views.
+
+```js
+// we want to replace this...
+<Text>Hello</Text>
+
+// ...with that:
+<Text>{localeStore.title}</Text>
+```
+
+This is as simple as it can get in terms of internationalisation. For more advanced translation functions like plurals and formatting, you’d probably want to use a more complete library like `react-i18next` (which by the way [works perfectly fine](https://github.com/i18next/react-i18next/tree/master/example/reactnative-expo) in conjunction with Expo’s `Localization` module, but is also way more complex).
+
+## Common pitfalls and their fixes
+
+That all sounds pretty straightforward. But there are some less obvious issues that you only run into if you build out a fully localised app with multiple screens and a bit of interaction.
+
+### Setting and applying the default language
+
+You might wonder what happens if the user’s language isn’t covered by any of your translation files and you do something like `setLocale(locale)` where the **locale** you’re trying to set doesn’t exist.
+
+Or what if you want to provide the same translation for both, `en_GB` and `en_US` but prefer not to duplicate the entire array of strings?
+
+The most simple solution that’s worked for me is to explicitly set the locale based on some condition, instead of just passing the locale blindly to the store’s `setLocale` function.
+
+```js
+// instead of blindly relying on this...
+Localization.getCurrentLocaleAsync().then(currentLocale =>
+ localeStore.setLocale(currentLocale)
+);
+
+// ...make sure to explicitly set one of your existing locales
+Localization.getCurrentLocaleAsync().then(currentLocale => {
+ const locale = currentLocale.includes('es') ? 'es_ES' : 'en_GB';
+ localeStore.setLocale(locale)
+);
+```
+
+In addition to that, you probably want to safeguard your view from rendering anything before we haven’t assigned the user’s default locale first:
+
+```js
+if (!this.state.currentLocale) {
+  return
+}
+
+return <App />
+```
+
+### Switching between languages
+
+Now that we know how to set a default language, what if the user actually wants to switch to another language?
+
+Calling `setLocale` on the `localeStore` and updating our state to the new language should do the trick:
+
+```js
+localeStore.setLocale(newlocale)
+```
+
+Unfortunately, our views won’t update as a result. How disappointing!
+
+That’s because the `localeStore` update happens outside the realm of React state, so React won’t re-render anything. Plus, `setLocale` is an asynchronous call, so any changes we want to apply after the update has happened need to be handled in the callback function it takes as its second argument.
+
+```js
+localeStore.setLocale(locale, () =>
+  this.setState(() => ({ currentLocale: locale })),
+)
+```
+
+Now our components will react to the state change and update accordingly.
+
+### Navigation titles with react-navigation
+
+If you’ve worked with react-navigation before, you’re probably familiar with the static `navigationOptions`object that allows you to modify the style and content of the header bar.
+
+Turns out that since it is a static property, any properties you set inside of it will be evaluated _before_ we set our initial language, and not when the actual screen is mounted.
+
+```js
+static navigationOptions = {
+ title: localeStore.title // this won't re-render
+}
+```
+
+The solution here is to return a function that returns an object. Like this, every time there’s a state change in our app (like the one triggered by the `setLocale` callback), these props are going to be updated as well.
+
+```js
+static navigationOptions = () => {
+  return {
+    title: localeStore.title // this uses the updated locale
+  }
+}
+```
+
+## Advanced localisation solutions
+
+Expo’s Localization module is quite limited. It gives you access to the user device’s language and lets you translate an object of strings based on that.
+
+That’s probably all you need for many smaller projects. But if your app gets a little more complex than that and you want internationalisation options like placeholders, pluralisation and currency/timezone formatting you might want to look into one the following, more sophisticated solutions:
+
+- [i18next/react-i18next](https://github.com/i18next/react-i18next)
+- [fnando/i18n-js](https://github.com/fnando/i18n-js)
+- [yahoo/react-intl](https://github.com/yahoo/react-intl)
+
+Have you ever translated a React Native app to multiple languages? What has your experience been like? Which tools did you use and what kind of issues did you run into?
+
+Hope you enjoyed this post and found it helpful. If you have any feedback, please feel free to add a comment. Thanks!

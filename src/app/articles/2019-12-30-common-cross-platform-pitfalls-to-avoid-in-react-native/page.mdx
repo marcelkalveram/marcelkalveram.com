@@ -25,10 +25,14 @@ export const metadata = {
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
----
-
-![](https://cdn-images-1.medium.com/max/800/0*GhaWmhwa-8vFHX9R)
-_Photo by [Artem Maltsev](https://unsplash.com/@art_maltsev?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*GhaWmhwa-8vFHX9R" />
+  <figcaption>
+    _Photo by [Artem
+    Maltsev](https://unsplash.com/@art_maltsev?utm_source=medium&utm_medium=referral)
+    on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+  </figcaption>
+</figure>
 
 ## Three things that people often get wrong when developing apps for iOS and Android
 
@@ -39,8 +43,6 @@ Many companies choose React Native over native development because of its shallo
 We should craft a user experience that follows each platform’s respective design guidelines.
 
 For those unfamiliar with mobile, you should check out the [Material Design](https://material.io/design/) guidelines for Android and the [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/overview/themes/) for iOS. You don’t need to know them inside out, but it’s worth taking a look and familiarizing yourself with the core principles.
-
----
 
 If you’re a React Native—or any kind of—mobile developer, you also often don’t have the leverage, authority or skills to actively shape the design process, so here are some questions you may want to throw at the designers in your team to make sure they’re concerned about the most critical platform differences:
 
@@ -56,26 +58,32 @@ For an exhaustive list of differences between iOS and Android, I can also recomm
 
 - [Android VS. iOS: Compare 20 UI Components & Patterns (Part 2)](https://medium.com/@chunchuanlin/android-vs-ios-compare-20-ui-components-patterns-part-2-3edba2076b25)
 
----
-
 With that in mind, let me walk you through some of the common pitfalls of cross-platform development that I run into on almost every React Native project.
 
 ## Navigation
 
 On Android, it’s more common than on iOS for the tab bar to sit at the top of the screen. Let’s take a look at the Facebook app as an example.
 
-<Image src={screenshotAndroidIosAndroidFacebook} />
-_The Facebook app on iOS (left) and Android (right)_
+<figure>
+  <Image src={screenshotAndroidIosAndroidFacebook} width="800" height="600" />
+  <figcaption>_The Facebook app on iOS (left) and Android (right)_</figcaption>
+</figure>
 
 That’s on purpose because some apps don’t want you to accidentally tap on the native bottom bar on Android.
 
-<Image src={nativeBottomBarAndroid} />
-_The native bottom bar on Android_
+<figure>
+  <Image src={nativeBottomBarAndroid} width="742" height="84" />
+  <figcaption>_The native bottom bar on Android_</figcaption>
+</figure>
 
 Another important navigation-related detail is the header bar. On Android, its content is often left-aligned. Let’s take a look at the Twitter app:
 
-<Image src={navigationHeaderIosAndroid} />
-_The navigation header bar on iOS (top) and Android (bottom)_
+<figure>
+  <Image src={navigationHeaderIosAndroid} width="800" height="425" />
+  <figcaption>
+    _The navigation header bar on iOS (top) and Android (bottom)_
+  </figcaption>
+</figure>
 
 Many mobile designers unfamiliar with Android consider this a bug and will tell you to fix it. But unless you have a strong reason to, it’s usually safe to stick to the default.
 
@@ -85,8 +93,10 @@ When adding custom screens like modals, bottom sheets, or any other custom scree
 
 Let’s take a look at the native bottom bar again.
 
-<Image src={backButtonAndroid} />
-_The back button in the native Android bottom bar_
+<figure>
+  <Image src={backButtonAndroid} width="742" height="84" />
+  <figcaption>_The back button in the native Android bottom bar_</figcaption>
+</figure>
 
 I’ve seen React Native apps where tapping it would take you back to the previous route _underneath_ the overlay or—even worse—quit the app!
 
@@ -102,9 +112,13 @@ Something that can be equally confusing—but this time on iOS—are the so-call
 
 Since the introduction of the iPhone X there are several areas on the screen where you should avoid putting any critical or interactive content. The reason is that these are reserved for native gestures, like swiping up from the bottom to switch between apps.
 
-<Image src={safeAreasIos} />
-
-_Hardware constraints on iOS: safe areas on iPhone 11 (left) and iPad Pro (right)_
+<figure>
+  <Image src={safeAreasIos} width="800" height="600" />
+  <figcaption>
+    _Hardware constraints on iOS: safe areas on iPhone 11 (left) and iPad
+    Pro (right)_
+  </figcaption>
+</figure>
 
 It’s easy to avoid these by using `SafeAreaView` as a wrapper for _all_ your screens (e.g. using a wrapper). But that also results in a poor user experience because the protected areas are now completely empty.
 
@@ -116,9 +130,12 @@ I highly recommend you to get the hang of it as soon as possible in the process 
 
 On top of that, you may have come across Android phones that share a similar layout peculiarity: the Android display cut-out.
 
-<Image src={displayCutOutAndroid} />
-
-_The Anroid display cut-out on phones like the Pixel 3 XL_
+<figure>
+  <Image src={displayCutOutAndroid} width="800" height="524" />
+  <figcaption>
+    _The Anroid display cut-out on phones like the Pixel 3 XL_
+  </figcaption>
+</figure>
 
 To deal with this particular issue, you actually need to go one level deeper and dig into the native layer. But before I go into any further here, let me point you to an [article by Bruno Lemos](https://dev.to/brunolemos/adding-notch-support-to-your-react-native-android-app-3ci3) which does a very good job of explaining how...
 

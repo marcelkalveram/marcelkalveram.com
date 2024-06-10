@@ -1,0 +1,140 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2015-07-01',
+  title: 'Why offline-first matters, and what developers should know about it',
+  description:
+    'Most of the time when developing applications, we assume that people have permanent access to a broadband connection, no matter where they...',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    width="1300"
+    height="600"
+    src="https://cdn-images-1.medium.com/max/2560/1*5VN2lEKrKugU0-wBY4pfWw.jpeg"
+  />
+</figure>
+
+**Most of the time when developing applications, we assume that people have permanent access to a broadband connection, no matter where they are in the world.**
+
+But we need to keep in mind that the internet is a global thing, and that especially in developing countries, connection speed can be much slower and less reliable. **Let’s face it**, even in first-world countries, we are struggling with connectivity issues all the time, be it bad mobile coverage or expensive roaming.
+
+**So why are most web sites and apps not prepared for that?**
+
+A few weeks ago I had the pleasure to talk at the annual JavaScript conference [jsDay in Verona](http://2015.jsday.it/) and answer that question.
+
+You can find the slides of [my talk on Slideshare](http://de.slideshare.net/MarcelKalveram/offline-first-the-painless-way) if you’re interested.
+
+Offline-first is a topic that I first heard about 2 years ago in a [podcast on 5by5](http://5by5.tv/bigwebshow/95). The idea of taking apps offline was something that I found fascinating from the very beginning. Having been a supporter of [progressive enhancement](http://en.wikipedia.org/wiki/Progressive_enhancement) and other accessibility principles since I started out as a web developer, I began wrapping my head around the topic.
+
+<figure>
+  <img
+    width="800"
+    height="600"
+    src="https://cdn-images-1.medium.com/max/800/1*yrL0FKiPQJ58iKHj0ly8Bg.jpeg"
+  />
+  <figcaption>
+    _Departure to Italy. Shortly after this photo, I went offline for two hours_
+  </figcaption>
+</figure>
+
+Since I am one of the people who complains most when an app doesn’t work without a proper internet connection, I knew it was my responsibility to learn more about how to do it and share my knowledge with the community.
+
+## So what was the talk about?
+
+Here’s a quick overview of the different topics I touched on during [this presentation](http://de.slideshare.net/MarcelKalveram/offline-first-the-painless-way) and how I think they can help developers prepare their apps for the offline state.
+
+### Static vs. dynamic caching
+
+The first part was about using the different caching mechanisms that the browser provides. And it looks like the best choice for _caching static data_ is still the infamous **Appcache**.
+
+That’s because the browser cache [isn’t reliable enough](http://www.webperformancetoday.com/2012/07/12/early-findings-mobile-browser-cache-persistence-and-behaviour/) and because Service Workers [aren’t really there yet](http://caniuse.com/#feat=serviceworkers) in terms of browser support (as much as I would have loved to cover them in my talk).
+
+Yes, the Appcache [is still a douchebag](http://alistapart.com/article/application-cache-is-a-douchebag), but some years have passed since we declared it entirely useless. In the meantime, rendering of many web apps has shifted to the client-side, and since this makes cacheable assets slightly less complex and more predictable, your [SPA](http://en.wikipedia.org/wiki/Single-page_application) may actually be a good candidate for using it.
+
+<figure>
+  <img
+    width="800"
+    height="432"
+    src="https://cdn-images-1.medium.com/max/800/1*bwnykZ9zP8hnPMWzpPuiOw.png"
+  />
+  <figcaption>
+    _Many SPAs and native apps treat the offline state as an error, as this page
+    illustrates_
+  </figcaption>
+</figure>
+
+As a second challenge, I talked about how to approach _dynamic caching_. According to my research, the only technology we can rely on across browsers is the **local storage API**, but it has its limitations. Two open source libraries, namely **localforage** and **pouchdb**, help us overcome these and also take care of eliminating the different browser inconsistencies that we encounter when working with [IndexedDB](http://caniuse.com/#search=indexeddb) or [WebSQL](http://caniuse.com/#search=websql).
+
+[Localforage](https://github.com/mozilla/localForage) provides the same simple API as local storage, but uses IndexedDB or WebSQL (depending on the browser) under the hood. This not only gives us more storage but allows us to store all kinds of data (arrays, objects, meme photos etc…).
+
+Pretty cool isn’t it? Wait, it gets even better…
+
+### Synchronisation
+
+[PouchDB](http://pouchdb.com/) is pretty awesome when it comes to another important aspect of developing offline-first: What happens when we’re back online?
+
+Local data may have changed and become inconsistent with its online counterpart. And unless you’re very experienced with how to calculate diffs and compare revisions, you probably don’t want to take care of this yourself.
+
+If you’re in the lucky position to still be able to choose a database for your application, PouchDB is probably worth considering. It has a very straightforward API (which supports asynchronous operations and callbacks) and a magic synchronisation method which looks like this:
+
+**pdb.sync(remotedb)**
+
+… where **pdb** is your local database object, and **remotedb** represents your remote storage. That is not so complex anymore, is it?
+
+### Preparing the UI
+
+Now that we treat a connection to the internet as an enhancement instead of a dependency (as you can see illustrated in the following diagram) we also want our users to be part of this wonderful experience.
+
+<figure>
+  <img
+    width="800"
+    height="450"
+    src="https://cdn-images-1.medium.com/max/800/1*RWxcazS1yUTs9E5Q5WLkqg.jpeg"
+  />
+  <figcaption>_How to approach offline-first development_</figcaption>
+</figure>
+
+Or at least, we should be able to give them some feedback about their current connectivity status, so they’re always aware which operations they can carry out, and which they can’t.
+
+In the final part of my presentation, I talked about the different mechanisms that browsers provide to check whether a user is connected to the internet or not.
+
+Unfortunately, things aren’t as simple as they’re supposed to.
+
+- With the **onLine** attribute of the **navigator** object we are supposed to find out if a page is online, but it doesn’t work very well in Firefox, Safari and Internet Explorer (to name just a few…).
+- Then there is the [appcache’s error event](http://www.bennadel.com/blog/2029-using-html5-offline-application-cache-events-in-javascript.htm) which works consistently across browsers but which fires only once, on page load.
+
+The most reliable way to test for the offline state is using [XHR events](https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) and looking at the status code of a fake Ajax call. If it doesn’t equal 200, then it’s very likely that our user got disconnected, and that we should gracefully fall back to our friendly offline experience (and ideally, not communicate that as an error).
+
+This is how the library [offline.js](http://github.hubspot.com/offline/docs/welcome/) does it as well, so if you don’t feel like you have the skills to implement the XHR solution yourself, you should use this as a starting point for your application.
+
+## After the talk is before the talk
+
+I certainly wasn’t able to cover all the aspects of offline-first development, but [the feedback I have received](https://joind.in/talk/view/14527) gave me the impression that we covered a lot of stuff that people were not aware of.
+
+<figure>
+  <img
+    width="800"
+    height="600"
+    src="https://cdn-images-1.medium.com/max/800/1*JlJemt80q2TA4jNXqefZ-A.jpeg"
+  />
+  <figcaption>
+    _Kyle Simpson at his closing keynote, saying that the web is broken by
+    decision…_
+  </figcaption>
+</figure>
+
+Of course it’s impossible to force offline-first everywhere. That’s why in the conclusion of my talk, I emphasized again that you have to
+
+- first decide whether it makes sense to make your app available offline, and then
+- take some very _well-considered decisions_ about _which parts_ of your app you want to cache.
+
+With this in mind, let’s work on this together and make the web more accessible by allowing more users to use your products when they’re offline. And in case you’re running a conference or a meet-up and want me to spread the word, please feel free to get in touch on [Twitter](https://twitter.com/marcelkalveram).

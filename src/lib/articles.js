@@ -5,6 +5,7 @@ async function importArticle(articleFilename) {
 
   return {
     slug: articleFilename.replace(/(\/page)?\.mdx$/, ''),
+    year: article?.date?.slice(0, 4) || null,
     ...article,
   }
 }

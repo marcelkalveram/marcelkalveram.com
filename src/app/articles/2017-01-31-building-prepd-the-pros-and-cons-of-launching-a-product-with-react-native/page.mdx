@@ -1,0 +1,177 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2017-01-31',
+  title:
+    'Building Prepd: The pros and cons of launching a product with React Native',
+  description:
+    'React Native has been doing the rounds for quite a while now and in this post, I want to talk about how we used it to launch...',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+## Building Prepd: The pros and cons of launching a product with React Native
+
+<figure>
+  <img
+    width="1300"
+    height="600"
+    src="https://cdn-images-1.medium.com/max/800/1*x_K7_xeZar_wApAHobc81g.jpeg"
+  />
+</figure>
+
+[React Native](https://facebook.github.io/react-native/) has been doing the rounds for quite a while now and in this post, I want to talk about how we used it to launch the [Prepd](https://www.getprepd.com/) app on iOS and Android and built a cross-platform experience to accompany their physical Kickstarter-backed lunch box product.
+
+The project had a timeline of around 6 months, and it was a great opportunity to battle-test React Native for a real world use case and see if it would stand the test of time.
+
+The beauty of React Native is that once you get the hang of it and have a strong enough team, you can write iOS and Android apps with a single code base. In our case, we focused on iOS first, knowing that React Native would allow us to port the app to Android without too much hassle once our core business logic had been built.
+
+I’ll talk about this and a few other positive aspects in this post, but will also point out a few downsides that you should keep in mind when building with React Native.
+
+## The pros of using React Native
+
+Let’s start with the **pros** first. These are the things that really stood out and made developing with React Native a pleasant experience, vindicating our decision to use the framework.
+
+<figure>
+  <img
+    width="1300"
+    height="701"
+    src="https://cdn-images-1.medium.com/max/800/1*QydfddwM9QLkw4vfJVpqjA.png"
+  />
+  <figcaption>
+    _To get the best experience, always check out the the latest React Native
+    updates and release notes_
+  </figcaption>
+</figure>
+
+### React Native is stable
+
+It has been in development long enough for most of the bugs and shortcomings from the early days to be ironed out. The current version ([0.38](https://github.com/facebook/react-native/releases/tag/v0.38.0) at the time of development) has pretty robust performance and worked reliably on all iOS devices.
+
+Core components and features we used included tab navigation, modals, overlays, extensive snap scrolling and animations. We were particularly happy when during development, we were struggling with a specific scroll-related bug in RN and one day it [magically disappeared after we upgraded](https://github.com/facebook/react-native/commit/72e203bf9572f2dbd6e836f35db3afdfdba3d6c4) to the latest release. So, always watch out for the change log to see all the latest fixes and improvements.
+
+### No prior iOS/Android knowledge required
+
+While you should be comfortable with JavaScript and React to some extent, you can do a lot without any iOS/Android-specific knowledge. I didn’t have extensive prior experience with Objective C/Swift or Java/Android but I learned a lot of this from a teammate as we moved along and worked on the project together.
+
+So if you’re more experienced with web development and native development intimidates you a little, that shouldn’t stop you from trying React Native as most of the platform-specific complexity has been abstracted away.
+
+### Great community and ecosystem
+
+There’s a huge community behind React Native and there are a lot of third-party plugins and frameworks that you can use to extend your app. In our case, we integrated third-party plugins for platforms such as [Segment](https://github.com/smore-inc/react-native-segment-io-analytics), [Intercom](https://github.com/tinycreative/react-native-intercom), [CodePush](https://github.com/Microsoft/react-native-code-push) and [HealthKit](https://github.com/GregWilson/react-native-apple-healthkit).
+
+Some of them have decent support for both iOS and Android by default. Others required some extra work, such as [merging a pull request by an external collaborator](https://github.com/smore-inc/react-native-segment-io-analytics/pull/33) to make it compatible or making a few extensions to support extra functionality we needed.
+
+### Porting from one platform to another is doable
+
+You can port an app from iOS to Android or vice-versa in a reasonable timeframe and without too much effort. We were able to use about 95% of our code to make the Android version available just two weeks after the initial iOS release. Most of the work went into fixing incompatible plugins, disabling some non-supported features and tightening up styling to be Android-specific.
+
+It’s important to recognize that iOS and Android have very different UI patterns and components though, and you will probably not want to deliver the exact same experience to both platforms. React Native allows you to provide a different app logic and design to each OS using the [Platform](https://facebook.github.io/react-native/docs/platform-specific-code.html) object, but building truly great apps for both iOS and Android will of course require lots of work to come up with the perfect experience for each platform.
+
+## The cons of using React Native
+
+Looking at the **cons**, there are definitely a few things to keep in mind as well. Some of these slowed down development at times, so are worth being aware of before you consider React Native.
+
+### The learning curve is quite steep
+
+Familiarizing yourself with [JavaScript](https://www.javascript.com/), [Babel](https://babeljs.io/), [ES6](https://es6.io/) and the React way of building apps can be quite daunting if you’re not an experienced developer.
+
+There are a few things like routing, animation and styles which aren’t very straightforward and take a very different approach to how you might be used to handling them for web development. Be aware that it might take some time to wrap your head around things.
+
+### Debugging styles is still a bit cumbersome
+
+While the simulator dev tools provide a basic, rudimentary way of looking at the style cascade, they aren’t particularly useful as you can’t tweak anything (as you would with the Chrome web inspector) and can become quite messy (cover a lot of the screen) as your style cascade grows.
+
+<figure>
+  <img
+    width="1300"
+    height="701"
+    src="https://cdn-images-1.medium.com/max/800/1*bt-gE0iZBZrx3PQCyjHsnQ.png"
+  />
+  <figcaption>
+    _The console (right) works well for debugging whereas the style inspector
+    (left) is not always helpful_
+  </figcaption>
+</figure>
+
+It’s something that the React Native team is actively working to improve, but you should be aware that it’s still not the same experience as you’d get with your browser dev tools, where each element and property can be tweaked live.
+
+### There are no default styles
+
+When we first started using components like the [ListView](https://facebook.github.io/react-native/docs/listview.html), we expected elements to be laid out with some basic padding and alignment, just like you’d expect when developing in the browser. Instead, you have to define each of these explicitly to create a bare-bones layout that can be identified as a UI component.
+
+Also, stylesheets in RN can be mind-bending if you’re coming from a web background (although on the flip side, once you get used to their modular nature, they can be extremely powerful and intuitive for managing a large set of application styles). React forces you to think in terms of components and write your styles in an encapsulated way, referencing global variables where possible.
+
+This can take some time to get used to, but with the rise of React and plugins like [StyledComponents](https://github.com/styled-components/styled-components) this is becoming more and more commonplace.
+
+### Deployment can be a major hassle
+
+This isn’t unique to RN, but on iOS, certificates and provisioning profiles can be a major annoyance. Plan carefully if you want to internally test your product outside of Apple’s own TestFlight (which allows testing with up to 2000 users). I could write an entire blog post about this alone, but you’ll want to be extra aware of the time it takes to migrate to an Enterprise account.
+
+On Android, things are much smoother, even though updating an internal alpha can take up to 24 hours, which is frustrating when you want to quickly deploy and test small updates on your device.
+
+## How to avoid the most common pitfalls
+
+<figure>
+  <img
+    width="1440"
+    height="716"
+    src="https://cdn-images-1.medium.com/max/800/1*biIXAKTNIB9mjy0lBz2p-Q.jpeg"
+  />
+  <figcaption>
+    _Emulators are a great way to debug your app, but can’t replace device
+    testing entirely_
+  </figcaption>
+</figure>
+
+### Bootstrap your design
+
+Writing a React Native app from scratch is fun, but it’s extremely useful to build on top of an existing design framework, such as Bootstrap or Foundation for the web.
+
+Even though we didn’t use any of them, during our research we stumbled upon [NativeBase](http://nativebase.io/) and [Get Pepperoni](http://getpepperoni.com/) which both look like a great starting point for your app if you don’t have a full set of mocked up screens designed already.
+
+### Hire an expert to do the initial setup
+
+Even if your engineering team is experienced and has done a lot of JavaScript work, we’d recommend having expert help on hand if you’re aiming to ship a React Native project on a tight deadline. There are still quite a few quirks and oddities in the platform which can easily block and cost you hours or days of debugging if this is your first time using the framework.
+
+If I was a RN newbie, I’d also value having a more experienced RN developer on hand for the initial project setup and scaffold. Elements like app structure, navigation and deployment needed a little experimentation and tinkering in order to get them all working smoothly.
+
+### Test on real devices from day one
+
+The simulator shipping with xCode does a great job at simulating iPhones and iPads. It’s also the fastest way to test your designs. However, you’ll run into problems that are very specific to the real environment where your apps run, and it’s best if you identify these early in the process.
+
+Not only will you find a few design inconsistencies every now and then, but you’ll also come across certificate problems, network constraints and spot performance-related issues that the simulator can’t easily reproduce for you. Also keep in mind that there are still people running iOS versions lower than 10 or 9, so make sure to test for these platforms too.
+
+### Set up a deployment process
+
+xCode allows you to test your app, create builds, validate and upload them to the App Store. But this is a very laborious, manual process. It’s much better to automate this process and set up a deployment workflow with a tool like [Bitrise](https://www.bitrise.io/). It can do everything from linting your app to running tests to creating builds to deploying this to the iOS and Google Play App Stores. Check out the [steps library](https://github.com/bitrise-io/bitrise-steplib/tree/master/steps) to see what else it’s capable of.
+
+In our case, we generated a build for every push to the master branch to test if it succeeded, and maintained a separate release branch for both iOS and Android. Each branch would push a new build to the respective app store when we merged commits into it, and we could then manually release this build to our internal or external testers.
+
+## Should I use React Native for my project?
+
+My standard answer to this is: **yes**: if you have a sufficiently validated idea, and are confident that what you’re about to build is going to be the basis of your ‘real’ app that gets launched to the app store, then RN is a great choice.
+
+If, on the other hand you just want to build an app to test and validate an idea as quickly as possible on mobile devices, React Native is probably not the right choice. It’s just a little too laborious to set up the app, add some basic styles to it and distribute it to people. If that was your aim, you might well prefer a more web browser-like environment (like [Ionic](http://ionic.io/)) or a prototyping tool (like [Proto.io](https://proto.io/)) where you can tweak and iterate on ideas quickly.
+
+<figure>
+  <img
+    width="1300"
+    height="715"
+    src="https://cdn-images-1.medium.com/max/800/1*w9JNh_63rSEaiWNep1XZKQ.png"
+  />
+  <figcaption>
+    _Taking an app from concept to launch is a tedious process and needs to be
+    carefully thought through_
+  </figcaption>
+</figure>
+
+On this project, we knew that we needed true native performance and we had the budget and timeline to build a proper app. We didn’t want to build a prototype to validate the idea, because the Prepd team had clear ideas about how they wanted to build their business and it was clear that the app was a central part of this. We wanted to make sure that we had a robust codebase and solid engineering stack that could be built upon as the app and their business grew.
+
+Regardless of the different issues we ran into (and some of them were really frustrating at the time they occurred), developing and deploying a production-ready app with React Native was a lot of fun and a very rewarding experience. We’re betting on React Native continuing to be a strong platform for mobile app development and are confident that we’ll be working on many more projects with it in the future.

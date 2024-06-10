@@ -23,9 +23,14 @@ export const metadata = {
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
-![](https://cdn-images-1.medium.com/max/800/0*Vt_QSAYZSpJT2_Mt)
-
-_Photo by [Franck - Free-Hotspot.com](https://unsplash.com/@franckinjapan?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*Vt_QSAYZSpJT2_Mt" />
+  <figcaption>
+    _Photo by [Franck -
+    Free-Hotspot.com](https://unsplash.com/@franckinjapan?utm_source=medium&utm_medium=referral)
+    on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+  </figcaption>
+</figure>
 
 Keeping data on mobile devices secure is crucial if you’re working on a product that stores sensitive information about your user.
 
@@ -85,12 +90,16 @@ It’s easier to understand this flow by visualising it at a slightly higher lev
 
 The “Gate” here implies that the component won’t render its children before it hasn’t completed its internal state logic.
 
-<Image
-  src={dataFlow}
-  alt="A diagram describing the high-level overview of the components involved in this secure storage mechanism"
-/>
-
-_A high-level overview of the components involved in this **secure storage** mechanism (<a href={dataFlow.src}>big version</a>)_
+<figure>
+  <Image
+    src={dataFlow}
+    alt="A diagram describing the high-level overview of the components involved in this secure storage mechanism"
+  />
+  <figcaption>
+    _A high-level overview of the components involved in this **secure storage**
+    mechanism (<a href={dataFlow.src}>big version</a>)_
+  </figcaption>
+</figure>
 
 Here’s what each of them does:
 
@@ -141,13 +150,16 @@ This is the place where we generate the persistent **secure key** on the user’
 
 Before we move on to its implementation details, let’s have a look at how this function fits in to the overall encryption flow.
 
-<Image
-  src={dataFlowEncryptionGate}
-  alt="A diagram describing the high-level overview of the components involved in this secure storage mechanism"
-/>
-
-_Bird’s eye view of the **EncryptionGate** and **getEncryptionKey** method (<a
-href={dataFlowEncryptionGate.src}>big version</a>)_
+<figure>
+  <Image
+    src={dataFlowEncryptionGate}
+    alt="A diagram describing the high-level overview of the components involved in this secure storage mechanism"
+  />
+  <figcaption>
+    _Bird’s eye view of the **EncryptionGate** and **getEncryptionKey** method (
+    <a href={dataFlowEncryptionGate.src}>big version</a>)_
+  </figcaption>
+</figure>
 
 **Here’s the implementation of the** **`getEncryptionKey`** method:
 
@@ -225,12 +237,16 @@ We need to take a closer look at `generateStore()` because that’s the place wh
 
 It’s very similar to what a `configureStore()` call does in many applications, only that it accepts and returns some additional parameters: `encryptionKey`, `hasData` go _in_. And an object with two props (`store`, `persistor`) comes _out_.
 
-<Image
-  src={dataFlowStoreGate}
-  alt="The Store Gate and generateStore function at a glance"
-/>
-
-_The **Store Gate** and **generateStore** function at a glance (<a href={dataFlowStoreGate.src}>big version</a>)_
+<figure>
+  <Image
+    src={dataFlowStoreGate}
+    alt="The Store Gate and generateStore function at a glance"
+  />
+  <figcaption>
+    _The **Store Gate** and **generateStore** function at a glance (
+    <a href={dataFlowStoreGate.src}>big version</a>)_
+  </figcaption>
+</figure>
 
 **Let’s take a look under the hood:**
 

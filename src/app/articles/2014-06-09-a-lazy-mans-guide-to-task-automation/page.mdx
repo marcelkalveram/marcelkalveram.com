@@ -1,0 +1,107 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import TextExpanderImage from './textexpander.png'
+import AlfredImage from './alfred.png'
+import ShortcatImage from './shortcatapp.png'
+import IFTTTImage from './ifttt.png'
+import LazyManSittingOnAChair from './Lazy-man-sitting-on-a-chair.jpg'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2014-06-09',
+  title: "A lazy man's guide to task automation",
+  description:
+    'Ever since the industrial revolution human beings have been trying to make their daily processes faster, more efficient, and to spend...',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<Image src={LazyManSittingOnAChair.src} width="800" height="300" />
+
+Ever since the industrial revolution human beings have been trying to make their daily processes faster, more efficient, and to spend less time producing greater output.
+
+In today's world–as social media and online communication dominate our lives–it has become increasingly difficult to be productive, and most importantly: Not to repeat the same tasks over and over again, day in and day out.
+
+That's why I would like to introduce 5 of my favorite automation tools that I have sticked with for a long time. They have persisted in my ever-changing set of tools not only because they make me more effective, but because they have become part of my daily workflow.
+
+<img
+  src={TextExpanderImage.src}
+  alt="Text Expander logo"
+  width="200"
+  height="200"
+/>
+
+## 1 - TextExpander
+
+One of the tools that has saved me tons of hours of typing is TextExpander. It lets you create a library of text snippets that you use on a regular basis.
+
+You can abbreviate things like your signature, common terminal commands, or URLs that are hard to remember. Since it also supports placeholders such as %mytexthere%, you can also wrap your commands in special characters, which is particularly useful when programming.
+
+So far, 355.567 key strokes have saved me 14 hours since I installed the program.
+
+[TextExpander on the web](http://smilesoftware.com/TextExpander/index.html)
+
+## 2 - Aliasing
+
+The same applies to the command line, and lazyness hardly has any limits here thanks to aliases. Because how much you're typing actually comes down to how much you're using aliases.
+
+Aliases can easily reduce typing hundreds of characters per command to only one or two. Here are two common examples:
+
+```bash
+alias l='ls la'
+alias gp='git push origin master'
+```
+
+A good starting point would be your shell history (type `history` on the command line). Figure out which of these commands you use most often and add them to the `.bashrc` file in your home directory. Now they'll be loaded automatically on startup, and you can start saving key strokes the next time you fire up the terminal.
+
+<img src={AlfredImage.src} alt="Alfred icon" width="200" height="165" />
+
+## 3 - Alfred
+
+As mentioned in my last blog post on [Alfred workflows you cannot live without](http://marcelkalveram.com/2014/05/alfred-workflows-live-without/), I heavily rely on this tool for a variety of tasks: Launching applications, searching the file system, or address book look-ups.
+
+Getting familiar with Alfred workflows is a great way to automate your workflow even further, doing things such as image compression on the fly. The best way to start is to go ahead and identify which repetitive tasks you spend a lot of time on, and then trying to figure out which plugins from the [workflow library](http://www.alfredforum.com/forum/3-share-your-workflows/) might solve your problem.
+
+[Alfred website](http://www.alfredapp.com/)
+
+<img src={ShortcatImage.src} alt="Shortcatapp icon" width="200" height="200" />
+
+## 4 - Shortcat
+
+This cute little helper app makes your whole desktop interface accessible via keyboard shortcuts. Open it via `CMD+SHIFT+SPACE`, and a little box pops up under your currently focused window. Type in a few letters of what you're looking for (such as the menu item "file"), and Shortcat will highlight your choices, which are then available via their corresponding letters on the keyboard.
+
+While most pro users are probably familiar with this kind of interface control, it might take the average user a bit longer to get familiar with purely keyboard based interface control. However it can speed up your workflow significantly once you get the hang of it.
+
+Personally, I would recommend doing the experiment (you probably wanna do this on a day without any urgent deadlines) of disconnecting your mouse for a day (or at least a few hours) and try to navigating around with your keyboard only.
+
+[Shortcat App on the web](http://shortcatapp.com/)
+
+<img src={IFTTTImage.src} alt="IFTTT logo" width="200" height="200" />
+
+## 5 - IFTTT
+
+This service has already been around for quite a while, but it's worth having an eye on it, because new automation recipes are added on a daily basis, thanks to a very busy community.
+
+IFTTT let's you define helpers–called "recipes"–that carry out pre-defined automated workflows, such as delivering all your favorited Twitter tweets to your Pocket account for later reading.
+
+The variety of web services–called channels–that integrate with IFTTT are already huge, and include social networks such as Twitter, reddit, Foursquare, quantified self apps like Dash and Fitbit, or home automation services such as Philips Hue or WeMo.
+
+You can get extremely creative here, and people have already invented hundreds of automation recipes. For those who don't know where to start, you can also get recipe recommendations to your inbox daily on signup.
+
+[IFTTT website](https://ifttt.com)
+
+## Conclusion
+
+If you're not automating, you're probably losing a few minutes or hours per day just by doing the same thing over and over again.
+
+Using the above mentioned tools and techniques is a significant time saver. Some of them even help you to expand your horizon and realize what you could do better that you were not aware of. I had this feeling when trying out some of the Alfred worfklows and IFTTT recipes.
+
+If you find yourself never having time for optimizing your processes, let me remind me you of this wonderful quote from "The monk who sold his Ferrari":
+
+> Saying that you don’t have time to improve your thoughts and your life is like saying you don’t have time to stop for gas because you’re too busy driving.
+
+In the end, the first step is to recognize that our daily workflows aren't perfect, and that we need to think about, explore and experiment with new tools and techniques to make ourselves more effective.
