@@ -6,7 +6,7 @@ export const article = {
   title:
     'Bridging the gap from JavaScript to native user preferences in React Native',
   description:
-    'Lately, Ive been working on integrating a GDPR opt-out feature into an app. This feature allows users to flip a switch to decide whether...',
+    'While integrating a GDPR opt-out feature into an app I ran into a few interesting technical challenges carrying over JavaScript application settings to native code and vice-versa.',
 }
 
 export const metadata = {
@@ -37,13 +37,13 @@ export default (props) => <ArticleLayout article={article} {...props} />
 
 Lately, Ive been working on integrating a GDPR opt-out feature into an app. This feature allows users to flip a switch to decide whether they want any privacy-related data to be tracked by our app or any of its third-party dependencies.
 
-From a legal standpoint, thats an interesting challenge, because if you could at any point use any of the tracked data to re-identify a person to which the data refers, it means that it has not been effectively anonymized, thus you're not complying with the GDPR guidelines.
+From a legal standpoint, that's an interesting challenge, because if you could at any point use any of the tracked data to re-identify a person to which the data refers, it means that it has not been effectively anonymized, thus you're not complying with the GDPR guidelines.
 
 From a technical point of view, that means you have to completely disable any logic that may establish a connection to a third-party service sending user-specific information to a server, such as their IP Address, location, operating system, etc
 
 ## Let’s narrow down the problem
 
-In our React Native project, weve been using some commonly used third-party libraries for tasks like analytics, logging and crash reporting. The bad news for developers is that most of these plugins have been developed way before GDPR came into existence.
+In our React Native project, we've been using some commonly used third-party libraries for tasks like analytics, logging and crash reporting. The bad news for developers is that most of these plugins have been developed way before GDPR came into existence.
 
 And even though some of them provide a simple way to opt-out of their services through a method call in the JavaScript layer, others require you to dig into the native code and disable the plugin _before_ it even gets initiated.
 

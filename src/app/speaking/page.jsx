@@ -38,11 +38,11 @@ export default function Speaking() {
       <div className="space-y-20">
         <SpeakingSection title="International events">
           <Appearance
-            href=""
+            href="https://escp.eu/"
             title="Introduction to Web and App Development"
             description="A two-day lecture about the foundations of my craft for a group of ~20 students that I gave once a year at the ESCP campuses in Turin, Berlin and Paris."
             event="ESCP Business School, 2020-2022"
-            cta="See slides on slideshare.net"
+            cta="Visit escp.eu"
           />
 
           <Appearance
