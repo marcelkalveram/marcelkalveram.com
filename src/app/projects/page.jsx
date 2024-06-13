@@ -121,8 +121,8 @@ export const metadata = {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Projects I worked on out of curiosity and passion."
-      intro="These are initiatives I pursued outside of work, and without any financial incentives, to challenge myself, explore new technologies, and simply have fun. Some of these have been shut down a long time ago while others are still alive today."
+      title="These are projects I worked on out of curiosity and passion."
+      intro="Here I share initiatives I pursued outside of work, to challenge myself, explore new technologies, or simply have fun."
     >
       <ul
         role="list"

@@ -38,7 +38,7 @@ function Article({ article, shortDate = false }) {
 export const metadata = {
   title: 'Articles',
   description:
-    'Writing is a way for me to structure my thoughts and reinforce my learnings. Topics I cover are web and mobile apps, JavaScript, programming in general, and best practices.',
+    'Writing is a way for me to structure my thoughts and reinforce my learnings. Topics include web technologies, best practices, personal projects and whatever else keeps me busy.',
 }
 
 export default async function ArticlesIndex() {
@@ -47,8 +47,8 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="Sharing my challenges and insights from daily work life."
-      intro="Writing is a way for me to structure my thoughts and reinforce my learnings. Topics I cover here are web and mobile apps, JavaScript, best practices and things I learned the hard way."
+      title="Here I share challenges and insights from my daily life."
+      intro="Writing is a way for me to structure my thoughts and reinforce my learnings. Topics include web technologies, best practices, personal projects and whatever else keeps me busy."
     >
       {Object.keys(articlesByYear)
         .reverse()

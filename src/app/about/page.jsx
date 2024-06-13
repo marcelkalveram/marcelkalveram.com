@@ -58,41 +58,92 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I&apos;m an engineer at 🖤 with a passion for great product
-            experiences.
+            Now that you are here, let me tell you a bit more about myself.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I began experimenting with the World Wide Web in 1998, and in
-              2006, I decided to turn my hobby into a profession by studying
-              Media and Applied IT, a computer science degree with a focus on
-              digital media.
+              As I said, I&apos;m an engineer at heart. That&apos;s because I
+              started experimenting with computers at the tender age of six.
+            </p>
+            <p>
+              In 1997, I discovered the World Wide Web, a phenomenon that
+              instantly got me hooked. Pretty soon after setting up my first
+              modem, I started building websites in the Mosaic browser using
+              Microsoft Frontpage and—a few years later—Macromedia Dreamweaver.
+            </p>
+            <h2 className="text-lg font-semibold">🎓 Academic background</h2>
+            <p>
+              After a decade spent behind the screen, I decided to turn my
+              biggest hobby into a profession and started an online degree in
+              &apos;Media Informatics&apos; at the Polytechnic University of
+              Emden.
+            </p>
+            <p>
+              Unlike traditional Computer Science degrees, it covered additional
+              topics from the field of digital media, such as marketing and
+              design. The experience of advancing my programming skills combined
+              with more human-centered subjects was very satisfying and served
+              as the cornerstone of my T-shaped nature.
             </p>
 
             <p>
-              In 2008, I started working as a freelancer, building websites and
-              rich web applications in various engineering roles for startups
-              and agencies across Europe.
+              In 2007, I switched from studying almost entirely online to an
+              on-campus degree at the Polytechnic University of Düsseldorf,
+              where I completed my studies. As part of an exchange program, I
+              planned to go abroad for half a year to study at a partner
+              university in Valencia, but ended up moving there for good.
+            </p>
+
+            <h2 className="text-lg font-semibold">💼 Career</h2>
+            <p>
+              During my studies, I started working as a freelancer, building
+              websites and rich web applications in various engineering roles
+              for startups and agencies across Germany, Spain, and the UK.
             </p>
 
             <p>
               Much of my career has centered around front-end development,
-              driven by my obsession with visually pleasing user interfaces.
-              This led to my interest in strategy, inspiring me to think beyond
-              code and components and understand what makes great products.
-            </p>
-            <p>
-              I have never neglected my deep interest in emerging technologies
-              though and have always sought to level up my engineering skills in
-              areas like machine learning, DevOps and cloud computing. Besides
-              JavaScript on the frontend, I&apos;m also comfortable with Node.js
-              on the backend and have tinkered with Java, Python, and Ruby.
+              driven by my obsession with what you can see in the browser and
+              making user experiences usable, accessible, and intuitive.
             </p>
 
             <p>
-              As a senior engineer, I&apos;ve taken on product owner roles and
-              managed small teams of 2-3 people, further enriching my
+              My focus on the user led to my interest in product, inspiring me
+              to think beyond code and components and understand what makes
+              great user experiences. I have worked hand in hand with senior
+              UX/UI designers, product strategists, and business leaders,
+              allowing me to expand my knowledge as a member of cross-functional
+              teams.
+            </p>
+
+            <p>
+              As a senior product engineer, I have taken on product owner roles
+              and managed small teams of 2-3 people, further enriching my
               understanding of strategy, business, and leadership.
+            </p>
+
+            <h2 className="text-lg font-semibold">🤖 Technology</h2>
+            <p>
+              Beside my interest in Product, I have never neglected my deep
+              interest in emerging technologies and have always sought to level
+              up my engineering skills in areas like Machine Learning, AI, and
+              Cloud Computing.
+            </p>
+
+            <p>
+              Besides JavaScript on the frontend, I am comfortable with Node.js
+              on the backend. And whenever I have the time to learn new skills I
+              try to tinker with new programming languages, frameworks and
+              libraries.
+            </p>
+
+            <p>
+              Regarding Artificial Intelligence, I am more excited than scared
+              about its impact on the world, and use it massively to enhance,
+              speed up and rethink my job. I think Product Engineers will be
+              paramount to this shift because of their technical background, the
+              capacity to strategise, and last but not least, the ability to
+              empathise with users.
             </p>
           </div>
         </div>

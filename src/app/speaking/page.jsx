@@ -32,8 +32,8 @@ export const metadata = {
 export default function Speaking() {
   return (
     <SimpleLayout
-      title="I love sharing the expertise I've acquired with a wider audience."
-      intro="I was never comfortable on stage, but the confidence I gained from my local Toastmasters club helped me overcome my fears. It allowed me to share my passion for web and mobile technologies with larger audiences and become a better leader and communicator."
+      title="This is a collection of talks I gave on topics that I enjoyed."
+      intro="Sharing my passion for technology with a larger audience helped me learn a lot not only about public speaking, but also to become a better leader and communicator."
     >
       <div className="space-y-20">
         <SpeakingSection title="International events">

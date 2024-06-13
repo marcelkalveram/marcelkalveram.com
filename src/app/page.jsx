@@ -229,16 +229,19 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Full-Stack Developer,{' '}
-            <span className="whitespace-nowrap">Product Engineer</span>
+            Senior Product Engineer
+            <br />
+            <span className="text-gray-400">
+              Web &middot; Mobile &middot; AI
+            </span>
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Hi, I&apos;m Marcel. I have been developing web and mobile
-            experiences for over 15 years. I have a passion for both product and
-            engineering, and I love working at the intersection of the two.
-            Throughout my career, I&apos;ve gained experience in a diverse range
-            of roles, from freelance web developer to engineering lead to
-            product owner.
+            Hi, I&apos;m Marcel. I am an engineer at 🖤 with 15+ years of
+            experience building web & mobile apps. I have a passion for both
+            product and engineering, and I always put the user at the center of
+            my work. With the rise of AI, product engineering is evolving more
+            rapidly than ever, and I aim to be at the forefront of this
+            unprecedented transformation.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
