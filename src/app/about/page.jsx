@@ -39,7 +39,7 @@ function MailIcon(props) {
 export const metadata = {
   title: 'About',
   description:
-    'I&apos;m Marcel Kalveram. I live in Valencia, where I build web and mobile apps.',
+    'I am a Senior Product Engineer with 15+ years of experience. I love working at the intersection between product and engineering.',
 }
 
 export default function About() {

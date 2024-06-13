@@ -26,7 +26,7 @@ function Appearance({ title, description, event, cta, href }) {
 export const metadata = {
   title: 'Speaking',
   description:
-    'I’ve taught people about web and mobile development in Valencia, Europe and beyond.',
+    'Sharing my passion for technology with a larger audience helped me learn a lot not only about public speaking, but also to become a better leader and communicator.',
 }
 
 export default function Speaking() {
