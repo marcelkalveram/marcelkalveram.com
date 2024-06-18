@@ -39,7 +39,7 @@ function MailIcon(props) {
 export const metadata = {
   title: 'About',
   description:
-    'I am a Senior Product Engineer with 15+ years of experience. I love working at the intersection between product and engineering.',
+    'I am a Senior Product Engineer with 15+ years of experience. I love working at the intersection of Product and Engineering.',
 }
 
 export default function About() {
@@ -62,87 +62,84 @@ export default function About() {
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              As I said, I&apos;m an engineer at heart. That&apos;s because I
-              started experimenting with computers at the tender age of six.
+              As I said, I&apos;ve been an engineer at heart since I started
+              tinkering with my first computer—a Commodore 16—for the first time
+              at age six.
             </p>
             <p>
               In 1997, I discovered the World Wide Web, a phenomenon that
-              instantly got me hooked. Pretty soon after setting up my first
-              modem, I started building websites in the Mosaic browser using
-              Microsoft Frontpage and—a few years later—Macromedia Dreamweaver.
+              instantly hooked me. Pretty soon after setting up my first modem,
+              I started building websites in the Mosaic browser using Microsoft
+              Frontpage and—a few years later—Macromedia Dreamweaver.
             </p>
             <h2 className="text-lg font-semibold">🎓 Academic background</h2>
             <p>
-              After a decade spent behind the screen, I decided to turn my
-              biggest hobby into a profession and started an online degree in
-              &apos;Media Informatics&apos; at the Polytechnic University of
-              Emden.
+              After a decade behind the screen, I turned my biggest hobby into a
+              profession and started an online degree in Media Informatics at
+              the Polytechnic University of Emden.
             </p>
             <p>
-              Unlike traditional Computer Science degrees, it covered additional
-              topics from the field of digital media, such as marketing and
-              design. The experience of advancing my programming skills combined
-              with more human-centered subjects was very satisfying and served
-              as the cornerstone of my T-shaped nature.
+              Unlike traditional CS degrees, it covered additional topics from
+              the field of digital media, such as marketing and design. The
+              experience of advancing my programming skills combined with more
+              human-centred subjects was very satisfying and served as the
+              cornerstone of my T-shaped nature.
             </p>
 
             <p>
-              In 2007, I switched from studying almost entirely online to an
-              on-campus degree at the Polytechnic University of Düsseldorf,
-              where I completed my studies. As part of an exchange program, I
-              planned to go abroad for half a year to study at a partner
-              university in Valencia, but ended up moving there for good.
+              In 2007, I switched from studying online to an on-campus degree at
+              the Polytechnic University of Düsseldorf, where I completed my
+              studies. As part of an exchange program, I planned to go abroad
+              for half a year to study in Valencia but ended up moving there for
+              good.
             </p>
 
             <h2 className="text-lg font-semibold">💼 Career</h2>
             <p>
-              During my studies, I started working as a freelancer, building
+              During my studies, I worked mainly as a freelancer, building
               websites and rich web applications in various engineering roles
               for startups and agencies across Germany, Spain, and the UK.
             </p>
 
             <p>
-              Much of my career has centered around front-end development,
-              driven by my obsession with what you can see in the browser and
-              making user experiences usable, accessible, and intuitive.
+              Much of my career has centred around front end development, driven
+              by my obsession with making user experiences in the browser
+              usable, accessible, and intuitive.
             </p>
 
             <p>
-              My focus on the user led to my interest in product, inspiring me
-              to think beyond code and components and understand what makes
-              great user experiences. I have worked hand in hand with senior
-              UX/UI designers, product strategists, and business leaders,
-              allowing me to expand my knowledge as a member of cross-functional
-              teams.
+              My focus on users led to my interest in Product, inspiring me to
+              think beyond code and understand what makes great user
+              experiences. I have worked hand in hand with UX/UI designers,
+              product strategists, and business leaders, allowing me to expand
+              my knowledge as a member of cross-functional teams.
             </p>
 
             <p>
               As a senior product engineer, I have taken on product owner roles
-              and managed small teams of 2-3 people, further enriching my
-              understanding of strategy, business, and leadership.
+              and managed small teams, further enriching my strategy, business,
+              and leadership know-how.
             </p>
 
             <h2 className="text-lg font-semibold">🤖 Technology</h2>
             <p>
-              Beside my interest in Product, I have never neglected my deep
-              interest in emerging technologies and have always sought to level
-              up my engineering skills in areas like Machine Learning, AI, and
-              Cloud Computing.
+              Besides my interest in Product, I have always paid attention to my
+              interest in emerging technologies. I have always aimed to level up
+              my engineering skills in areas like Machine Learning, Artificial
+              Intelligence, and Cloud Computing.
             </p>
 
             <p>
-              Besides JavaScript on the frontend, I am comfortable with Node.js
-              on the backend. And whenever I have the time to learn new skills I
-              try to tinker with new programming languages, frameworks and
-              libraries.
+              Besides JavaScript on the front end, I am comfortable with Node on
+              the back end. Whenever I have the time to learn new skills, I
+              tinker with new programming languages, frameworks and libraries.
             </p>
 
             <p>
-              Regarding Artificial Intelligence, I am more excited than scared
-              about its impact on the world, and use it massively to enhance,
-              speed up and rethink my job. I think Product Engineers will be
-              paramount to this shift because of their technical background, the
-              capacity to strategise, and last but not least, the ability to
+              I am excited about Artificial Intelligence&apos;s impact on the
+              world and use it to enhance, speed up, and rethink my job. Product
+              Engineers will be paramount to this shift because of their
+              technical expertise, capacity to strategise, and ability to
               empathise with users.
             </p>
           </div>

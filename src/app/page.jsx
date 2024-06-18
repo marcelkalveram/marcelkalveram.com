@@ -237,11 +237,11 @@ export default async function Home() {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             Hi, I&apos;m Marcel. I am an engineer at 🖤 with 15+ years of
-            experience building web & mobile apps. I have a passion for both
-            product and engineering, and I always put the user at the center of
-            my work. With the rise of AI, product engineering is evolving more
-            rapidly than ever, and I aim to be at the forefront of this
-            unprecedented transformation.
+            experience building web & mobile apps. I am passionate about both
+            Product and Engineering and always put the user at the centre of my
+            work. I have managed teams of up to five people and worked as a
+            Project Manager and Product Owner in various technical leadership
+            roles.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
