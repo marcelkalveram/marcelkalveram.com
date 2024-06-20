@@ -21,9 +21,18 @@ import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
+import logoKarstadt from '@/images/logos/clients/karstadt.png'
+import logoUnicef from '@/images/logos/clients/unicef.png'
+import logoOmron from '@/images/logos/clients/omron.png'
+import logoVodafone from '@/images/logos/clients/vodafone.png'
+import logoDisney from '@/images/logos/clients/disney.png'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import { Button } from '@/components/Button'
+
+import TestimonialsJonLay from '@/images/testimonials/jon-lay.jpg'
+import TestimonialsNizarJalbout from '@/images/testimonials/nizar-jalbout.jpg'
+import TestimonialsBenHeath from '@/images/testimonials/ben-heath.jpg'
 
 function BriefcaseIcon(props) {
   return (
@@ -220,27 +229,166 @@ function Photos() {
   )
 }
 
+function Testimonials() {
+  return (
+    <Container className="mt-20">
+      <div className="mx-auto grid max-w-xl lg:max-w-none">
+        <h2 className="mb-3 text-center text-sm font-extralight uppercase text-zinc-400">
+          What people say about me
+        </h2>
+        <div className="mt-10 flex flex-col space-y-6 lg:flex-row lg:space-x-6 lg:space-y-0">
+          <article className="flex rounded-xl bg-zinc-100 p-6 dark:bg-zinc-700">
+            <div className="">
+              <p className="text-sm">
+                Marcel was a fantastic leader and communicator between technical
+                and non-technical teams. I will forever be envious of his
+                ability to break down large tasks into a structured workflow,
+                and he was pivotal in developing MVPR into the platform it is
+                today.
+              </p>
+              <div className="mt-4 flex items-center space-x-2">
+                <Avatar image={TestimonialsBenHeath} />
+                <small className="font-semibold">
+                  Ben Heath, Director at MVPR
+                </small>
+              </div>
+            </div>
+          </article>
+          <article className="flex rounded-xl bg-zinc-100 p-6 dark:bg-slate-700">
+            <div className="">
+              <p className="text-sm">
+                Marcel is diligent and dependable when it comes to execution on
+                projects and has a great passion for repeatable processes, code
+                quality and doing things &apos;correctly&apos;.
+              </p>
+              <div className="mt-4 flex items-center space-x-2">
+                <Avatar image={TestimonialsJonLay} />
+                <small className="font-semibold">
+                  Jon Lay, Founder of Hanno
+                </small>
+              </div>
+            </div>
+          </article>
+          <article className="flex rounded-xl bg-zinc-100 p-6 dark:bg-slate-700">
+            <div className="">
+              <p className="text-sm">
+                I had the great pleasure of working with Marcel on a start-up
+                project in Valencia. It was my first foray into an online
+                venture and could have not been more fortunate to have Marcel as
+                the developer responsible for the project.
+              </p>
+              <div className="mt-4 flex items-center space-x-2">
+                <Avatar image={TestimonialsNizarJalbout} />
+                <small className="font-semibold">
+                  Nizar Jalbout, CEO of Delusha
+                </small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </Container>
+  )
+}
+
+function Companies() {
+  return (
+    <Container className="-mb-10 mt-20">
+      <div className="mx-auto grid max-w-xl lg:max-w-none">
+        <h2 className="-mb-2 text-center text-sm font-extralight uppercase text-zinc-400">
+          Some companies I have worked with
+        </h2>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-10 space-y-0 lg:flex-row lg:flex-nowrap lg:space-x-10 lg:space-y-0 dark:opacity-50">
+          <Image
+            src={logoVodafone}
+            width="300"
+            height="300"
+            alt="Vodafone logo"
+            className="w-32"
+          />
+
+          <Image
+            src={logoDisney}
+            width="300"
+            height="300"
+            alt="Disney logo"
+            className="w-32"
+          />
+
+          <Image
+            src={logoUnicef}
+            width="300"
+            height="300"
+            alt="Unicef logo"
+            className="w-32"
+          />
+
+          <Image
+            src={logoKarstadt}
+            width="300"
+            height="300"
+            alt="Karstadt logo"
+            className="w-32"
+          />
+          <Image
+            src={logoOmron}
+            width="300"
+            height="300"
+            alt="Omron logo"
+            className="w-32"
+          />
+        </div>
+      </div>
+    </Container>
+  )
+}
+
+function Avatar({ image, className = null, ...props }) {
+  return (
+    <Link
+      href="/"
+      aria-label="Home"
+      className={clsx(className, 'pointer-events-auto')}
+      {...props}
+    >
+      <Image
+        src={image}
+        alt=""
+        sizes={'2.25rem'}
+        className={clsx(
+          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
+          'h-8 w-8',
+        )}
+        priority
+      />
+    </Link>
+  )
+}
+
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
   return (
     <>
       <Container className="mt-9">
-        <div className="max-w-2xl">
+        <div className="">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
             Senior Product Engineer
             <br />
             <span className="text-gray-400">
-              Web &middot; Mobile &middot; AI
+              web &middot; mobile &middot; powered by AI
             </span>
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Hi, I&apos;m Marcel. I am an engineer at 🖤 with 15+ years of
+          <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
+            Hi, I&apos;m Marcel. I am an engineer at{' '}
+            <span class="dark:hidden">🖤</span>
+            <span class="hidden dark:inline">❤️</span> with 15+ years of
             experience building web & mobile apps. I am passionate about both
             Product and Engineering and always put the user at the centre of my
             work. I have managed teams of up to five people and worked as a
             Project Manager and Product Owner in various technical leadership
-            roles.
+            roles. I aim to be at the forefront of the impact that Artificial
+            Intelligence has on the tech industry.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -266,8 +414,12 @@ export default async function Home() {
           </div>
         </div>
       </Container>
+
       <Photos />
-      <Container className="mt-24 md:mt-28">
+      <Companies />
+      <Testimonials />
+
+      <Container className="mt-24 md:mt-20">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
