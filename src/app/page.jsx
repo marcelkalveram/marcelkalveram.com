@@ -233,7 +233,7 @@ function Testimonials() {
   return (
     <Container className="mt-20">
       <div className="mx-auto grid max-w-xl lg:max-w-none">
-        <h2 className="mb-3 text-center text-sm font-extralight uppercase text-zinc-400">
+        <h2 className="mb-3 text-center text-sm font-light uppercase text-zinc-400">
           What people say about me
         </h2>
         <div className="mt-10 flex flex-col space-y-6 lg:flex-row lg:space-x-6 lg:space-y-0">
@@ -254,7 +254,7 @@ function Testimonials() {
               </div>
             </div>
           </article>
-          <article className="flex rounded-xl bg-zinc-100 p-6 dark:bg-slate-700">
+          <article className="flex rounded-xl bg-zinc-100 p-6 dark:bg-zinc-700">
             <div className="">
               <p className="text-sm">
                 Marcel is diligent and dependable when it comes to execution on
@@ -269,7 +269,7 @@ function Testimonials() {
               </div>
             </div>
           </article>
-          <article className="flex rounded-xl bg-zinc-100 p-6 dark:bg-slate-700">
+          <article className="flex rounded-xl bg-zinc-100 p-6 dark:bg-zinc-700">
             <div className="">
               <p className="text-sm">
                 I had the great pleasure of working with Marcel on a start-up
@@ -295,7 +295,7 @@ function Companies() {
   return (
     <Container className="-mb-10 mt-20">
       <div className="mx-auto grid max-w-xl lg:max-w-none">
-        <h2 className="-mb-2 text-center text-sm font-extralight uppercase text-zinc-400">
+        <h2 className="-mb-2 text-center text-sm font-light uppercase text-zinc-400">
           Some companies I have worked with
         </h2>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-x-10 space-y-0 lg:flex-row lg:flex-nowrap lg:space-x-10 lg:space-y-0 dark:opacity-50">
@@ -376,7 +376,7 @@ export default async function Home() {
             Senior Product Engineer
             <br />
             <span className="text-gray-400">
-              web &middot; mobile &middot; powered by AI
+              web &middot; mobile &middot; AI-driven
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
