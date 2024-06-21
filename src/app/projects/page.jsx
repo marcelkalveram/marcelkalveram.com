@@ -10,15 +10,15 @@ import logoTheSustainableList from '@/images/logos/projects/the-sustainable-list
 import logoVlcTechHub from '@/images/logos/projects/vlc-tech-hub.png'
 import logoNuhouse from '@/images/logos/projects/nuhouse.png'
 import clsx from 'clsx'
-import logoMvpr from '@/images/logos/work/mvpr.png'
-import logoHanno from '@/images/logos/work/hanno.png'
+import logoMvpr from '@/images/logos/projects/mvpr.png'
+import logoHanno from '@/images/logos/projects/hanno.png'
+import logoDelusha from '@/images/logos/projects/delusha.png'
 import logoMytheresa from '@/images/logos/projects/mytheresa.png'
 import logoUncovercity from '@/images/logos/projects/uncovercity.png'
 import logoPrepd from '@/images/logos/projects/prepd.png'
 import logoNcube from '@/images/logos/projects/ncube.png'
 import logoAva from '@/images/logos/projects/ava.png'
 import logoUnicef from '@/images/logos/projects/unicef.png'
-import logoDelusha from '@/images/logos/work/delusha.png'
 
 const projectsWork = [
   {
