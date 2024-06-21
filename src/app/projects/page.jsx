@@ -197,22 +197,22 @@ function LinkIcon(props) {
 export const metadata = {
   title: 'Projects',
   description:
-    'Here, I share the work I have done for clients over the last 15+ years, plus a collection of side projects I worked on in my free time.',
+    'Here, I showcase some of the work I have completed for clients over the past 15+ years, along with a compilation of side projects and volunteer work I embarked on in my free time.',
 }
 
 export default function Projects() {
   return (
     <SimpleLayout
       title="A list of projects I worked on professionally and on the side"
-      intro="Here, I share some of the work I have done for clients over the last 15+ years, plus a collection of side projects I worked on in my free time."
+      intro="Here, I showcase some of the work I have completed for clients over the past 15+ years, along with a compilation of side projects and volunteer work I embarked on in my free time."
     >
-      <h2 className="relative z-10 order-first flex items-center text-xl font-semibold text-zinc-800 dark:text-zinc-100">
+      <h2 className="relative z-10 order-first flex items-center border-b pb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-100">
         Work
       </h2>
-      <p className="mt-1 border-b pb-4 text-sm text-zinc-600 dark:text-zinc-400">
+      {/* <p className="mt-1 border-b pb-4 text-sm text-zinc-600 dark:text-zinc-400">
         The following is a list of projects I worked on at different agencies or
         as a freelancer.
-      </p>
+      </p> */}
       <ul
         role="list"
         className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
@@ -267,13 +267,13 @@ export default function Projects() {
           </Card>
         ))}
       </ul>
-      <h2 className="relative z-10 order-first mt-24 flex items-center text-xl font-semibold text-zinc-700 dark:text-zinc-400">
-        Personal
+      <h2 className="relative z-10 order-first mt-24 flex items-center border-b pb-4 text-xl font-semibold text-zinc-700 dark:text-zinc-400">
+        Side projects
       </h2>
-      <p className="mt-1 border-b pb-4 text-sm text-gray-500">
+      {/* <p className="mt-1 border-b pb-4 text-sm text-gray-500">
         Here is a selection of projects I worked on out of curiosity, to
         challenge myself, or simply to have fun.
-      </p>
+      </p> */}
       <ul
         role="list"
         className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"

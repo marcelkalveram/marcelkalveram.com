@@ -376,7 +376,7 @@ export default async function Home() {
             Senior Product Engineer
             <br />
             <span className="text-gray-400">
-              web &middot; mobile &middot; AI-driven
+              web &middot; mobile &middot; AI
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
