@@ -1,0 +1,81 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2024-06-25',
+  title: 'Startup Lessons Part 1: Engineering Strategy Pre-Product Market Fit',
+  description:
+    'In my last job, I had the pleasure of setting up a web app from scratch, scaling the team to three additional developers, transitioning from Product Engineer to Product Owner, and stepping into the Product Manager role.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://medium.com/swlh/a-bullet-proof-approach-to-storing-sensitive-user-data-in-react-native-ab3f7a2779f9',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Some time has passed since I wrote my last blog post. Time to get back into a writing routine by sharing what I've been up to in the previous three years.
+
+In my last engagement—which started roughly at the beginning of 2021 and ended two months ago—I had the pleasure of setting up a web app from scratch, scaling the team to three developers, transitioning from Product Engineer to Product Owner, and stepping into the Product Manager role.
+
+Since I learned a ton of new stuff along the way, I'd like to share some of the lessons I learned, what I would have done differently, and where I think Engineering and Product—two domains I'm very passionate about—are heading with the recent advances in the industry.
+
+## The only reasonable engineering strategy pre-PMF
+
+Let's first talk about engineering. It's the area I'm most familiar with and had been working on for many years before my last gig, so there's plenty of hands-on experience I could draw from when kicking off this new project.
+
+The main advantage of working on a [greenfield project](https://en.wikipedia.org/wiki/Greenfield_project) is that you enjoy a lot of freedom and flexibility. Of course, being trusted to make all the right decisions right from the start also comes with plenty of responsibility.
+You are still determining how much weight those decisions will carry in the future, and some are already quite critical.
+
+### Optimise for development speed
+
+While some decisions are no-brainers, and data can easily back them up (such as the popularity of specific tools, like React), other more nuanced ones require experience and intuition (e.g. whether to use TypeScript) to guide you.
+
+My main guiding principle was to optimise for development speed, which had repeatedly been hammered into me in many other prototyping projects. **Getting something out the door is the only thing that counts if you are in the pre-Product Market Fit phase.**
+
+## Aligning the tech stack with this engineering strategy
+
+Now that optimising for speed was defined very highly on our agenda, let me talk about some of the specific decisions I made based on this strategy regarding the tech stack, which was heavily focused on front-end technologies at this stage.
+
+### Obvious choices
+
+The following tools were no-brainers because they are popular and battle-tested, thus avoiding surprises and making it easy for new contributors to get up to speed. They were also aligned with the principle of optimising for development speed.
+
+However, they were also one-way door decisions, something I'll discuss further down.
+
+- **Firebase**: for prototyping purposes, Firebase is a massive time-saver because you don't need to build out a backend, don't spend unnecessary time on setting up basic CRUD operations, don't need to maintain another repository (and all the DevOps work that involves) and can almost wholly disregard any security concerns (e.g. sanitation) as long as you follow some of Firebase's best practice guidelines.
+- **React**: React was also an obvious choice as a front-end library because I had used it extensively in other projects and was fluent in writing JSX components. Starting anywhere else would have been an unnecessary overhead. From today's perspective, I would also pay more attention to Vue and Svelte, but three years ago, React was simply the strongest candidate out there.
+- **Tailwind**: For CSS, we used Tailwind and its companion library Tailwind UI for the initial designs, and our designer (all credit goes to him for making that call) could draw from a comprehensive Tailwind asset library in Figma, making the transition from design to engineering a breeze. At least in the early days of a startup, I consider it a complete waste of time to think about structuring and maintaining CSS when you can use something like Tailwind and its predefined set of classes.
+
+## Opinionated choices
+
+The following were tech decisions that looked great at the start and were aligned with optimising for development speed but didn't go down entirely well further down the line. Here's why:
+
+- **ReactFire**: I used ReactFire as a scaffolding library to connect React to Firebase quickly. It enables developers to run CRUD operations using simple hooks and eliminates the need to write your own API layer. While this massively speeds up initial bootstrapping, it also tightly couples Firebase to your app, making it more difficult to migrate away from it. Also, testing components that contain plenty of hooks logic isn't straightforward, especially if those require a database connection. While we never got to a point where this was an issue, I would instead use a decoupled persistence layer to be able to test it in isolation.
+- **TypeScript**: In previous projects, I participated in many heated debates about TypeScript, experiencing almost all of its pros and cons in depth. As a result, I decided not to use it. My main reason was optimisation for speed, and I think—especially when working with less experienced engineers—it can massively get in the way. Elaborating on that would probably take another blog post, but luckily, someone I admire already wrote an extensive cost vs. benefit analysis. My personal experience also showed me that developers can get very obsessed with removing as many "any" types to satisfy the TS linter and soothe their souls
+- **Unit testing**: atopic that polarises the community to a similar degree as TypeScript is how dogmatic people are about TDD. I know Uncle Bob wouldn't forgive me. Still, I also chose not to do any unit testing at this stage because I saw a significant danger in how frequently the platform would change in its early days. Adding unit tests didn't feel right, given that code would be thrown away or rewritten every few weeks. Of course, that meant sacrificing other parameters, such as reliability (which I later addressed using e2e tests), but with any choice you make to optimise for speed, there must be a trade-off.
+
+## One-way vs. two-way door decisions
+
+The above tech decisions helped develop the initial application scaffold, build out the core authentication logic, and pave the way for quick feature development in less than a month.
+
+In the following 3-6 months, I built out the platform's three main features, including the onboarding process, which was an essential part of the sales funnel. This meant our customers could already use the app and provide early feedback, which is critical for startups seeking Product Market Fit.
+
+Some early decisions may, in retrospect, seem rushed. However, we were still mainly dealing with two-way door decisions (a term coined by Jeff Bezos): decisions that could be easily reverted in a few months.
+
+Based on Mr Bezos' wisdom, considering the long-term impact of decisions becomes relevant when you can't quickly revert them—a one-way door decision—such as changing the propulsion mechanism of a space shuttle's booster rockets.
+
+Our analogy here—as briefly mentioned above—would be the choice to use React instead of Svelte or replace Firebase with a fully customised backend. Although somewhat laughable compared to the booster rocket's example, these two-way door decisions would have warranted a more careful analysis but would have resulted in a steep learning curve at the beginning of the project. This leaves us with the bottom line: there are always trade-offs.
+
+## Where did this take us?
+
+After implementing the core features, we integrated payment about twelve months into the project based on the increasing need to automate that part of the onboarding process and to further streamline the sales funnel.
+
+Around that time, the company also raised its first pre-seed round, allowing us to hire an additional developer. Hiring another person meant I had to switch gears from developing to sourcing and interviewing candidates, writing onboarding guides and supporting another person.
+
+In the next part, I will discuss the challenge of scaling beyond a one-person engineering team and my transition to becoming a hybrid between development lead and product owner.
