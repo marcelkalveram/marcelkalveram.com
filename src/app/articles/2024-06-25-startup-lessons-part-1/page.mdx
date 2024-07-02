@@ -21,11 +21,15 @@ In my last engagement—which started roughly at the beginning of 2021 and ended
 
 Since I learned a ton of new stuff along the way, I'd like to share some of the lessons I learned, what I would have done differently, and where I think Engineering and Product—two domains I'm very passionate about—are heading with the recent advances in the industry.
 
-## The only reasonable engineering strategy pre-PMF
+## ♟️ The only reasonable engineering strategy pre-PMF
 
 Let's first talk about engineering. It's the area I'm most familiar with and had been working on for many years, so there's plenty of hands-on experience I could draw from when kicking off this new project.
 
-The main advantage of working on a [greenfield project](https://en.wikipedia.org/wiki/Greenfield_project) is that you enjoy a lot of freedom and flexibility. Of course, being trusted to make all the right decisions right from the start also comes with plenty of responsibility as you are still figuring out how much weight those decisions will carry in the future. Based on what I know now, some were already quite critical!
+### With great power comes great responsibility
+
+The main advantage of working on a [greenfield project](https://en.wikipedia.org/wiki/Greenfield_project) is that you enjoy a lot of freedom and flexibility. Of course, being trusted to make all the right decisions right from the start also comes with plenty of responsibility as you are still figuring out how much weight those decisions will carry in the future.
+
+Based on what I know now, some were already quite critical and could not be reverted so easily.
 
 ### Optimise for development speed
 
@@ -33,7 +37,7 @@ While some decisions are no-brainers, and data can easily back them up (such as 
 
 My main guiding principle was to optimise for development speed, which had proven to be the right way to go in many other early-stage startup projects I had worked on because getting something out the door is the only thing that counts if you are in the pre-Product Market Fit phase.
 
-## Aligning the tech stack with this engineering strategy
+## 🏗️ Aligning the tech stack with this engineering strategy
 
 Now that optimising for speed was defined very highly on our agenda, let me talk about some of the specific decisions I made regarding the tech stack, which was heavily focused on front-end technologies at this stage.
 
@@ -53,7 +57,7 @@ While the following were aligned with optimising for development speed, some of 
 - **TypeScript**: I was part of a few heated debates about TypeScript, so I knew about its pros and cons in detail. At this stage, I decided not to use it, as I didn't feel like it would help us be fast. Elaborating on that would probably take another blog post, but luckily, someone I admire already wrote an extensive [cost vs. benefit analysis](https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b). My personal experience also showed me that developers can get very obsessed with types and satisfying the TS linter, while actual feature work gets deprioritised.
 - **Unit testing**: A topic that polarises the community to a similar degree is [TDD](https://en.wikipedia.org/wiki/Test-driven_development). While it's a common practice in many engineering teams, I chose not to add it at this stage because I saw a significant danger in how frequently the platform would change in its early days. Adding unit tests didn't feel right, given that code would be thrown away or rewritten every few weeks. About six months into the project though, we added some lightweight end-to-end tests to improve platform reliability.
 
-## Where did this take us?
+## 🛫 Where did this take us?
 
 The above decisions helped speed up the initial application development, so that in the following 3-6 months, we built out the platform's three main features, including the onboarding process, which was an essential part of the sales funnel.
 
