@@ -86,7 +86,7 @@ const projectsWork = [
   {
     name: 'Omron EVOLV',
     year: '2016',
-    tags: ['Web', 'node.js', 'Pub/Sub'],
+    tags: ['Web', 'React.js', 'Middleman'],
     description:
       'I was the lead front-end developer of a team of three that built the marketing website of the new Omron EVOLV blood pressure monitor. We built and shipped the site—which features an interactive and immersive product walkthrough—in just four months.',
     logo: logoOmron,
