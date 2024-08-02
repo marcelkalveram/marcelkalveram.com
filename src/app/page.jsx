@@ -365,6 +365,12 @@ function Avatar({ image, className = null, ...props }) {
   )
 }
 
+export const metadata = {
+  title: 'Home',
+  description:
+    "Hi! I'm Marcel. I build products and improve teams. I am an engineer at heart with 15+ years of experience.",
+}
+
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
@@ -382,10 +388,10 @@ export default async function Home() {
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
             I am an engineer at <span class="dark:hidden">🖤</span>
             <span class="hidden dark:inline">❤️</span> with 15+ years of
-            experience building web & mobile apps who always puts the user at
-            the centre of his work. I have built and coached small engineering
-            teams in various technical leadership roles, from early-stage
-            startups to pre-IPO businesses.
+            experience. I always put the user at the centre of my work. I have
+            built and coached small engineering teams in various technical
+            leadership roles, from early-stage startups to pre-IPO businesses. I
+            work remotely from Valencia, Spain. 🌞
           </p>
           <p className="mt-4 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
             You can read more about me{' '}
