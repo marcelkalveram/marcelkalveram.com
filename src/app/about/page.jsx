@@ -39,7 +39,7 @@ function MailIcon(props) {
 export const metadata = {
   title: 'About',
   description:
-    'I am a Senior Product Engineer with 15+ years of experience. I love working at the intersection of Product and Engineering.',
+    'I have been an engineer at heart since I started tinkering with my first computer—a Commodore 16—for the first time at age six. In 1997, I discovered the World Wide Web, a phenomenon that instantly hooked me.',
 }
 
 export default function About() {
@@ -58,32 +58,33 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Now that you are here, let me tell you a bit more about myself.
+            Nice to meet you 🥳
+            <br />
+            Let me quickly tell you my story.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              As I said, I&apos;ve been an engineer at heart since I started
-              tinkering with my first computer—a Commodore 16—for the first time
-              at age six.
+              I&apos;ve been an engineer at heart since I started tinkering with
+              my first computer—a Commodore 16—for the first time at age six.
             </p>
             <p>
               In 1997, I discovered the World Wide Web, a phenomenon that
               instantly hooked me. Pretty soon after setting up my first modem,
-              I started building websites in the Mosaic browser using Microsoft
-              Frontpage and—a few years later—Macromedia Dreamweaver.
+              I started building HTML-based websites in Netscape (later
+              Firefox).
             </p>
-            <h2 className="text-lg font-semibold">🎓 Academic background</h2>
+            <h2 className="text-lg font-semibold">🪐 Academic background</h2>
             <p>
               After a decade behind the screen, I turned my biggest hobby into a
               profession and started an online degree in Media Informatics at
               the Polytechnic University of Emden.
             </p>
             <p>
-              Unlike traditional CS degrees, it covered additional topics from
-              the field of digital media, such as marketing and design. The
-              experience of advancing my programming skills combined with more
-              human-centred subjects was very satisfying and served as the
-              cornerstone of my T-shaped nature.
+              Unlike traditional Computer Science degrees, it covered additional
+              topics from the field of digital media, such as marketing and
+              design. The experience of advancing my programming skills combined
+              with more human-centred subjects was very satisfying and served as
+              the cornerstone of my T-shaped nature.
             </p>
 
             <p>
@@ -94,7 +95,7 @@ export default function About() {
               good.
             </p>
 
-            <h2 className="text-lg font-semibold">💼 Career</h2>
+            <h2 className="text-lg font-semibold">👨‍💻 Career</h2>
             <p>
               During my studies, I worked mainly as a freelancer, building
               websites and rich web applications in various engineering roles
@@ -116,31 +117,32 @@ export default function About() {
             </p>
 
             <p>
-              As a senior product engineer, I have taken on product owner roles
-              and managed small teams, further enriching my strategy, business,
-              and leadership know-how.
+              As a more experienced engineer, I took on product owner roles and
+              managed small engineering teams, further enriching my strategy,
+              business, and leadership know-how.
             </p>
 
             <h2 className="text-lg font-semibold">🤖 Technology</h2>
             <p>
-              Besides my interest in Product, I have always paid attention to my
-              interest in emerging technologies. I have always aimed to level up
-              my engineering skills in areas like Machine Learning, Artificial
-              Intelligence, and Cloud Computing.
+              In addition to my passion for web and mobile development, I have
+              an insatiable curiosity for the broader technology landscape and
+              developed foundational knowledge in areas like DevSecOps, Cloud
+              Computing, Blockchain and ML/AI.
             </p>
 
             <p>
               Besides JavaScript on the front end, I am comfortable with Node on
-              the back end. Whenever I have the time to learn new skills, I
+              the back end. But whenever I have the time to learn new skills, I
               tinker with new programming languages, frameworks and libraries.
             </p>
 
             <p>
               I am excited about Artificial Intelligence&apos;s impact on the
-              world and use it to enhance, speed up, and rethink my job. Product
-              Engineers will be paramount to this shift because of their
-              technical expertise, capacity to strategise, and ability to
-              empathise with users.
+              world and use it to enhance, speed up, and reinvent the way I
+              work. I aim to be at the forefront of this transition since people
+              with a technical background, the capacity to strategise and the
+              ability to empathise with users are best positioned to use AI
+              responsibly and purposefully.
             </p>
           </div>
         </div>

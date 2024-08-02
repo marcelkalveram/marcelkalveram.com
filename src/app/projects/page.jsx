@@ -26,7 +26,7 @@ const projectsWork = [
     year: '2021',
     tags: ['Web', 'Tailwind', 'Firebase', 'AI'],
     description:
-      "As the lead developer, I spearheaded the creation of the web app's initial prototype and core features using Firebase and Tailwind UI. After validating the problem/solution fit, we aimed to solve the most common inefficiencies in PR by building AI-powered solutions.",
+      "As the engineering lead, I spearheaded the creation of the web app's initial prototype and core features using Firebase and Tailwind UI. After validating the problem/solution fit, we aimed to solve the most common inefficiencies in PR by building AI-powered solutions.",
     logo: logoMvpr,
     link: {
       label: 'Go to website',

@@ -373,24 +373,38 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Senior Product Engineer
+            Hi! I&apos;m Marcel. 👋
             <br />
             <span className="text-gray-400">
-              web &middot; mobile &middot; AI
+              I build products and improve teams.
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
-            Hi, I&apos;m Marcel. I am an engineer at{' '}
-            <span class="dark:hidden">🖤</span>
+            I am an engineer at <span class="dark:hidden">🖤</span>
             <span class="hidden dark:inline">❤️</span> with 15+ years of
-            experience building web & mobile apps. I am passionate about both
-            Product and Engineering and always put the user at the centre of my
-            work. I have managed teams of up to five people and worked as a
-            Project Manager and Product Owner in various technical leadership
-            roles. I aim to be at the forefront of the impact that Artificial
-            Intelligence has on the tech industry.
+            experience building web & mobile apps who always puts the user at
+            the centre of his work. I have built and coached small engineering
+            teams in various technical leadership roles, from early-stage
+            startups to pre-IPO businesses.
           </p>
-          <div className="mt-6 flex gap-6">
+          <p className="mt-4 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
+            You can read more about me{' '}
+            <a
+              className="border-b border-b-zinc-600 hover:border-0 dark:border-b-zinc-400"
+              href="/about"
+            >
+              here
+            </a>{' '}
+            or take a look at some of the{' '}
+            <a
+              className="border-b border-b-zinc-600 hover:border-0 dark:border-b-zinc-400"
+              href="/projects"
+            >
+              projects
+            </a>{' '}
+            I&apos;ve worked on.
+          </p>
+          <div className="mt-8 flex gap-6">
             <SocialLink
               href="https://github.com/marcelkalveram"
               aria-label="Follow on GitHub"

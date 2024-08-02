@@ -6,10 +6,10 @@ import '@/styles/tailwind.css'
 export const metadata = {
   title: {
     template: '%s | Marcel Kalveram',
-    default: 'Senior Product Engineer - web, mobile, AI',
+    default: 'I build products and improve teams',
   },
   description:
-    'I am an engineer at heart with 15+ years of experience building web and mobile apps. I have a passion for both product and engineering, and I always put the user at the center of my work. With the rise of AI, product engineering is evolving more rapidly than ever, and I aim to be at the forefront of this unprecedented transformation.',
+    'I am an engineer at heart with 15+ years of experience building web & mobile who always puts the user at the centre of his work...',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
