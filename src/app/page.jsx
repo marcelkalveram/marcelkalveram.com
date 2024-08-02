@@ -408,7 +408,7 @@ export default async function Home() {
             >
               projects
             </a>{' '}
-            I&apos;ve worked on.
+            I&apos;ve done.
           </p>
           <div className="mt-8 flex gap-6">
             <SocialLink
