@@ -19,7 +19,7 @@ This post is part of the following mini-series:
 
 - [Startup Lessons Part 1: Engineering Strategy Pre-Product Market Fit](/articles/2024-06-25-startup-lessons-part-1)
 - **Startup Lessons Part 2: Scaling Beyond A One-Person Team**
-- [Startup Lessons Part 3: From Engineering To Product](2024-07-09-startup-lessons-part-3)
+- [Startup Lessons Part 3: From Engineering To Product](/articles/2024-07-09-startup-lessons-part-3)
 
 Here is the second part of my mini-series on lessons I learned at my last job. In the first part, I discussed what engineering strategy should look like before finding Product Market Fit. In the second part, I'd like to examine the challenges of growing a team beyond one person. Let’s dive in…
 
@@ -45,15 +45,15 @@ A minimal but well-structured process for filtering this list of candidates help
 
 - **Initial screening**: I usually filter out candidates who don't have a decent online portfolio or an active GitHub profile. From my experience, good developers are also good communicators who share their ideas and work online. Once you carefully select a few candidates, an initial screening interview helps discard those with language fluency issues, technical know-how gaps, or unusually shy or weird personalities.
 - **Coding challenges**: While there is controversy around solving complex algorithms under time constraints, I find that coding challenges can effectively remove anyone without fundamental skills in a specific programming language. You can easily adjust the degree of difficulty in most tools—such as the one we used, [CoderByte](https://coderbyte.com/)—to set the bar high enough.
-- **The founder interview**: After passing the initial screening, the founder interviewed the strongest candidates to assess the business aspect and negotiate salary and equity. This interview was crucial for gaining a different perspective and ensuring balanced judgment in the hiring process. Some candidates initially made a solid impression but did not know how to impress the founder.
+- **The founder interview**: After passing the initial screening, the founder interviewed the strongest candidates to assess the business aspect and negotiate salary and equity. This interview was crucial for gaining a different perspective and ensuring balanced judgment in the hiring process. Some candidates initially made a solid impression on me but did not know how to impress the founder.
 
 ### 3. Onboarding candidates
 
-In my experience, onboarding is essential in making new hires feel welcome and integrated into the team, and I take this responsibility seriously.
+In my experience, onboarding is essential in making new hires feel welcome and integrated into the team, and I took this responsibility seriously.
 
 - **Expectations and alignment**: From previous jobs, I knew that creating a proper guide for new hires to refer to on their first day is vital, but it should go beyond just technical detail. As I now know, it should clearly define and align the new hire's expectations and help the new team member understand her role and responsibilities.
 
-  That's because hires quickly get excited about the various opportunities they see and switch between assignments, which can lead to confusion about their role. In hindsight, I would also emphasise engineering principles and strategy more so people know which parameters are more critical (e.g. velocity) and which ones can be neglected (e.g. quality).
+  That's because hires quickly get excited about the various opportunities they see and switch between assignments, which can lead to confusion about their role. In hindsight, I would also emphasise engineering principles and strategy more so people know which parameters are more critical (e.g. velocity) and which ones can be neglected (e.g. technical idealism).
 
 - **The Engineering Wiki**: I prepared a thorough walkthrough of our tech stack, the app and its features, and our coding conventions. It included a step-by-step guide to get up and running with the app in less than an hour so someone could immediately fire up the app on their local machine and get started by exploring the codebase from day one.
 
@@ -71,7 +71,7 @@ Making the whole team stick to the same way of writing code is difficult, so est
 
 Linting is excellent for enforcing rules and ensuring that code stays consistent. For startups, I'd recommend following the example of giants like AirBnb and using their [predefined linting rules](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) instead of reinventing the wheel. Nowadays, I'd take this idea even further and consider the strictest possible ruleset (like [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)) to enforce the highest quality standards right from the start to avoid major refactors later.
 
-Static code analysis tools like [CodeClimate](https://codeclimate.com/) can help spot common issues like cognitive complexity or inappropriate repetitions, but I found it hard to make anyone follow its suggestions. Even with the best linting and static analysis, many issues, such as how to name things, can still go unnoticed by those automations, which is why code reviews so important.
+Static code analysis tools like [CodeClimate](https://codeclimate.com/) can help spot common issues like cognitive complexity or inappropriate repetitions, but I found it hard to make anyone follow its suggestions. Even with the best linting and static analysis, many issues, such as how to name things, can still go unnoticed by those automations, which is why code reviews are so important.
 
 ### Fostering a friendly engineering culture
 
@@ -85,7 +85,7 @@ Code reviews are a common way to identify such issues. I've always considered th
 
 Software design is a challenge that goes beyond the scope of code reviews. As one later teammate pointed out, planning and discussing it must happen long before writing the first line of code.
 
-Unfortunately, skipping this step and jumping into implementation—out of enthusiasm or perceived time pressure—is all too common. In the future, this is an issue I would address more frequently because many principles are less obvious than you would think, and increasing technical debt based on software design mistakes is always hard to undo.
+Unfortunately, skipping this step and jumping into implementation—out of enthusiasm or perceived time pressure—is all too common. In the future, this is an issue I would address more frequently because increasing technical debt based on software design mistakes is always hard to undo.
 
 Suppose every new hire can transparently access the reasons behind the software's framework, library and design decisions. In that case, there's less need to explain and argue later in the process, and you don't need to spend much time convincing people of the reasons behind the team's specific choices regarding software processes, architecture or design.
 
@@ -130,3 +130,5 @@ I've always considered monthly 1-on-1s sufficient, even though I have seen other
 In year two, we scaled the engineering team to three people, speeding up our development pipeline significantly. I started delegating most of the engineering work I did—including code reviews—to the team and focused more on the product owner role instead.
 
 As a result, the tech stack also started to diverge, and my responsibilities shifted in a new direction. In the next and last post, I'll discuss the challenges of this move away from engineering and into a product, to which extent I succeeded, and where I failed.
+
+Click [here](/articles/2024-07-09-startup-lessons-part-3) to read the third part of this mini-series.
