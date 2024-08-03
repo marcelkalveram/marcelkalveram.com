@@ -366,7 +366,7 @@ function Avatar({ image, className = null, ...props }) {
 }
 
 export const metadata = {
-  title: 'Home',
+  title: 'Home | Marcel Kalveram',
   description:
     "Hi! I'm Marcel. I build products and improve teams. I am an engineer at heart with 15+ years of experience.",
 }
