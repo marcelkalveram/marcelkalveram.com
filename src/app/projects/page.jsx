@@ -48,7 +48,7 @@ const projectsWork = [
   {
     name: 'mytheresa',
     year: '2018',
-    tags: ['Mobile', 'React Native', 'Jest', 'Detox'],
+    tags: ['Mobile', 'React Native', 'TypeScript', 'Jest'],
     description:
       "After leading a one-week workshop for the dev team to get proficient in React Native, I helped migrate the company's native iOS/Android app to it, integrating a reliable CI/CD pipeline, establishing unit and e2e testing best practices, and upskilling individual contributors.",
     logo: logoMytheresa,
@@ -60,7 +60,7 @@ const projectsWork = [
   {
     name: 'uncovercity',
     year: '2017',
-    tags: ['Mobile', 'React Native'],
+    tags: ['Mobile', 'React Native', 'Redux'],
     description:
       'Working alongside a UX/UI designer and backend developer, I implemented the mobile app for this surprise dinner startup. Part of the challenge was integrating the API for a third-party car-sharing service and displaying real-time updates to the user.',
     logo: logoUncovercity,
@@ -73,7 +73,7 @@ const projectsWork = [
   {
     name: 'prepd',
     year: '2016',
-    tags: ['Mobile', 'React Native', 'Bitrise'],
+    tags: ['Mobile', 'React Native', 'mobX', 'Bitrise'],
     description:
       'When our client launched their physical lunch box product, supported by over 40,000 people through Kickstarter, I was part of the team that shipped the accompanying recipe app within six months. Using React Native, we were able to accelerate the process significantly.',
     logo: logoPrepd,
@@ -101,7 +101,7 @@ const projectsWork = [
     year: '2015',
     tags: ['Web', 'node.js', 'Pub/Sub'],
     description:
-      'Ava is an app for the Deaf and hard of hearing that enables high-accuracy 24/7 real-time captions. I was part of the team developing the web-based front end, which uses a light API layer to and allow people to participate in conversations from any browser.',
+      'Ava is an app for the Deaf and hard of hearing that enables high-accuracy 24/7 real-time captions. I was part of the team developing the web-based front end, which uses a light API layer, enabling people to participate in conversations from any browser.',
     logo: logoAva,
     link: {
       label: 'Go to website',
@@ -287,10 +287,6 @@ export default function Projects() {
       <h2 className="relative z-10 order-first flex items-center border-b pb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-100">
         Work
       </h2>
-      {/* <p className="mt-1 border-b pb-4 text-sm text-zinc-600 dark:text-zinc-400">
-        The following is a list of projects I worked on at different agencies or
-        as a freelancer.
-      </p> */}
       <ul
         role="list"
         className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
