@@ -382,12 +382,12 @@ export default async function Home() {
             Hi! I&apos;m Marcel. 👋
             <br />
             <span className="text-gray-400">
-              I develop products and lead teams.
+              I build products and improve teams.
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
             I am an engineer at <span class="dark:hidden">🖤</span>
-            <span class="hidden dark:inline">❤️</span> with 15+ years of work
+            <span class="hidden dark:inline">❤️</span> with 15+ years of
             experience, always putting the user at the centre of my work. I have
             built and coached small engineering teams in various technical
             leadership roles, from early-stage startups to pre-IPO businesses. I
