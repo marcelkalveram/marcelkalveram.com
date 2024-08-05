@@ -368,7 +368,7 @@ function Avatar({ image, className = null, ...props }) {
 export const metadata = {
   title: 'Home | Marcel Kalveram',
   description:
-    "Hi! I'm Marcel. I build products and improve teams. I am an engineer at heart with 15+ years of experience.",
+    "Hi! I'm Marcel. I build and improve digital products. I am an engineer at heart with 15+ years of experience.",
 }
 
 export default async function Home() {
@@ -382,7 +382,7 @@ export default async function Home() {
             Hi! I&apos;m Marcel. 👋
             <br />
             <span className="text-gray-400">
-              I build products and improve teams.
+              I build and improve digital products.
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
