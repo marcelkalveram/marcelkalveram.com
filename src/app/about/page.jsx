@@ -138,11 +138,11 @@ export default function About() {
 
             <p>
               I am excited about Artificial Intelligence&apos;s impact on the
-              world and use it to enhance, speed up, and reinvent the way I
-              work. I aim to be at the forefront of this transition since people
-              with a technical background, the capacity to strategise and the
-              ability to empathise with users are best positioned to use AI
-              responsibly and purposefully.
+              world and use it to enhance, speed up, and reinvent how I work. I
+              aim to be at the forefront of this transition since people with a
+              technical background, and the capacity to strategise and empathise
+              with users are best positioned to use AI responsibly and
+              purposefully.
             </p>
           </div>
         </div>
