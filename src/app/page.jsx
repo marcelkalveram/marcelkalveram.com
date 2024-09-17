@@ -21,7 +21,7 @@ import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
-import logoKarstadt from '@/images/logos/clients/karstadt.png'
+import logoUber from '@/images/logos/clients/uber.png'
 import logoUnicef from '@/images/logos/clients/unicef.png'
 import logoOmron from '@/images/logos/clients/omron.png'
 import logoVodafone from '@/images/logos/clients/vodafone.png'
@@ -314,20 +314,11 @@ function Companies() {
             alt="Disney logo"
             className="w-32"
           />
-
           <Image
-            src={logoUnicef}
+            src={logoUber}
             width="300"
             height="300"
-            alt="Unicef logo"
-            className="w-32"
-          />
-
-          <Image
-            src={logoKarstadt}
-            width="300"
-            height="300"
-            alt="Karstadt logo"
+            alt="Uber logo"
             className="w-32"
           />
           <Image
@@ -335,6 +326,13 @@ function Companies() {
             width="300"
             height="300"
             alt="Omron logo"
+            className="w-32"
+          />
+          <Image
+            src={logoUnicef}
+            width="300"
+            height="300"
+            alt="Unicef logo"
             className="w-32"
           />
         </div>
@@ -389,9 +387,9 @@ export default async function Home() {
             I am an engineer at <span class="dark:hidden">🖤</span>
             <span class="hidden dark:inline">❤️</span> with 15+ years of
             experience, always putting the user at the centre of my work. I have
-            built and coached small engineering teams in various technical
-            leadership roles, from early-stage startups to pre-IPO businesses. I
-            work remotely from Valencia, Spain.
+            held technical and product leadership positions at early-stage
+            startups, boutique agencies and growth-stage companies. I work
+            remotely from Valencia, Spain.
           </p>
           <p className="mt-4 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
             You can read more about me{' '}
