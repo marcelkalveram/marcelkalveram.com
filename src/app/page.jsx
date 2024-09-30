@@ -380,7 +380,7 @@ export default async function Home() {
             Hi! I&apos;m Marcel 👋
             <br />
             <span className="text-4xl text-gray-400">
-              Product Engineer | Tech Lead | German Expat in Spain
+              Product Engineer &middot; Tech Lead &middot; German Expat in Spain
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
