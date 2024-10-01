@@ -6,12 +6,16 @@ export const article = {
   date: '2024-09-30',
   title: 'AI and the future of product engineering',
   description:
-    'A glimple into the future of the AI-enabled product engineer becoming an invaluable asset in more resource-efficient product teams',
+    'A glimpse into the future of the AI-enabled product engineer becoming an invaluable asset in more resource-efficient product teams',
 }
 
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/ai-and-the-future-of-product-engineering-240a8e6b6fe7',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
