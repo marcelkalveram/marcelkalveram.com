@@ -15,6 +15,7 @@ import logoHanno from '@/images/logos/work/hanno.png'
 import logoJungmut from '@/images/logos/work/jungmut.png'
 import logoDelusha from '@/images/logos/work/delusha.png'
 import logoMVPR from '@/images/logos/work/mvpr.png'
+import logoDatamaran from '@/images/logos/work/datamaran.jpg'
 import logoFreelancer from '@/images/logos/work/freelancer.png'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
@@ -139,8 +140,18 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
+      company: 'Datamaran',
+      title: 'Senior Product Engineer',
+      logo: logoDatamaran,
+      start: '2025',
+      end: {
+        label: 'Current',
+        dateTime: new Date().getFullYear().toString(),
+      },
+    },
+    {
       company: 'MVPR',
-      title: 'Product Owner',
+      title: 'Lead Developer',
       logo: logoMVPR,
       start: '2021',
       end: {
