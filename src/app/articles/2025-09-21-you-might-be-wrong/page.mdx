@@ -12,6 +12,13 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
+  openGraph: {
+    title: 'You Might Be Wrong!',
+    description:
+      'Exploring human bias in the age of AI: how it can blind us, and what tools can guide us toward sharper, faster truth-seeking',
+    type: 'article',
+    publishedTime: '2025-09-21-T17:03:45.000Z',
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
