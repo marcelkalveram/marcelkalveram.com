@@ -1,10 +1,12 @@
-# Spotlight
+# Marcel Kalveram's Personal Website
 
-Spotlight is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+This is my personal website, built using the [Spotlight](https://tailwindui.com/templates/spotlight) template from [Tailwind UI](https://tailwindui.com) as a starting point. I've extensively modified and refactored the original template to suit my personal needs and preferences, customizing the design, content structure, and functionality.
+
+The site is built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
 
 ## Getting started
 
-To get started with this template, first install the npm dependencies:
+To run this project, first install the npm dependencies:
 
 ```bash
 npm install
@@ -23,10 +25,6 @@ npm run dev
 ```
 
 Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
-
-## Customizing
-
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
 
 ## License
 
