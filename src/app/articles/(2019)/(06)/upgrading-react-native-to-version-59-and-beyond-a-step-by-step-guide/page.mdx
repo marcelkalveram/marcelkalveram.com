@@ -1,0 +1,229 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2019-06-11',
+  title:
+    'Upgrading React Native to version 0.59 and beyond: a step-by-step guide',
+  description:
+    'The most popular complaint about React Native is upgrading, so let me walk you through this tedious process one step at a time.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/upgrading-react-native-to-version-0-59-and-beyond-a-step-by-step-guide-d4c2926dd482',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    width="8500"
+    height="5667"
+    src="https://cdn-images-1.medium.com/max/800/0*RfOHbDM3hW9PEq5S"
+  />
+  <figcaption>
+    Photo by [Sam
+    Mgrdichian](https://unsplash.com/@sammgrdichian?utm_source=medium&utm_medium=referral)
+    on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
+  </figcaption>
+</figure>
+
+Upgrading is one of those tedious tasks that you’ll inevitably face at some point when working on a React Native project. If you’ve ever gone through this process, you’ve probably realised that it still has a lot of potential for improvement.
+
+The most popular complaint about React Native, according to the recent ["What do you dislike about React Native?"](https://github.com/react-native-community/discussions-and-proposals/issues/64) thread on GitHub is indeed: **upgrading**. It received 569 thumbs-up from the community, the second being **Debugging** with 350.
+
+There’s been a very popular article on [Upgrading React Native](https://medium.com/react-native-training/updating-your-react-native-app-a724c996a76d) about 2 years ago, when it was at version 0.45. Since React Native is now at 0.59 and a lot of things have happened in the meantime, I thought it might be a good moment to pick up the topic again and look at the current state of the upgrading process in detail.
+
+## Why bother updating?
+
+There are a couple of reasons why you should update your React Native app on a regular basis. Some of the most compelling ones are:
+
+- you’ll get all the latest performance improvements
+- you’ll have increased robustness and stability
+- you can access new APIs and features
+- you keep up with the latest breaking changes
+
+Having that in mind, let's look at the different approaches to upgrading your app and its React Native-related dependencies.
+
+## The different upgrade paths
+
+The recommended way to upgrade React Native according to [its documentation](https://facebook.github.io/react-native/docs/upgrading.html) is the `upgrade` command which is included in the React Native CLI.
+
+**Since version 0.59** of React Native it’s based on the community plugin[rn-diff-purge](https://github.com/react-native-community/rn-diff-purge) and basically runs a three-way merge based on the differences it finds between your current version of React Native and the one you’re upgrading to. If you’re on this version or above, use that and don’t bother reading the rest of this post.
+
+**Before version 0.59** though, this process was more or less broken. People either used the outdated [react-native-git-upgrade](https://www.npmjs.com/package/react-native-git-upgrade) or relied on a simple copy-and-replace mechanism provided by the CLI’s `upgrade` command.
+
+hile the semi-automated copy-and-replace mechanism works well if you didn’t touch any of your project’s native code, you may run into issues if your project has reached a certain complexity, or if you simply haven’t updated in a while.
+
+That said, rest assured that there are safer ways to upgrade your app. They might take a bit more manual work and careful code analysis, but usually won’t take you more than an hour or two, given that your update is not a major one with a lot of breaking changes and your version of React Native isn’t completely outdated.
+
+I’ll cover them from simplest to hardest. You have to check which upgrade path applies to your particular situation:
+
+1. **Upgrading an app based on the Expo SDK (simple)**: If you’re lucky enough to have built an app whose features are entirely covered by the Expo SDK, then updating can be done without too much hassle.
+2. **Upgrading apps without custom native code**: This upgrade path is for those people who’ve either ejected an existing Expo app or created their repository using `react-native init` and haven’t tweaked any of the native code so far. That means you’ve only touched the JavaScript files of the app and didn’t integrate any third-party plugins that contain native files (you didn’t use `react-native link` or manually link any extensions yet). Upgrading should be relatively straight-forward in this case.
+3. **Upgrading apps with custom native code (hard)**: If your app has already reached a certain point of complexity and code changes in the native realm (you have used `react-native link` or did some manual linking of third-party extensions), there are two scenarios:
+
+- you’re on version 0.59+ of React Native and can run the new upgrade command using `react-native upgrade` which is based on `rn-diff-purge` and should run an automatic three-way merge. If everything goes well, you’ll end up with no conflicts. If any of the diffs result in a conflict, you’ll have to resolve them manually and commit the changes.
+- you’re on version 0.58 or before of React Native which means the `react-native upgrade` command is not reliable and you should do the update manually and in incremental steps as described below.
+
+You should use this approach for any upgrade that targets version 0.58 or before. From version 0.59 forward, the automatic upgrade is based on `rn-diff-purge` (see upgrade path three below) which will make the process easier in the future.
+
+Here are the steps that I usually follow to upgrade a React Native repository without any changes to the native code:
+
+1. Check your `package.json`
+2. Update the React Native dependency to your new target, e.g. `"react-native": "0.58.0"`
+3. Update all your third-party library dependencies as well. If any of these contain linked native code (ie. react-native-maps) you’ll need to use upgrade path three as your repository will contain native code changes
+4. Run `npm install` and take note of the React dependency, e.g. `react: "react": "16.6.3"`
+5. Update the React dependency to the new target as well, e.g. "react": "16.6.3"
+6. Run `npm install` again.
+7. Now run `react-native upgrade` and it'll walk you through the process of overwriting all the required file changes one by one. Apart from a few meta files, this should only affect the `ios` and `android` folders
+8. Make sure to run the post-upgrade steps mentioned above to prevent any errors resulting from outdated caches
+
+This is the moment of truth: run `react-native run-ios` and `react-native run-android` to see if everything still works as expected.
+
+If not, it’s not the end of the world. I’ve been there so many times and always found a way out thanks to the incredible support provided by the React Native community and the numerous GitHub and StackOverflow threads where people discuss and solve the most common issues.
+
+Now that we’ve covered the basics, let’s dig into the actual upgrade process. Remember that depending on the state and type of app you’re running, there are three different paths, so make sure to read the heading and see which of the them applies to your specific use case.
+
+Feel free to grab a cup of coffee before moving on… ☕️ Oh, and better schedule this task for a Monday morning instead of a Friday afternoon. 😜
+
+## 1. Upgrading an app based on the Expo SDK
+
+If you’re lucky enough to have built an app whose features are entirely covered by the Expo SDK, then updating can be done without too much hassle.
+
+Expo provides a detailed walk-through for each update they’re releasing on [their blog](https://blog.expo.io/). You can find the one that corresponds to your version by googling for the one you’re targeting, e.g. “Expo update 32”, which will show [this post](https://blog.expo.io/expo-sdk-v32-0-0-is-now-available-6b78f92a6c52) as the first result, or browse the [Exposition blog](https://blog.expo.io/) directly.
+
+I know this sounds kind of obvious, but I’ve spent about 15mins on this the first time I was looking for instructions on how to update Expo. 😊
+
+### Minor note for people who’ve used create-react-native-app
+
+One thing that people tend to miss after updating Expo: if you’ve used [create-react-native-app](https://github.com/react-community/create-react-native-app) to setup your repository, then all the scripts in `package.json` need to be changed from `react-native-scripts` to `expo`, e.g. `react-native-scripts ios` becomes `expo start — ios`. Expo CLI should issue a warning on this, but it’s still easy to miss.
+
+## 2. Upgrading apps without custom native code
+
+This upgrade path is for those people who’ve either ejected an existing Expo app or created their repository using `react-native init` and haven’t tweaked any of the native code so far. That means you’ve only touched the JavaScript files of the app and didn’t integrate any third-party plugins that contain native files (you didn’t use `react-native link` or manually link any extensions yet). Upgrading should be relatively straight-forward in this case.
+
+> _You should use this approach for any upgrade that targets version_ **_0.58 or before_**_. From version_ **_0.59 forward_**_, the automatic upgrade is based on_ [_rn-diff-purge_](https://github.com/react-native-community/rn-diff-purge) _(see upgrade path three below) which will make the process easier in the future._
+
+Here are the steps that I usually follow to upgrade a React Native repository without any changes to the native code:
+
+1.  Check your `package.json`
+2.  Update the React Native dependency to your new target, e.g.  
+    `"react-native": "0.58.0"`
+3.  Update all your third-party library dependencies as well. If any of these contain **linked native code** (ie. react-native-maps) you’ll need to use [upgrade path three](https://medium.com/p/d4c2926dd482/edit#0ef6) as your repository will contain native code changes
+4.  Run `npm install` and take note of the React dependency, e.g. `react-native@0.58.0 requires a peer of **react@16.6.3** but none is installed.`
+5.  Update the React dependency to the new target as well, e.g. `"react": "16.6.3"`
+6.  Run `npm install` again.
+7.  Now run `react-native upgrade` and it’ll walk you through the process of overwriting all the required file changes one by one. Apart from a few meta files, this should only affect the `ios` and `android` folders
+8.  Make sure to run the [post-upgrade steps](#99c7) mentioned above to prevent any errors resulting from outdated caches
+
+This is the moment of truth: run `react-native run-ios` and `react-native run-android` to see if everything still works as expected.
+
+If not, it’s not the end of the world. I’ve been there so many times and always found a way out thanks to the incredible support provided by the React Native community and the numerous GitHub and StackOverflow threads where people discuss and solve the most common issues.
+
+### I see a “Could not find iPhone XXX simulator” error
+
+This is related to people running xCode 11 and later, which doesn’t seem to be compatible with previous versions of React Native CLI. Here’s a temporary fix: [https://stackoverflow.com/questions/54504076/react-native-run-ios-returns-error-could-not-find-iphone-x-simulator](https://stackoverflow.com/questions/54504076/react-native-run-ios-returns-error-could-not-find-iphone-x-simulator)
+
+## 3. Upgrading apps with custom native code
+
+If your app has already reached a certain point of complexity and code changes in the native realm (you _have_ used `react-native link` or did some manual linking of third-party extensions), there are two scenarios:
+
+- **you’re on version 0.59+** of React Native and can run the new upgrade command using `react-native upgrade` which is based on `rn-diff-purge` and should run an automatic three-way merge. If everything goes well, you’ll end up with no conflicts. If any of the diffs result in a conflict, you’ll have to resolve them manually and commit the changes.
+- **you’re on version 0.58 or before** of React Native which means the `react-native upgrade` command is not reliable and you should do the update manually and in incremental steps as described below.
+
+> _There’s also the possibility to install the new upgrade command in versions_ lower _than 0.59 as described_ [_here_](https://github.com/react-native-community/cli/blob/master/docs/commands.md#upgrade)_: “If you’d like to upgrade using this method from React Native version lower than 0.59.0, you may use a standalone version of this CLI:_ `_npx @react-native-community/cli upgrade_`_.”_
+
+Let’s continue for those of you who are on version 0.58 or lower and want to upgrade to React Native 0.59 or higher. This is by far the most risky and fragile update path, so a lot of care needs to be taken while going through the different steps.
+
+Updating this way requires you to bump your React Native version from the version you’re currently on to the target version one by one, using the table from the [rn-diff-purge](https://github.com/react-native-community/rn-diff-purge#diff-table-full-table-here) repository. Like this, you don’t risk breaking any of the native code and can analyse/debug the changes carefully and won’t end up with a big pile of diff commits that you throw at your application.
+
+But let’s tackle them one by one:
+
+> _FYI: steps 1–6 are exactly the same as in_ [_upgrade path two_](#9c8f)
+
+1.  Check your `package.json`
+2.  Update the React Native dependency to your new target, e.g.  
+    `"react-native": "0.58.0"`
+3.  Update all your third-party library dependencies as well. If any of these contain **linked native code** (ie. react-native-maps) and you’re using CocoaPods, you might have to upgrade your `Podfile` as well. Refer to the dependency’s changelog and install instructions for more detail. In any case, we’re going to reinstall all pods as well after we’re done
+4.  Run `npm install` and take note of the React dependency, e.g. `react-native@0.58.0 requires a peer of **react@16.6.3** but none is installed.`
+5.  Update the React dependency to the new target as well, e.g. `"react": "16.6.3"`
+6.  Run `npm install` again
+7.  Using [this table](https://react-native-community.github.io/rn-diff-purge/), check the differences in code between your origin and target version and check if it’s feasible to apply them all at once. If not, consider upgrading in smaller, incremental steps, e.g. from version `0.56` to `0.57` before doing a major leap from `0.56` to `0.57.8`.
+8.  Run `cd ios && pod repo update && pod install` to reinstall any existing CocoaPods dependencies.
+
+Run `react-native run-ios` and `react-native run-android` to see if everything is working fine.
+
+---
+
+That’s it, almost. Usually, the hard part of upgrading React Native starts after you’ve upgraded your files and is about ironing out all the issues that you run into.
+
+In the unlikely case that everything went perfectly smooth, congratulate yourself and test your app thoroughly before opening that bottle of champagne. 😉
+
+It’s more likely though that there’ll be some glitches you need to take care. We’ll cover some of these in the following, last section of this blog post.
+
+## **Common pitfalls**
+
+While it’s impossible to cover all the issues you might run into, I thought it might be useful to cover the most common ones that I’ve seen.
+
+### **Upgrading to React Native 0.56**
+
+With this upgrade, you’ll probably run into issues related to the Babel 7 update. Check out [this part](https://github.com/react-native-community/releases/blob/master/CHANGELOG.md#updating-to-this-version) of the changelog for instructions on how to upgrade your JavaScript configuration.
+
+Basically, you have to make sure that you have installed the new Babel preset:
+
+```bash
+npm install -D metro-react-native-babel-preset
+```
+
+… and `babel.config.js` is configured accordingly to make use of it:
+
+```js
+module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
+}
+```
+
+Since this version introduces the new project-wide `babel.config.js` file, you can also consider deleting `.babelrc`. More on this in the [Babel docs](https://babeljs.io/docs/en/next/config-files#configuration-file-types).
+
+### **Upgrading to React Native 0.57**
+
+When you upgrade to this version you need to upgrade react and react-test-renderer to version “16.6.3”, as stated in the release notes.
+
+If you run into any xCode 10-related issues, check out [this part](https://github.com/react-native-community/releases/blob/master/CHANGELOG.md#known-issues-1) of the changelog for instructions on how to fix them. Version 0.58 includes those fixes as well, so you might consider upgrading to that directly.
+
+The following GitHub repo may help as well as it documents the most common errors when upgrading to 0.57.
+
+[tylergaw/RNUpgradePath](https://github.com/tylergaw/RNUpgradePath)
+
+### **Upgrading to React Native 0.58**
+
+Before upgrading to this version, check out the [breaking changes](https://github.com/react-native-community/releases/blob/master/CHANGELOG.md#breaking-changes-).
+
+As stated in the release notes, there are two important changes on each platform:
+
+- for iOS: you’ll need to manually link `JavaScriptCore.framework` when upgrading; this can be done via Xcode, and following the steps shown [here](https://camo.githubusercontent.com/c09cd42747364b498efa7c82fcb73978ba076eae/687474703a2f2f646f63732e6f6e656d6f62696c6573646b2e616f6c2e636f6d2f696f732d61642d73646b2f616464696e672d6672616d65776f726b732e706e67).
+- for Android: it is possible that you’ll face an AAPT error regarding missing resources. In this case, you should try to update the build tools versions to buildToolsVersion = “28.0.2” in your `android/build.gradle` file.
+
+### **Upgrading to React Native 0.59**
+
+This releases includes an upgrade of the CLI’s `upgrade` command, which will hopefully make this blog post obsolete soon. 😄
+
+If you get any runtime crashes on Android, check out the release notes section on [breaking changes](http://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059#breaking-changes), or look at the [full release notes](http://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
+
+### Upgrading to React Native 0.60
+
+This is the latest version and should be used with care, as it’s still just a release candidate. A changelog isn’t available yet, but you can follow [this thread](https://github.com/react-native-community/releases/issues/116) to get updates on the state of this version.
+
+## Help me improve this article
+
+If you think I missed anything essential or run into an issue that I haven’t documented and you think should be included in this article, please let me know.
+
+Thanks for reading and I appreciate your comments.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/upgrading-react-native-to-version-0-59-and-beyond-a-step-by-step-guide-d4c2926dd482) on June 11, 2019._

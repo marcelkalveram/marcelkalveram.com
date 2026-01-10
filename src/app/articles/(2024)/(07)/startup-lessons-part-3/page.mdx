@@ -1,0 +1,163 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2024-07-09',
+  title: 'Startup Lessons Part 3: From Engineering To Product',
+  description:
+    'In the final post of this mini-series I talk about the challenges of moving from Engineering to Product and the many lessons I learned along the way.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+This post is part of the following mini-series:
+
+- [Startup Lessons Part 1: Engineering Strategy Pre-Product Market Fit](/articles/startup-lessons-part-1)
+- [Startup Lessons Part 2: Scaling Beyond A One-Person Team](/articles/startup-lessons-part-2)
+- **Startup Lessons Part 3: From Engineering To Product**
+
+This is the last and final post in this mini-series on the lessons I learned as the Engineering and Product Lead at my previous job. In this part, I'll discuss the challenges of moving from Engineering to Product.
+
+The transition happened in two phases: first, I took on the Product Owner role, which was a fairly seamless move because it didn't happen from one day to the next, and I felt very confident in my responsibilities.
+
+When aiming to become a Product Manager, though, I had to undergo a major shift in responsibilities and mindset. In this post, I would like to share in more detail what went well along the way and where I struggled in my new role.
+
+## 👷‍♂️ Lessons I learned as the Product Owner
+
+As mentioned in my [last post](/articles/startup-lessons-part-2), I started my journey as the Engineering Lead by growing our team beyond one person.
+
+Once we scaled the team to two engineers, my role became more like that of a Product Owner. I planned the upcoming initiatives, reviewed everyone's code and helped everyone stay on track and get unblocked when needed.
+
+That said, being technical as a Product Owner is a huge advantage when gauging development speed and feature complexity. But it also comes at the cost of being pulled—deliberately or not—into engineering issues all of the time.
+
+### There's always more work than you can do
+
+I certainly enjoyed the increased level of abstraction, though. I did less coding work and was more concerned about how features and improvements to the platform fit into the overall picture, and with figuring out how much work could go into each iteration based on our engineering capacities.
+
+One realisation I soon had was that no matter how accurately I tried to structure the backlog or predict a roadmap, the reality of unexpected bugs and unplanned work always caught up with us.
+
+I asked myself: Is the planning hassle worth it, or isn't it better to embrace the completely unpredictable nature of product development and instead simply tolerate all that chaos?
+
+I learned that the primary skill I had to develop was a sense of what is most valuable from a user perspective and always deprioritising almost everything else. As painful as it may be for a developer's soul, refactoring often had to take a back seat, given that we were still looking for Product-Market Fit and couldn't spend time on premature optimisation.
+
+### Balancing stakeholder interests
+
+Pushing new features regularly while addressing bugs and chores was also a constant challenge. In addition to striking the right balance between velocity and quality, it was important to consider the interests of different stakeholder groups:
+
+- **The user**: which features do they request, and which bugs do they experience?
+- **The engineering team**: when and how do we address code quality and technical debt?
+- **The broader team**: what problems do they experience with the platform? Which ideas for improvement do they have?
+- **The founder**: which business opportunities are there? Are initiatives aligned with the company's North Star?
+- **Investors**: how do they want to see you evolve?
+
+It's inevitable to be pulled in different directions constantly. My biggest challenge as a Product Owner was reconciling everyone's interests and aligning engineering work with stakeholder interests.
+
+The advantage of being technical in this role was that I could easily relate to the engineer's problems. However, gathering user feedback, listening to the broader team, and respecting the founder's direction was a challenge that required skills beyond just good planning and communication.
+
+During my journey, I came across a few excellent books which helped me navigate some of the challenges I faced with increasing team-related responsibilities, and I'd like to include them here because of the invaluable advice they provided:
+
+- [Managing Humans](https://www.amazon.com/Managing-Humans-Humorous-Software-Engineering/dp/1484271157): Provided practical advice on managing tech teams of different sizes, in quite a humorous way
+- [The Five Dysfunctions of a Team](https://www.amazon.com/Five-Dysfunctions-of-Team-audiobook/dp/B000079XXR): a classic which examines the most common issues in teams and how to address them
+- [The Manager's Path](https://www.amazon.com/The-Managers-Path-audiobook/dp/B07SV4VDWC): a book about the different stages of technical management, from mentoring to working with senior staff
+
+### Shifting more responsibility to the team
+
+At some point, being the bottleneck for planning and speccing most of the bugs and features didn't make sense anymore. As soon as I felt that other team members had gained enough experience and they felt comfortable with it, too, we decided to split up the planning and prioritisation work. This happened in two stages:
+
+1. **Writing user stories**: As I shifted to the Product Owner role, I encouraged people to create user stories themselves. Whenever someone stumbled upon a bug or requested an improvement, they could go ahead with a new story based on a predefined template, which we'd later 'triage' together. At some point, we actually had a 'triage' board in our backlog which even people outside engineering could contribute to.
+2. **Writing epic specs**: At a later stage, we lifted planning to the epic/feature level so that engineers not only thought about how to implement a story but also got a much broader understanding of the whole planning and prioritisation process. This only happened after I became the Product Manager, though, and required a more thorough preparation. Basically, each developer ended up having to properly spec the initiatives they owned, think them through, and break them down into smaller tasks.
+
+Splitting up the planning work like this across the whole engineering team—especially at an epic level—had plenty of benefits:
+
+- It freed up more of my time
+- I wasn't the only one to decide how to tackle a problem
+- I did less upfront thinking on implementation details
+- Everyone started to think more broadly about software design
+- Everyone had to take on more ownership and responsibility
+
+These changes helped lay the groundwork for speeding up my transition from Engineering to Product. They enabled me to think more deeply about product decisions and took many of the day-to-day engineering concerns off my plate.
+
+## 👔 Moving to the Product Manager Role
+
+Transitioning from Product Owner to Product Manager was challenging, and given my engineering background, it introduced a couple of additional challenges I needed to familiarise myself with.
+
+Even though I've always been part of product design and strategy in previous jobs, my responsibility was always more focused on finding engineering solutions than making big and bold product decisions.
+
+### The Product Discovery Process
+
+Most importantly, the shift required me to consider the Product from a business perspective rather than obsessing about technical details. At the beginning of this journey, I contacted some friends who work in Product and asked them for advice.
+
+One of the best recommendations was to read Teresa Torres's book [Continuous Discovery Habits](https://www.amazon.com/Continuous-Discovery-Habits-Discover-Products/dp/1736633309). The framework she proposes seemed like the perfect fit for our team's capabilities and needs, and each idea, from identifying opportunities to narrowing down on solutions, perfectly aligned with what I had previously learned about Product Discovery and how we were already doing things.
+
+Putting it into practice, though, was a challenge since we already had a product lifecycle that yielded visible—even though not always the most valuable—results quickly. Inevitably, there was some resistance when things slowed down at the analysis stage. In a nutshell, the framework's purpose is to:
+
+- Identify the most valuable opportunities
+- Fully derisk the corresponding solution(s) before implementing them
+
+There were two issues, though:
+
+- **The "ship it" mentality** was still quite compelling. I'm aslo a big fan of it, but at the same time felt that the volume of possible features and improvements warranted a more careful, deliberate approach, given our limited engineering capabilities.
+- **The Product Trio**: We also needed a UX/UI designer with a visual, creative mindset to complement our product team. While not a dealbreaker, this certainly made the framework less workable from the start.
+
+**Additional resources**
+
+Besides 'Continuous Discovery Habits', here are some other great books I'd recommend for anyone struggling in the Product Discovery phase that provide invaluable advice and practical frameworks for setting up a solid Product Development Lifecycle:
+
+- [Escaping The Build Trap](https://www.amazon.com/Escaping-Build-Trap-Effective-Management/dp/149197379X): Helped me understand the importance of focusing on outcomes rather than outputs.
+- [User Story Mapping](https://www.amazon.com/User-Story-Mapping-Discover-Product/dp/1491904909): Improved how I organised and communicated product requirements more clearly.
+- [Accelerate](https://www.amazon.com/Accelerate-Software-Performing-Technology-Organizations/dp/1942788339): Provided insights into high-performing technology organisations and what they focus on
+- [Shape Up](https://basecamp.com/shapeup): Offered a fresh perspective on the Product Development Lifecycle from the legendary team at Basecamp.
+
+### Alignment with Business Strategy
+
+Aligning product objectives with the overall business strategy and ensuring that the roadmap reflected both short-term and long-term goals had been a challenge I had faced since joining the team, but now I had some more time to dedicate to it.
+
+I implemented tools and practices that improved team communication, stakeholder updates and milestone tracking. My favourite tool for the job was without a doubt [Airfocus](https://airfocus.com/). It's a modular product management platform that helped me bring structure into a couple of essential elements of the Product Development Lifecycle:
+
+- Gather user feedback and assign it to potential opportunities.
+- Get a high-level overview of all product initiatives and align them with business objectives (the so-called objective-led roadmap)
+- Create a public-facing product roadmap for interested users
+- Break down big initiatives into smaller epics, then sync them into Shortcut.
+
+We revisited and reconsidered these high-level objectives in quarterly and yearly goal-setting sessions. Most of the product strategy resulted from analysing user needs and engineering capabilities and aligning everything with the company's North Star.
+
+At this stage, I certainly lacked a bit of experience as a Product Manager, and it was easy for me to lose sight of the product direction as I was still dedicating time to operational work as the Product Owner as well as engineering and design work. The resulting cognitive complexity made it difficult to see the forest through the trees. Defining a product strategy in a quickly moving early-stage startup is hard. Executing it without derailments, impossible!
+
+Nevertheless, I highly recommend the book [Good Strategy, Bad Strategy](https://www.amazon.com/Good-Strategy-Bad-Strategy-audiobook/dp/B07R6XQ8YP). It was an invaluable resource that helped me learn more about strategic thinking and how to differentiate yourself from the competition by carefully analysing and choosing what to do and, more importantly, what not to do.
+
+### Talking to and learning from users
+
+One of the things I was most interested in when talking to friends working in Product positions was how often they interviewed users. While I already knew that user interviews play an essential role in every successful product team, I needed help creating a constant and reliable pipeline of user interviews.
+
+One friend suggested getting on sales calls, and another one talked to users when sharing progress on early feature development. But as much as all of their advice made sense to me, my interviewing efforts never picked up steam for several reasons:
+
+- As someone working behind the scenes, I didn't have a direct line to users, so scheduling interviews always had to go through other team members, who were already extremely busy.
+- Clustering and assigning user feedback to actual opportunities was not a process I could make transparent and compelling enough for the whole team to follow.
+- Other product and engineering responsibilities got in the way, and I couldn't make interviews a high priority with everything else I had going on.
+
+Nowadays, I would prioritise this aspect more heavily and make sure that interviewing users is the number one item on my agenda, either by delegating other tasks or making sure I get enough support.
+
+This takes me to the last book I recommend for today, which was massively useful in the user interviews I conducted: [The Mom Test](https://www.amazon.com/Mom-Test-customers-business-everyone/dp/1492180742). It taught me how to gather valuable customer feedback without bias and understand in great detail how to lead successful interviews and ask the right questions.
+
+## Other challenges
+
+While the above were necessary learning experiences that I know how to address myself in the future, there were, of course, other factors that I couldn't influence as much:
+
+- **Dynamic Startup Environment**: a fast-paced startup environment can derail your efforts from one day to another, with goals and responsibilities changing daily.
+- **Roles and responsibilities** are often shared in an early-stage company, with people wearing multiple hats, leading to occasional conflicts and inefficiencies.
+- **Managing Multiple User Groups**: Developing a two-sided marketplace with two or more user groups adds a lot of complexity to analysis, planning and execution.
+
+## What's next?
+
+That's a wrap. I hope I've been able to share some insightful lessons from my roles as an Engineering Lead, Product Owner and Product Manager.
+
+You may ask yourself now? How did it end? Ultimately, we parted ways (in a friendly way) because the Product Manager role was not the best fit for me. While I'm excited and passionate about Product Management, this particular role is not (yet) fully aligned with my skill set, experience and—to an extent—character traits.
+
+That said, I absolutely thrive as a Product Engineer and Engineering Lead and have gained significant experience in these roles over the last decade. If you read this and are looking for someone to help you improve your team or build your next idea, feel free to reach out via the contact options on the [About](/about) page.
+
+Thanks so much for reading!

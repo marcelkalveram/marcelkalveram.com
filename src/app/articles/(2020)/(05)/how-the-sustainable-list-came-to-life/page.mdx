@@ -1,0 +1,220 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import firstPrototype from './first-prototype.png'
+import theSustainableListScreenshot from './the-sustainable-list-screenshot.png'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2020-05-28',
+  title: 'How The Sustainable List came to life: journey of a side project',
+  description:
+    'I usually write about technical topics, but I want to use this opportunity to share the journey of a project I’ve been working on for the last year.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://medium.com/@marcelkalveram/journey-of-a-side-project-how-the-sustainable-list-came-to-life-38cb3e11d86c',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    src="https://cdn-images-1.medium.com/max/800/0*jxw4oBQ0O2rSiBlc"
+    width="800"
+    height="300"
+  />
+  <figcaption>
+    _Photo by [Guillaume de
+    Germain](https://unsplash.com/@guillaumedegermain?utm_source=medium&utm_medium=referral)
+    on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+  </figcaption>
+</figure>
+
+I usually write about technical topics, but I want to use this opportunity to share the journey of a project I’ve been working on for the last year with my spouse and business partner [Andreea Apetrei Kalveram](https://medium.com/u/48d7345f4466).
+
+## The elevator pitch 🔼 🔽
+
+In a nutshell, The Sustainable List is a curated list of sustainable fashion brands. Our goal is to help consumers navigate the ever-growing sustainable marketplace and give more visibility to brands that are socially and environmentally responsible.
+
+Here’s the link to our website: [https://thesustainablelist.com/](https://thesustainablelist.com/)
+
+Cool, still interested about how this project came to be? Please read on 👇
+
+> By the way, you can now go to our Product Hunt page _😻_ and join the discussion: [https://www.producthunt.com/posts/the-sustainable-list](https://www.producthunt.com/posts/the-sustainable-list)
+
+## When we got mad at the fashion industry 😡
+
+This story started a few years back, in 2016, when we got really mad at the fashion industry.
+
+After watching the Netflix documentary [_The True Cost_](https://truecostmovie.com/)_,_ my wife and I felt seriously upset and concerned about the fashion industry’s negative impact on the planet’s environment and people. If you haven’t watched the movie yet, I can highly recommend it. It’s a look behind the scenes of the biggest players in the industry and how they produce their clothes. (Spoiler: you’ll be very disappointed by the dark side of humanity 😭)
+
+While the ideas around [Minimalism](https://www.theminimalists.com/minimalism/), [Essentialism](https://gregmckeown.com/book/) and [Stuffocation](http://stuffocation.org/) weren’t entirely new to us, the movie definitely reinforced the idea of rethinking our behaviour as consumers, and we ended up buying less stuff while paying more attention to the purchasing decisions we made.
+
+This change didn’t happen overnight, of course. And we’re aware how hard it is to make this transition, especially if the brands you want to support aren’t usually on your radar. It requires a lot of research and determination to resist quick and easy temptations and make responsible choices.
+
+But the fashion industry is also currently the second biggest contributor to global warming (8–10% of global CO2 emissions), and we believe that sustainable fashion and responsible consumerism are the right path for safe-guarding the future.
+
+## The right strategy for positive change 📈
+
+It’s impossible however to change peoples’ minds, let alone the colossal machinery that is the fashion business by throwing facts about global warming, deforestation or oppressive working conditions at them.
+
+What I’ve learned over the last ten years though is that change is much more likely to happen if you provide an environment of inspiration rather than intimidation.
+
+Let’s face it: people usually don’t want to be told how bad things are (even though I do 😂), but instead need positive examples of how much better life could be and how attainable these alternative solutions really are.
+
+Let’s see next how this way of thinking helped bring our idea to life…
+
+## The incubation phase 🐣
+
+Since my wife had been a fashion enthusiast for a long time, it didn’t take too long for us to see realise there’s a growing trend of sustainability in the world of fashion.
+
+However, we soon felt increasingly overwhelmed by the amount of brands in this space and couldn’t keep up with the quantity of information, like _where_ a brand is from, _what_ products they produce, or _how_ they attain sustainability.
+
+So we ended up creating a platform to help people navigate the marketplace, while hoping to give smaller, more independent brands more visibility to potential buyers. With this project, we want to do our bit to help people take more informed decisions and help reduce the negative impact we all have when it comes to buying new clothes. I hope that’s not too far-fetched 😊
+
+Do you want to hear more now on how the project evolved, while I throw in some technical terms here and there? Here we go… 🤖
+
+## Building a prototype 🏗
+
+Soon after coming up with the idea, we set up a cloud database on [Contentful](https://www.contentful.com/) (a _headless_ CMS) to start adding some brands with their corresponding certificates, categories and characteristics.
+
+Since I’m familiar with the basics of data modelling, it took me an hour or two to set up the initial structure and walk my partner through the process.
+
+That was the first step. And it allowed us to add the minimal amount of content to make the project even remotely interesting to anyone. But it also helped us figure out if we were on to something, or if we were missing anything critical.
+
+To give an example: thanks to this practical approach of aggregating content, we had to wrap our head around some key questions, like how to categorise the brands we already had in our database and which certificates they had in common.
+
+I have to say that in hindsight, I’m really happy about this _content-first_ approach, because it also makes your life much easier when it comes to designing and implementing the user interface.
+
+If you can already see and feel some real data while working on the initial prototypes, things just take shape more naturally, compared to when using dummy data or _lorem ipsum_ placeholders.
+
+Let’s take a look at the embarrassing first version of the page 🙈
+
+<figure>
+  <Image
+    src={firstPrototype}
+    alt="Screenshot of the first version of our the sustainable list"
+  />
+  <figcaption>
+    _The first version of The Sustainable List from May 2019_
+  </figcaption>
+</figure>
+
+Ouch, that was painful! But as we all know:
+
+> _If You’re Not Embarrassed By The First Version Of Your Product, You’ve Launched Too Late._
+
+> **_—_ Reid Hoffman, founder of LinkedIn**
+
+And honestly, it did help us keep the motivation up and get some early feedback on the idea, such as making it a lot more visual and giving the page a nicer colour scheme, even though that may seem quite obvious as well.
+
+The most important takeaway though was that people seemed to not be completely turned off by the idea, and encouraged us to keep going…
+
+## The tech stack 🍔
+
+While we’re at it, let’s take a look at some of the tools and frameworks I’ve been using to put this together. If you’re not into web development and technology, you may as well skip this part.
+
+So without further ado, let’s take a look under the hood:
+
+- [**React with Create React App**](https://create-react-app.dev/) ⚛️  
+  This was the most easy choice for me since I’m using React in my everyday job. Even though many developers (including myself) always want to learn something new, I felt like bootstrapping in any other language or framework would have slowed us down a lot.
+- [**Evergreen UI**](https://evergreen.segment.com) **🍃** Among the 1000 choices, I picked the first UI library I came across that felt was aligned with our needs. This one does provide some good looking design elements out of the box, but I found making things responsive a bit cumbersome over time, as I had to tweak and overwrite a lot of styles. In hindsights, I wish I had done some more research on this topic.
+- [**Hooks**](https://reactjs.org/docs/hooks-intro.html) **🎣**In this project, I entirely dropped ES6 classes and built an app entirely with stateless functional components for the first time. I also decided not to use any state management framework (Redux/Mobx), and used the built-in `useSelector` and `useDispatch` hooks to manage state. While it took some time to get used to going more functional, it’s indeed easier to reason about, and I have now embraced this approach on other projects as well.
+- [**Next.JS**](https://nextjs.org/) **and** [**Zeit.now**](https://vercel.com/) **(now Vercel)** 🚀  
+  Here I actually did take a bit of a risk as I didn’t have any previous production-level experience with Next and Zeit. But [this article](https://codeburst.io/next-js-ssr-vs-create-react-app-csr-7452f71599f6) convinced me of using an SSR-enabled boilerplate by default, or I’d have to wrap my head around this topic again, which I remember from a previous topic wasn’t always the most straight-forward. I don’t have any regrets so far. Next is really easy to learn and Zeit makes it incredibly simple to deploy your site to the public.
+- [**Contentful**](https://www.contentful.com/) 📝  
+  Adding content had to be really easy and intuitive, and my previous experience with this platform had been positive. Once you set up the model structure, you can define the appropriate formatting rules and validations for each field, so that an editor (in this case, my wife) can hardly make any mistake when putting in new content, which saves you from the hassle of integrating a lot of foolproof checks into your frontend.
+- [**styled-jsx**](https://github.com/zeit/styled-jsx) 💅  
+  I ended up using this styling library primarily because it comes with a [Next.js integration](https://github.com/zeit/styled-jsx). I wasn’t able to use styled-components, because it didn’t integrate well with Evergreen UI, nor did I want to use it because of some prior frustrations I had in a React Native project where styled-components led to a lot of unexpected overhead (which was probably my bad!) and testing issues.
+- [**Formik**](https://jaredpalmer.com/formik/) and [**sendgrid**](https://sendgrid.com/) **📩**This almost goes without saying, but I just needed a simple, stupid implementation of transactional emails for our contact form, and those two tools made it really easy to implement (apart from the minor hassle of of setting up [secret API keys via Zeit.now](https://www.leighhalliday.com/secrets-env-vars-nextjs-now) to make it more secure).
+- [**Mailchimp**](https://mailchimp.com/) **🦍**Another no-brainer here, even though I have to admit I got a bit stuck with their API integration, and I feel like this is now more complicated than it used to be. So in the end I decided to go for their integrated pop-up solution which is as easy as pasting a line of JavaScript into your code which triggers an (almost) perfectly looking modal newsletter signup form.
+- [**iubenda**](http://iubenda.com/) **👩‍⚖️**When you launch a product, you want to make sure you’re on the right side of the law. But cookie policies, GDPR, CCPA? 🤷‍♂️️ Unless you have a law degree, it seems like an insurmountable amount of rules to familiarise yourself with. Luckily, this tool makes it really easy to craft a “terms & conditions” and “privacy policy” _without_ being a lawyer, and makes integrating the necessary pieces of legal text into your page a piece of cake. This is one of those services which really make your life a ton easier.
+
+## Some iterations later 🔁
+
+Let’s now take a look at what the site looked like a year later, after implementing a (passable) colour scheme, figuring out a better layout for presenting those brands, and adding some more life to the whole thing by adding real photos wit real people in them.
+
+<Image
+  src={theSustainableListScreenshot}
+  alt="Screenshot of the current version of the sustainable list"
+/>
+
+While I’m not a professional designer, I have to say I was quite happy with where we got with our scrappy bootstrapping approach, and how we took this initial idea from a raw database of brands to an actual website with very limited time and resources (I’ll talk about this in the takeaways).
+
+Ok! After so much self-praise, let your criticism flow now! 🤐 But first, let’s see our CEO in action while he launches our little project on Product Hunt.
+
+## The launch 🎬
+
+After a very intense year—mostly thanks to the little guy in the photo—we’re finally ready to launch our site (with all its imperfections). 🎉🥳🍾🎊
+
+👉 [https://www.producthunt.com/posts/the-sustainable-list](https://www.producthunt.com/posts/the-sustainable-list)
+
+Feel free to join the discussion and give us your feedback! We’re extremely excited to hear what you think and especially: what we can improve.
+
+<figure>
+  <img
+    src="https://cdn-images-1.medium.com/max/1200/1*YIL63L19WkU24YJBQ0dngg.jpeg"
+    alt="Our son Noah looking at the Product Hunt website"
+  />
+  <figcaption>Our CEO launching the site on Product Hunt 😸</figcaption>
+</figure>
+
+## Key takeaways 🔑
+
+Now that we’re live (honestly, I still can’t content my excitement!) let me quickly sum up with some things I’ve learned along the journey.
+
+### Avoiding “_featuritis”_ 🤢
+
+Based on our experience in previous projects, we were trying to focus on the absolute core set of features.
+
+Even though you can build a lot of interesting things around the topic of sustainability (ie. brand ratings, user reviews, sustainability guides, in-depth brand details) we decided to take the leanest approach possible. I’ll talk about some future enhancements in the final part of this blog post.
+
+For now, the site offers a curated list of sustainable brands that you can search, sort and filter by the most common criteria. And that’s it.
+
+Minimalism, FTW. 🇯🇵
+
+### A very sustainable timeline 🐢
+
+A positive thing I noticed on this project (as opposed to most client projects I work on) is that there was never really a deadline for completion.
+
+While this did result in a really slow pace, it was also the more sustainable approach, given that we not only had to juggle our full-time jobs, but also a one-year old son who usually doesn’t give a 💩 how busy we are.
+
+My favourite strategy has always been to dedicate little chunks of time every day to something, even if it’s just 10 or 20 minutes. It’s a bit like a no-excuse/steady-progress way of getting things done. But it requires a high amount of consistency, because it’s very easy to let things slide when life gets in the way (which happens a lot with a little toddler 👶).
+
+However, I also realised that when rushing through a project, an undesirable side effect is that good ideas and thoughts don’t have time to evolve and take shape. Due to the unpredictable nature of the brain, many good ideas often arise after you let a thought or idea settle for a few weeks, or even months: it’s like planting a seed and reaping the fruits, usually not on the next day.
+
+### Do I actually use this? 🤪
+
+This was probably the most important question I asked myself while working on the project and after completing each task.
+
+The good thing is: if you are an actual user of your own product, you can empathise, test and iterate much more efficiently than if you’re just vaguely interested in the value creation process. I’ve found that this leads to more intuitive problem solving and makes the process more enjoyable as well.
+
+I’ve personally used The Sustainable List in several occasions. I’ve mainly used the filter mechanism to look for local brands, to keep the carbon footprint as low as possible. And I’ve discovered a lot of cool brands that I wasn’t aware of, but which I’m now a proud customer of.
+
+Needless to say I feel in love with their products, but I’m also feeling better about the choices I made, supporting sustainable brands that work in a more responsible way (socially _and_ environmentally).
+
+## Our roadmap 🛣
+
+This has been our journey so far. There are a lot of potential features we want to work on in the future, but for the time being we’re also quite limited in terms of time and resources. So if anyone wants to jump in and lend a hand, please don’t hesitate to get in touch at _info (at) thesustainablelist.com_.
+
+**Here are some of the improvements we may work on next:**
+
+- User accounts: allow people to comment and rate brands
+- Guides: provide useful tips on sustainable fashion and living
+- Collections: feature a curated list of products, according to the season
+- Blog: provide regular insights into the sustainable fashion industry
+- Podcast: interviewing people from the world of sustainable fashion
+
+While we don’t have funding and aren’t planning to operate as a startup, we’d still appreciate if anyone interested in contributing to the project gets in touch with us to see if there are any opportunities for collaboration.
+
+We believe that neither sustainability nor quality have to be sacrificed in order to make beautiful clothes, and that the future belongs to brands that have respect for the planet, its animals and its people 💚.
+
+Please leave your feedback if you want to help us move this initiative forward, either here, on [Product Hunt](https://www.producthunt.com/posts/the-sustainable-list?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-the-sustainable-list) or via our [contact form](https://thesustainablelist.com/contact). You can also follow us on [Instagram](https://www.instagram.com/thesustainablelist/) and [Facebook](https://www.facebook.com/thesustainablelist).
+
+Thanks a lot for reading 🙏
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/journey-of-a-side-project-how-the-sustainable-list-came-to-life-38cb3e11d86c) on May 28, 2020._

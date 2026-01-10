@@ -1,0 +1,134 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2015-04-24',
+  title: 'A simple experiment, a huge impact',
+  description:
+    "One of the best parts of Hanno's team trip was a challenge where two teams competed against each other to build something deceptively simple in twenty minutes",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/a-simple-experiment-a-huge-impact-3f2b326d7d2',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+A few weeks ago I briefly summarized the experience of our first team trip this year to Buenos Aires and talked about the learning from our Design Thinking workshop.
+
+One of the funniest and exciting parts of our week-long workshop in Buenos Aires wasn’t mentioned in there however, because it deserves its very own blog post. This was a challenge where two teams competed against each other to build something deceptively simple in twenty minutes.
+
+What it revealed was a lot of common misconceptions about planning, building and designing things and the purpose of the prototyping process when creating products in general.
+
+## The challenge
+
+The challenge was to build the highest possible tower with the following material:
+
+<figure>
+  <img
+    width="657"
+    height="182"
+    src="https://cdn-images-1.medium.com/max/800/1*WIE877KypA6XpHp68vtAoQ.png"
+  />
+  <figcaption>
+    _Material we were allowed to use for the Marshmallow Challenge_
+  </figcaption>
+</figure>
+
+A marshmallow had to be attached to the top of the tower. The team that built the highest tower (with the marshmallow on top, of course) would win the challenge. We had twenty minutes time and the only restrictions were that we weren’t allowed to stick spaghettis directly to the floor with tape, or to attach things to the ceiling or other objects.
+
+My first thought was: OK, we need to think this through for the larger part of the time we have available and figure out the ultimate solution for this architectural masterpiece, and then use the last 5 minutes to put our brilliant plan into practice.
+
+## Planning or building: What’s more important?
+
+So we started laying out our spaghetti super tower. Ideally, we would use as little material as possible for the base, so we came up with the idea of building a triangular ‘Toblerone’. Three pillars were supposed to support the structure, which was made of another three spaghettis horizontally aligned as a triangle.
+
+<figure>
+  <img
+    width="800"
+    height="450"
+    src="https://cdn-images-1.medium.com/max/800/1*04bo6QokpkJGmxUTR2RP7Q.jpeg"
+  />
+  <figcaption class="imageCaption">
+    _Matt, Sergei and Marcel engineering a seriously fragile spaghetti tower_
+  </figcaption>
+</figure>
+
+Unfortunately we didn’t take into account that spaghettis are very fragile and bend easily. So once we had wired our masterpiece together, it had absolutely zero stability and wiggled and waggled all around.
+
+We had to rethink our solution, but there was only half of the time left. Fail!
+
+Of course we had to come up with something simpler and more stable. So we decided to build three pillars made up of three spaghettis each that would form the base for another pillar of three spaghettis on top of them. Would we be able to tame the beast this time?
+
+<figure>
+  <img
+    width="800"
+    height="450"
+    src="https://cdn-images-1.medium.com/max/800/1*iQAO7iDwx9oXiIPqMTv2Fg.jpeg"
+  />
+  <figcaption class="imageCaption">
+    _Matt, Sergei and Marcel iterating on their ideas for a more stable tower_
+  </figcaption>
+</figure>
+
+Unfortunately, it was yet another unstable structure, as the three lower pillars would be moving in random directions because spaghettis are still quite flexible. Another failed attempt! And as you can imagine, we started to panic as the clock was ticking.
+
+We tried to strengthen the lower pillars by adding another spaghetti on each side. But then we realized that it took a lot of patience to properly attach the feet of the upper pillars to the top of each supporting tower.
+
+Did you realise we hadn’t even thought about the marshmallow yet?
+
+One spaghetti broke!
+
+And one of the towers suddenly lost its stability. So while one of us tried to resolve the damage with tape and another spaghetti, the others tried to attach the upper tower to the base. Tick-tock, tick-tock…
+
+…and when the time was almost over, BOOM, the whole structure just collapsed. Game over!
+
+<figure>
+  <img
+    width="720"
+    height="541"
+    src="https://cdn-images-1.medium.com/max/800/1*K3MN9PqDY9YKmNLXzAy5bw.jpeg"
+  />
+  <figcaption class="imageCaption">
+    _How a group usually approaches the challenge_
+  </figcaption>
+</figure>
+
+## Now what’s this all about?
+
+Good question, because that wasn’t very clear to us either. That photo up above is how your typical group of trained business executives might attempt this challenge.
+
+Only when we heard how other groups performed did the answer become a bit clearer. To our surprise, some of the best results were achieved by: yes, children.
+
+That’s because children usually don’t overthink the challenge, and start experimenting instead.
+
+What else do they do right?
+
+They put the marshmallow first. Only after that, they start creating the groundwork underneath.
+
+They may have never heard anything about Design thinking, software architecture or computer programming, but they follow a pretty clever process of: yes, iteration.
+
+<figure>
+  <img
+    width="720"
+    height="542"
+    src="https://cdn-images-1.medium.com/max/800/1*6e2rPeqQ9lQBni83UeseIQ.jpeg"
+  />
+</figure>
+
+## Here’s the simple lesson:
+
+No matter what great ideas we come up with. If we don’t validate our assumptions, then we might as well have created a mental model of something that collapses pitifully with the slightest tremor.
+
+We know all about iteration. We do it constantly on all sorts of projects. And yet even we fell into the trap of trying to do too much upfront thinking, when we faced the marshmallow challenge. That’s a great reminder for us all.
+
+And guess what? This experiment has already changed the way we approach new projects, in that we are even more committed to testing even the most basic ideas, and to start experimenting with very low fidelity prototypes.
+
+As a result, we’re now able to gather user feedback at an earlier stage, even if it feels a bit sloppy and disorganised to be doing so, which helps us evaluate if we’re on to something, or if we’re wasting our time on yet another fragile spaghetti tower.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/a-simple-experiment-a-huge-impact-3f2b326d7d2) on April 24, 2015._

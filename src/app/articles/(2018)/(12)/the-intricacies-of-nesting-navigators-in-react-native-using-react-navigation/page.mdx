@@ -1,0 +1,300 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2018-12-03',
+  title:
+    'The intricacies of nesting navigators in React Native using react-navigation',
+  description:
+    'This is the last post in a 4-part series about building the iOS and Android app for uncovercity using React Native, which is all about the popular topic of navigators.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://itnext.io/the-intricacies-of-nesting-navigators-in-react-native-using-react-navigation-fef52ca72964',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    width="5472"
+    height="3648"
+    src="https://cdn-images-1.medium.com/max/800/0*fHSUkLSz6Dw_ugee"
+  />
+  <figcaption>
+    Photo by [Andrew
+    Neel](https://unsplash.com/@andrewtneel?utm_source=medium&amp;utm_medium=referral")
+    on
+    [Unsplash](https://unsplash.com?utm_source=medium&amp;utm_medium=referral)
+  </figcaption>
+</figure>
+
+**This is the last post in a 4-part series about building the iOS and Android app for** [**uncovercity**](https://uncovercity.com/) **using React Native. You can find the other ones here:**
+
+1.  [Speeding up the build of a surprise dinner app in React Native using Expo](/articles/speeding-up-the-build-of-a-surprise-dinner-app-in-react-native-using-expo)
+2.  [Battle testing a ridesharing API and React Native's MapView in Expo](/articles/battle-testing-a-ridesharing-api-and-react-natives-mapview-in-expo)
+3.  [Supporting multiple languages in React Native with Expo Localization](/articles/supporting-multiple-languages-in-react-native-with-expos-localization-module)
+4.  The intricacies of nesting navigators in React Native using react-navigation
+
+---
+
+In one of my most recent projects, I built the native app for Spanish startup [uncovercity](https://uncovercity.com/) using React Native.
+
+One of the most interesting challenges I faced was setting up the navigational structure based on a set of Invision designs. In this post, I’m going to talk about them in detail and walk you through the solutions I came up with.
+
+## It all starts with a tree
+
+The following bullet points illustrate how the app was structured. I’m already giving you a little hint on which type of navigator I used for each element that contains child routes.
+
+- Main **(StackNavigator)**
+  - Home
+  - Login
+  - Recover password
+  - Sidebar **(DrawerNavigator)**
+  - Router **(StackNavigator)**
+    - Experience
+    - Experience Map
+    - Experience Active
+    - Experience Active Detail
+    - Map
+    - Evaluation
+  - PastExperiences
+  - FAQ
+  - Contact
+
+Let me walk you through this tree step by step.
+
+### Level 1: Stack Navigator — the welcome and login screen
+
+As you can see, the root element is a `StackNavigator`. Since the first three screens (Home, Login, Recover password) just show up on top of each other as you move from one to the next, we can use a simple `StackNavigator` which comes with a nice default transition (slide-to-left on iOS, slide-to-top on Android).
+
+<figure class="flex justify-center">
+  <div>
+    <img src="https://cdn-images-1.medium.com/max/800/1*iftff5iPBn7ioKAU_phrtw.gif" />
+    <figcaption>_The Stack Navigator in action_</figcaption>
+  </div>
+</figure>
+
+### Level 2: Drawer Navigator — the sidebar
+
+The next component serves as a container for a bunch of other routes. We’re using `DrawerNavigator` here so that the user can slide in a sidebar menu from the left using touch gestures or the controversial hamburger icon in the top left corner of the screen.
+
+From the sidebar, the user can get quick access to some static pages like FAQ and Contact. But by default, it displays another container element which contains a couple of other sub-routes, the **Router**.
+
+<figure class="flex justify-center">
+  <div>
+    <img src="https://cdn-images-1.medium.com/max/800/1*Q_YC9FUU9pNGxzm22X9faQ.gif" />
+    <figcaption>_The Stack Navigator in action_</figcaption>
+  </div>
+</figure>
+
+### Level 3: Stack Navigator — the router
+
+The router is the heart of the app and contains most of the content. It’s where the user can see the current status of her (dinner) experience, a screen with detailed info about the venue, a map with the pickup/return point and an evaluation screen that lets her rate the experience when it’s over.
+
+This again is a `StackNavigator` because we want to use the default transition on iOS and Android. But the router also contains some additional startup logic that I’ll cover in more detail below.
+
+<figure class="flex justify-center">
+  <div>
+    <img src="https://cdn-images-1.medium.com/max/800/1*apa-PiYw_qec1NxLwmMeLQ.gif" />
+    <figcaption>_The Stack Navigator in action_</figcaption>
+  </div>
+</figure>
+
+## Challenges I faced using react-navigation
+
+[React Navigation](https://reactnavigation.org/) simplifies a lot of things that are hard to achieve in native iOS and Android. But it also comes with its own set of issues whose solution or workaround is not always straightforward.
+
+What follows are the different issues I ran into and how I solved them.
+
+### Challenge #1: enabling header bars inside a DrawerNavigator
+
+The `StackNavigator` has a header bar which is enabled by default. It can be disabled using `headerMode: none` on the `StackNavigator`’s [visual options](https://reactnavigation.org/docs/en/stack-navigator.html#stacknavigatorconfig). This is desirable when you want the current screen to cover the entire viewport, including the space that the header usually occupies.
+
+What’s not so intuitive is when you’re inside a `DrawerNavigator` and want to enable the header bar for all its children. The `DrawerNavigator` doesn’t provide an inheritable `headerMode` option like `StackNavigator` since its purpose is not to give you a navigable stack of screens, but a flat hierarchy that contains screens with no header by default.
+
+To enable the header bar for those screens as well, you need to wrap each of them in an additional `StackNavigator`. This brings back the header bar for each of its child screens, even though we only have one and actually abuse the `StackNavigator` for this simple purpose. While this seems like a hack, it still seems to be the [most common](https://github.com/react-navigation/react-navigation/issues/1632#issuecomment-305291994) workaround in most situations.
+
+```jsx
+const One = StackNavigator(
+  {
+    main: { screen: Main }, // only has one route
+  },
+  {
+    navigationOptions: {
+      headerMode: 'screen', // enabling header mode for main screen
+    },
+  },
+)
+
+const AppNavigator = DrawerNavigator({
+  one: { screen: One },
+  two: { screen: Two },
+})
+```
+
+### Challenge #2: toggling the sidebar from within nested routes
+
+Next, I was wondering how to toggle the `DrawerNavigator`’s sidebar from a component inside a nested route.
+
+Since React Navigation’s 2.0 update you can use the `openDrawer` function on the `navigation` property. But that property isn’t available in each component unless you pass it down as a `prop`, which sometimes means passing it down a long component chain.
+
+A neater solution (spotted in [react-navigation’s documentation](https://reactnavigation.org/docs/en/navigating-without-navigation-prop.html)) is to store the `DrawerNavigator`’s reference in a service and importing it wherever you need access to the `openDrawer` function. This is what the service’s methods do:
+
+```jsx
+function setTopLevelNavigator(navigatorRef) {
+  navigator = navigatorRef
+}
+
+function openDrawer(routeName, params) {
+  navigator.dispatch(DrawerActions.openDrawer())
+}
+```
+
+The component that renders the `DrawerNavigator` then has to pass the navigator reference to the `setTopLevelNavigator` function.
+
+```jsx
+<TopLevelNavigator
+  ref={(navigatorRef) => {
+    NavigationService.setTopLevelNavigator(navigatorRef)
+  }}
+/>
+```
+
+Now you can simply call the `navigate` function from anywhere to have access to the `DrawerNavigator` 's `openDrawer` method:
+
+```
+NavigationService.openDrawer();
+```
+
+> You could probably accomplish the same using React’s Context API (introduced in React 16.3) or using Redux or Mobx, but at the time of writing this code, this seemed to be the most simple solution without introducing any overhead.
+
+### Challenge #3: taking authenticated users to the user area
+
+If you’re a registered user and have already logged into the app before, you obviously want to be treated as a logged-in user the next time you come back.
+
+Coming back to the navigation tree outlined above, that would mean taking her from the root navigator (Main) to one of the screens nested inside the Router stack. Quite a leap!
+
+**Main** **\->** Sidebar **\->** Router **\->** **Experience -> Login**
+
+In **Main**, we grab the users current status from the phone’s local storage (`AsyncStorage`). If the user _is_ logged, it will contain an object with the user’s details (ID, email, name) and we take her to the next level, **Sidebar.** If she is _not_ logged in, she’ll be taken to the **Login** screen instead.
+
+```js
+const user = await AsyncStorage.getItem('user')
+```
+
+Since it’s an `async` function, we need to wait for it to complete before rendering the outer navigator, so we return a loading screen in our render function and we only set `loading` to true once our `AsyncStorage` operation has completed.
+
+```js
+if (this.state.loading) {
+  return <LoadingScreen />
+}
+```
+
+In the `navigationOptions` of our second-level navigator (**Sidebar**) we set the `initialRouteName` to the next screen in our navigation hierarchy depending on the user’s login status.
+
+```js
+const Navigator = createStackNavigator({
+   ...routesObject...
+  },
+    {
+      initialRouteName: (this.props.loggedIn) ? 'Sidebar' : 'Login',
+    },
+});
+```
+
+In the **Sidebar**, we then move on to the initial route **Router**, whose siblings can be accessed via the `DrawerNavigator`.
+
+```jsx
+const Drawer = createDrawerNavigator({
+  Router: { screen: Router }, // another StackNavigator in here
+  PastExperiences: { screen: PastExperiencesScreen },
+  FAQ: { screen: FaqScreen },
+  Contact: { ContactScreen },
+})
+```
+
+_Inside_ the router however, the screen we show to the user depends on the current status of her experience. The experience details are part of a subsequent API request that only resolves after the user has logged in.
+
+This led to another few routing issues that I had to work around and which I’m going to cover next.
+
+### Challenge #4: showing a nested screen based on an API response without screwing up the user experience
+
+Last but not least, I had to solve an issue that was related to how the app interacts with the API. Inside the **Router**, the screen that the user sees is based on an API response from a ride-sharing service.
+
+The user sees one of the following: **pickup**, **return**, **map** or **evaluation,** based on the current status of the ride that takes her to the restaurant and back.
+
+Main -> Sidebar -> **Router** -> Pickup screen -> Map -> Return screen -> Evaluation
+
+This sounds easy in theory, but there were three things I had to take care of to prevent the app’s UX from feeling awkward and confusing:
+
+- first, I had to only render the initial screen _once_. Since we relied on [polling](https://itnext.io/battle-testing-a-ride-sharing-api-and-react-natives-mapview-in-expo-c0ce5d50cbf0) to retrieve API updates, every subsequent update should not re-render the router, or it would result in a really annoying flicker effect.
+- second, I had to make sure to obtain the ride-sharing update before calling the initial route or opening the app would always result in a transition from the initial (pickup) to the current screen (map, return or evaluation).
+- third, I had to take into account that users might background the app for a while and once they come back to the app an update of the current screen should be triggered in case anything changed in the meantime.
+
+**For the first issue**, I used `shouldComponentUpdate`and wrote some logic that only updated the screen if the actual route changed. This helped me get rid of the flicker effect, even though I recently learned that `shouldComponentUpdate` should actually not be [abused for this kind of purpose](https://reactjs.org/docs/react-component.html#shouldcomponentupdate).
+
+**For issue number two**, I had to request a little API change that would return the status of the user in the _initial_ response from the server (one that wasn’t initially designed for that purpose). But I also had to make sure the screen wouldn’t show up before evaluating the response. So I had to use the technique I already used in Challenge 2, returning a `LoadingScreen` as long as other logic is being executed in the component lifecycle.
+
+For those living on the cutting-edge of technology, [React Suspense](https://blog.logrocket.com/async-rendering-in-react-with-suspense-5d0eaac886c8) is going to help with that kind of async rendering in the future.
+
+**For the third issue** (by far the trickiest), I had to wrap the router inside another React component to make sure an update occurs after the app has been backgrounded.
+
+Because my previously mentioned prevention logic (`shouldComponentUpdate`) also kept users stuck in the current screen, I had to make sure the component containing the router renders a new router whenever an update occurs.
+
+This is roughly what the stateless functional component looks like. It creates a new `StackNavigator` under two conditions:
+
+- the `initialRouteName` has changed
+- no `RouterStack` has been defined before.
+
+```jsx
+let RouterStack
+let lastRouteName
+
+const RouterStackWithInitialRoute = ({ initialRouteName }) => {
+  if (RouterStack === null || lastRouteName !== initialRouteName) {
+    lastRouteName = initialRouteName
+    RouterStack = createStackNavigator(
+      require('../../../constants/routeConfig').default,
+      {
+        initialRouteName,
+      },
+    )
+  }
+  return <RouterStack />
+}
+```
+
+Passing the initial route name into that component looks as follows:
+
+```js
+render() {
+  return this.state.loading ?
+    <LoadingScreen /> :
+    <RouterStackWithInitialRoute
+      initialRouteName={this.state.initialRouteName} />;
+}
+```
+
+Now every time the user comes back to the app, she’ll immediately see the screen that corresponds to the current status of her experience.
+
+> Please keep in mind that all code examples are just a simplification of the actual code to illustrate the point I want to make. So no guarantee that they are going to work in case you try to copy/paste any of them :)
+
+## Takeaways from building a _seemingly_ simple mobile app in React Native
+
+That’s it for my series on building the mobile app for uncovercity.
+
+I have to admit that judging by the initial user journey I wouldn’t have anticipated such a high level of complexity for something that seems so simple on the surface. And I probably didn’t always come up with the most elegant solution for each of these problems either.
+
+But taking into account all the possible user scenarios and API issues that surfaced during the project under real-life conditions, it’s very easy to underestimate the effort that needs to go into a project like this.
+
+The actual work that goes into shipping a battle-tested, bug-free mobile app can grow exponentially if you have to deal with third-party APIs, community-driven libraries and a cutting edge technology like React Native.
+
+If you happen to be in Spain, you can find the app in the [iOS](https://itunes.apple.com/us/app/uncovercity/id1394531362?l=es&ls=1&mt=8) and [Google](https://play.google.com/store/apps/details?id=com.uncovercity.app&hl=de) app stores. Just make sure to book a table on to get the full app experience :)
+
+_Originally published on [Medium](https://itnext.io/the-intricacies-of-nesting-navigators-in-react-native-using-react-navigation-fef52ca72964) on December 3, 2018._

@@ -1,0 +1,134 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2024-06-28',
+  title: 'Startup Lessons Part 2: Scaling Beyond A One-Person Team',
+  description:
+    'In this part of the series, I discuss how to expand a pre-PMF engineering team, emphasizing effective hiring, onboarding and communication.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+This post is part of the following mini-series:
+
+- [Startup Lessons Part 1: Engineering Strategy Pre-Product Market Fit](/articles/startup-lessons-part-1)
+- **Startup Lessons Part 2: Scaling Beyond A One-Person Team**
+- [Startup Lessons Part 3: From Engineering To Product](/articles/startup-lessons-part-3)
+
+Here is the second part of my mini-series on lessons I learned at my last job. In the first part, I discussed what engineering strategy should look like before finding Product Market Fit. In the second part, I'd like to examine the challenges of growing a team beyond one person. Let’s dive in…
+
+## 👩‍💻 Hiring and onboarding developers
+
+First, let's talk about what it takes to expand your time beyond one individual.
+
+I had hired and managed a couple of freelancers at previous companies, so I could draw from experience on which tools to use and what qualities to watch out for.
+
+Since I had also been at the other end of the process and knew what it was like to do (and fail!) a coding challenge or get interviewed by a tech lead, I could get a good understanding of what the process I designed would look and feel like from the other side.
+
+### 1. Finding candidates
+
+I have never engaged much with tech recruiters messaging me on LinkedIn, and I knew that most people pay more attention to job offers from people or channels where they already feel a sense of trust or belonging.
+
+Keeping this in mind, I published the job ad for the first position we were hiring for across the Slack channels I was part of (i.e., local tech communities) and on a few specialised job boards (i.e., for React). This alone led to a solid list of about 50 applicants, which I filtered based on different criteria in the next step.
+
+For our second hire, we also started using [Otta](https://otta.com/), an increasingly popular hiring platform for tech jobs. The volume of candidates was much higher there, but I also had to filter out many low-quality applications.
+
+### 2. Filtering candidates
+
+A minimal but well-structured process for filtering this list of candidates helped us ensure we were making the right decisions at each step. Here's what it looked like:
+
+- **Initial screening**: I usually filter out candidates who don't have a decent online portfolio or an active GitHub profile. From my experience, good developers are also good communicators who share their ideas and work online. Once you carefully select a few candidates, an initial screening interview helps discard those with language fluency issues, technical know-how gaps, or unusually shy or weird personalities.
+- **Coding challenges**: While there is controversy around solving complex algorithms under time constraints, I find that coding challenges can effectively remove anyone without fundamental skills in a specific programming language. You can easily adjust the degree of difficulty in most tools—such as the one we used, [CoderByte](https://coderbyte.com/)—to set the bar high enough.
+- **The founder interview**: After passing the initial screening, the founder interviewed the strongest candidates to assess the business aspect and negotiate salary and equity. This interview was crucial for gaining a different perspective and ensuring balanced judgment in the hiring process. Some candidates initially made a solid impression on me but did not know how to impress the founder.
+
+### 3. Onboarding candidates
+
+In my experience, onboarding is essential in making new hires feel welcome and integrated into the team, and I took this responsibility seriously.
+
+- **Expectations and alignment**: From previous jobs, I knew that creating a proper guide for new hires to refer to on their first day is vital, but it should go beyond just technical detail. As I now know, it should clearly define and align the new hire's expectations and help the new team member understand her role and responsibilities.
+
+  That's because hires quickly get excited about the various opportunities they see and switch between assignments, which can lead to confusion about their role. In hindsight, I would also emphasise engineering principles and strategy more so people know which parameters are more critical (e.g. velocity) and which ones can be neglected (e.g. technical idealism).
+
+- **The Engineering Wiki**: I prepared a thorough walkthrough of our tech stack, the app and its features, and our coding conventions. It included a step-by-step guide to get up and running with the app in less than an hour so someone could immediately fire up the app on their local machine and get started by exploring the codebase from day one.
+
+  One thing I would have done differently nowadays is to ensure that the Wiki is more concise (my version was rather verbose) and lives closer to the code, i.e., on GitHub instead of Notion. Referring to coding conventions is more intuitive when they can be viewed and updated from the same environment.
+
+- **Reconsider tech decisions**: When hiring a new person, it's also an excellent moment to revisit any significant tech decision made in the past. Especially when scaling from a single to multiple developers, many tools and techniques that didn't seem to make sense from the start—such as TypeScript or unit testing—may now become valuable tools to preserve software quality.
+
+## 👾 Managing code and people
+
+To keep everyone happy and productive, you must dedicate significant time to managing people's intentions, expectations, and responsibilities while avoiding excessive micromanaging (a common trap when managing new hires).
+
+### Preserving code quality
+
+Making the whole team stick to the same way of writing code is difficult, so establishing conventions for everyone, including yourself, is paramount. Otherwise, the burden of an unmanageable codebase will ultimately impact your technical debt and lead to legacy code faster than you can set up a mechanism to measure it.
+
+Linting is excellent for enforcing rules and ensuring that code stays consistent. For startups, I'd recommend following the example of giants like AirBnb and using their [predefined linting rules](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) instead of reinventing the wheel. Nowadays, I'd take this idea even further and consider the strictest possible ruleset (like [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)) to enforce the highest quality standards right from the start to avoid major refactors later.
+
+Static code analysis tools like [CodeClimate](https://codeclimate.com/) can help spot common issues like cognitive complexity or inappropriate repetitions, but I found it hard to make anyone follow its suggestions. Even with the best linting and static analysis, many issues, such as how to name things, can still go unnoticed by those automations, which is why code reviews are so important.
+
+### Fostering a friendly engineering culture
+
+Especially in the early days, I think it's essential to supervise new hires, so they familiarise themselves with the company's engineering principles and guidelines, learn from more senior team members, and challenge some of your ideas.
+
+When there's a lack of attunement, team members can quickly accumulate frustrations, making it hard to create a psychologically safe environment. In my previous jobs, I had experienced people becoming passive-aggressive, dogmatic, or pushing for personal agendas (often out of fear or anger). While this is very common in tech, it's also up to management to address these issues early on and set clear boundaries.
+
+Code reviews are a common way to identify such issues. I've always considered them an excellent place for discussing implementation details, but they're also a great place to gauge the health of your engineering team. If people enthusiastically review each other's code, it helps foster alignment between peers, but in the worst case, it can be a place of emotions spiralling out of control. In this case, I find it extremely important to quickly de-escalate via face-to-face meetings.
+
+### Communicating software design
+
+Software design is a challenge that goes beyond the scope of code reviews. As one later teammate pointed out, planning and discussing it must happen long before writing the first line of code.
+
+Unfortunately, skipping this step and jumping into implementation—out of enthusiasm or perceived time pressure—is all too common. In the future, this is an issue I would address more frequently because increasing technical debt based on software design mistakes is always hard to undo.
+
+Suppose every new hire can transparently access the reasons behind the software's framework, library and design decisions. In that case, there's less need to explain and argue later in the process, and you don't need to spend much time convincing people of the reasons behind the team's specific choices regarding software processes, architecture or design.
+
+Architectural decision records can be easily created using existing templates and—similar to Engineering Wiki—should live inside the repository where they apply. [This GitHub repository](https://github.com/joelparkerhenderson/architecture-decision-record) is an excellent starting point for familiarising oneself with the terms and tools.
+
+## 🧑‍🤝‍🧑 Getting everyone aligned
+
+As startups grow, they break and win based on how well communication flows across the company, how much team members—including those outside engineering—are aligned, and how much you can eliminate communication barriers.
+
+As a rule of thumb, I learned long ago that overcommunicating has many benefits. However, as the founders of Basecamp famously wrote, [meetings are toxic](https://basecamp.com/gettingreal/07.3-meetings-are-toxic). So, how do we strike the right balance to make sure everyone on the product teams aligns without drowning in meeting fatigue?
+
+Let me walk you through some principles that have worked well from my experience.
+
+### Effective engineering stand-ups
+
+What's the key to an engaging engineering stand-up in which people know when to talk and when to listen?
+
+Preparation. Luckily, that's something we can automate. In several jobs, I have seen teams successfully use [Geekbot](https://geekbot.com/) to keep people aligned. It's an efficient way of gathering the most critical tasks (or anything you want to ask) from everyone to keep the team aligned and surface potential blockers.
+
+Of course, a Slackbot shouldn't replace the daily face-to-face meeting. Still, it helps create structure: if each person provides a written summary by the time the actual stand-up meeting starts, the visual meeting is just a way for each person to elaborate on their input in chronological order of the check-ins, and an opportunity to raise concerns, before handing over to the next person.
+
+### Keeping the whole team aligned
+
+While the stand-up helps align the growing engineering team, other stakeholders, such as the client or business team, must also get involved in critical decision-making processes, such as prioritising features, discussing roadmaps, or providing feedback on UI designs.
+
+These regular meetings helped us cross the bridge between departments as the engineering team was growing:
+
+- **Product demo**: Every week, team members present the work they've done or are currently working on. In my experience, it is best if every team member presents their own initiatives to foster a sense of ownership and accountability.
+- **Stakeholder Sync**: This bi-weekly 30-minute meeting helps align product and engineering with other units of your organisation. The purpose is similar to a backlog refinement but at a much higher level so that non-technical people can understand what's going on and chime in if needed.
+- **Backlog refinement**: While this meeting is commonplace in engineering teams, we also take all of the input from the stakeholder sync back into engineering and work on clarifying any doubts and refining the newly created stories
+
+### 1-on-1s
+
+I aimed never to skip 1-on-1s because they are essential for keeping in touch with the team, and skipping them also makes people feel neglected. My most important goal in these was never primarily designed around reviewing someone's performance, but to maintain a healthy relationship with everyone and let people talk about what's on their mind.
+
+They are also the best place to surface anyone's frustrations at work, whether they're based on personal or professional issues. Your team deserves to be heard; listening is the best exercise for understanding what drives and hinders people from developing their potential.
+
+I've always considered monthly 1-on-1s sufficient, even though I have seen other engineering leads do them weekly. I guess the less you are involved in the daily engineering business, the more you may consider having 1-on-1s more regularly to get a good handle on the issues that arise in the team and to identify the potential problems as long as they're small.
+
+## 🤨 What's next?
+
+In year two, we scaled the engineering team to three people, speeding up our development pipeline significantly. I started delegating most of the engineering work I did—including code reviews—to the team and focused more on the product owner role instead.
+
+As a result, the tech stack also started to diverge, and my responsibilities shifted in a new direction. In the next and last post, I'll discuss the challenges of this move away from engineering and into a product, to which extent I succeeded, and where I failed.
+
+Click [here](/articles/startup-lessons-part-3) to read the third part of this mini-series.

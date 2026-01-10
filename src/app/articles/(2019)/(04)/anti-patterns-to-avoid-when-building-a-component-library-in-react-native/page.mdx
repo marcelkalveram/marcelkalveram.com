@@ -1,0 +1,194 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2019-04-16',
+  title:
+    'Anti-patterns to avoid when building a component library in React Native',
+  description:
+    'Recently I’ve helped a client migrate their e-commerce front-end to React Native and ran into some common issues that occur when a team lacks prior experience with React.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://levelup.gitconnected.com/anti-patterns-to-avoid-when-building-a-component-library-in-react-native-61f11d8c9797',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    width="5184"
+    height="3456"
+    src="https://cdn-images-1.medium.com/max/800/0*m8VMLKs-jIIAOKzj"
+  />
+  <figcaption>
+    _Photo by [Marcello
+    Gennari](https://unsplash.com/@marcello54?utm_source=medium&utm_medium=referral)
+    on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+  </figcaption>
+</figure>
+
+Recently I’ve helped a client migrate their e-commerce front-end from a native wrapper app to React Native.
+
+Since a big part of the team didn’t have any previous experience with React, it was natural that we’d run into a lot of inconsistencies in the beginning. My job was to help iron these out and lay the groundwork for a more maintainable codebase.
+
+One of the challenges was to understand and organize the building blocks of the UI layer. I realized quickly that when working with a team of 5+ people in React, it’s very common to end up with a big, fragmented collection of UI components.
+
+That’s why one of the initial efforts of our collaboration was to set up some guidelines for a UI library that would be understandable, maintainable, extensible, reusable, and testable. (Did I forget any -ables?)
+
+**The below techniques are by no means revolutionary. Most teams that work on bigger-scale projects are most likely familiar with the concepts of reusable components, decoupling, and universal themes. If that’s the case, you may go directly to the section** _“[Complementary building blocks](#a8ee)”_ **at the very end of this post or just skip it entirely.**
+
+To get started, let‘s take a look at the anti-patterns I spotted as we ventured out into the unknown and started writing our first components.
+
+## Anti-pattern #1: decreasing component reusability
+
+It’s all too common to arbitrarily prefix components to give them more meaning, emphasize in which context they’re being used, or simply increase their specificity.
+
+Typical examples are when people use component names like `LoginButton`, `RegisterLink`, or—even worse—`FilterHeaderRightMenuCloseButtonIcon`.
+
+There are two kinds of problems here that I want to point out.
+
+**Firstly**, any style definitions inside `FilterHeaderRightMenuCloseButtonIcon` that you may want to reuse elsewhere are now pretty much locked up in there:
+
+- trying to import them from this component would introduce coupling in a way that nobody is ever going to forgive you for
+- repeating them would lead to code duplication, something they teach you at primary school is a bad practice
+
+**Secondly**, `FilterHeaderRightMenuCloseButtonIcon` tells me a lot more about the context it’s being used in than what it _does_. Since its purpose is to display an `Icon`, the `FilterHeaderRightMenuCloseButton` prefix is probably redundant.
+
+Sure, prefixing and isolating components like this makes your job easier in the short term. You write a component with a specific name, so it won’t clash with any other, and the styles are exactly as your designer has specified. Pixel-perfection and zero bugs… who wouldn’t want that? 🤷‍♂️
+
+The problem starts when your app grows in size, and structure, semantics, and naming become more relevant.
+
+From my experience, hinting at what a component _does_ (e.g.: ScrollContainer) rather than where it appears (e.g.: InnerWrapper) in a tree of many nodes can make a big difference when other people have to read your code, and will save you from going through a lot of refactoring headaches in the future.
+
+**Say hi to purpose-revealing, configurable UI components**
+
+That’s why I usually find it more valuable to write components that:
+
+- have less verbose names, e.g. `Icon` instead of `CloseButtonIcon`
+- are named according to their purpose, e.g. `ScrollContainer` vs. `InnerWrapper`
+- are configurable through props, e.g. `<Icon type="close" />`
+
+Of course, there’s a fine line between writing a component that accepts all kinds of properties: `<Button right big leftAlign underline smallText />` and concise components that do _just enough_. 🎯
+
+## Anti-pattern #2: cross-references, the enemy of decoupling
+
+Another thing that I’ve observed a lot is when people create cross-references between unrelated files and folders.
+
+When referencing files within a coherent entity, such as a particular screen or a more complex component, that’s acceptable because they are still one self-contained unit whose parts aren’t applicable anywhere else.
+
+Where it does get messy is when you reference some part of your code (like a style definition or a sub-component) from a completely unrelated file. A good indicator for this kind of code smell 👃 is when someone imports a file from a folder that can only be accessed when jumping a few levels higher in the component hierarchy.
+
+```javascript
+// icon.jsx
+import { letMeJustGrabThis } from '../../../../../../components/button'
+```
+
+I think even without being a guru programmer, you’ll realize that this way of coupling can become a bit of a nightmare to maintain 😱:
+
+- If any of these dependencies disappear, yours will go down with it.
+- None of the components will be testable as independent entities, as you’ll have to either mock the imported module or blindly rely on its correct behavior
+- The cognitive load to understand your component is getting bigger, making it much harder to refactor over time
+
+### Decoupling (and unit testing) to the rescue!
+
+But how do we achieve this? To be confident that your component is a self-contained entity, it ideally shouldn’t rely on cross-references to any other components.
+
+I’ve found unit testing to be really efficient to reveal those interdependencies. Since it requires you to test and configure your component in complete isolation, it forces you to rethink and reconsider the dependencies it pulls in. Let’s look at a simple example in Jest.
+
+```js
+// component.test.jsx
+import { ComponentOne } from '../ComponentOne'
+
+it('should behave in a certain way', () => {
+  const result = ComponentOne.doSomething()
+  expect(result).toBe('expectedResult')
+})
+```
+
+If this would require you to mock out several other components that ComponentOne depends upon, or you’d have to turn it into an instantiable object and pass in dozens of modules via dependency injection to make it work, chances are your component is tightly coupled with other pieces of software you’re writing.
+
+Not that this is a bad thing per se, but something to keep an eye on before your app turns into an unmanageable, monolithic beast. 🦍
+
+## Anti-pattern #3: inconsistency
+
+More often than not, people end up writing stuff like this, either out of ignorance or sheer laziness.
+
+```jsx
+// 👨‍💻 writes screenOne/componentOne.jsx
+const ComponentOne = props => <a style={{ padding: 12, ... }} />
+
+// 👩🏻‍💻 writes screenTwo/componentTwo.jsx
+const ComponentTwo = props => <a style={{ padding: 12, ... }} />
+```
+
+For the web, this issue was quite common in the pre-preprocessor age when variables didn’t exist in CSS. Thanks to tools like SASS and LESS, we were relieved from the pain of repeating the same style definitions over and over again, and were able to pull in common parameters from a global theme.
+
+With React however, it feels like we need to relearn some of these techniques as we’re now thinking in terms of components. As a result, our style definitions are often scattered across many, independent units. That makes it so much easier to repeat ourselves, compared to when we were writing stylesheets and using classes to share reusable properties for things like spacing, font sizes, colors etc...
+
+Especially when working with many people on a team, it’s very easy to be unaware of the style definitions other people have written, and end up repeating those values that should be shared across components.
+
+Of course, that’s a missed opportunity not only to save yourself some work, but also to bring some consistency into your design. Who doesn’t appreciate a universal set of spacing, font, and color definitions that can be applied throughout the whole app? 🎨
+
+In React, these usually go into a shared theme folder that resides at the root of the app from which every component can import.
+
+```js
+// /theme/index.js
+export const spacing = 12
+```
+
+Then your component can use them as follows:
+
+```js
+// /screenOne/componentOne && /screenTwo/componentTwo
+import { spacing } from '~/theme'
+
+const Container = props =>
+  <a style={{ padding: spacing, ... }} />
+```
+
+> If you work with a library like **Styled Components**, you may consider using a ThemeProvider which makes those universal values available across your whole app. In this case, you pass all the styles into that higher-order component.
+
+As your theme grows in size, you may consider splitting it up into multiple files (e.g. spacing, typography, colors, etc.):
+
+```js
+/theme/spacing.js
+/theme/color.js
+/theme/typography.js
+```
+
+… and then export all of them from the root of the `theme` folder’s index file:
+
+```js
+// /theme/index.js
+export * from './color'
+export * from './spacing'
+export * from './typography'
+```
+
+Also, importing them is way easier when using a module resolver instead of writing out those long path names all the time.
+
+```js
+// this short form...
+import { spacing } from '~/theme'
+
+// looks much nicer than:
+import { spacing } from '../../../../../../theme'
+```
+
+## Complementary building blocks
+
+If all of this is familiar to you, there are some additional building blocks that from my experience can help your team become more consistent, increase code quality and build a more reusable component library:
+
+- **A style guide**: when your app’s design is backed by a clean and well-maintained style guide that describes each component in detail, developers will have a much easier job identifying components that are reusable across screens, and how they should be made configurable. Storybook can help you further streamline this process, and pave the way towards a well-maintained and tested component library in React.
+- **Review process**: when people peer-review each other’s code, it’s much easier to spot issues that violate the above-mentioned principles. A proper pull request process (ideally with at least 2 reviewers per feature) usually helps eliminate a significant amount of inconsistencies and bugs.
+- **Continuous integration**: on most bigger projects, developers set up a deployment pipeline to help automate repetitive tasks. If you’re in the lucky position to have a continuous integration process, you should automate things like unit, integration and regression testing, and potentially include a tool like Code Climate that can help identify some of the inconsistencies or duplications in your codebase automatically.
+
+That’s it! Hope you enjoyed this post. Please feel free to share your experience with building reusable component libraries, or drop a question if anything in this post has been unclear. Thanks a lot for reading!
+
+_Originally published in [Level Up Coding](https://levelup.gitconnected.com/anti-patterns-to-avoid-when-building-a-component-library-in-react-native-61f11d8c9797) on April 16, 2019._

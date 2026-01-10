@@ -1,0 +1,153 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2016-05-03',
+  title: 'The last thing you need is a programmer',
+  description:
+    "One of the trickiest challenges that most startups face is validating product/market fit. In this post, I’ll explain why a programmer doesn't necessarily have to be your first hire.",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://marcelkalveram.medium.com/the-last-thing-you-need-is-a-programmer-4f082ae16ec1',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    width="1300"
+    height="600"
+    src="https://cdn-images-1.medium.com/max/1200/1*tZZB2pA-jsWms11nIQy2Pw.jpeg"
+  />
+</figure>
+
+One of the trickiest challenges that most startups face is validating product/market fit. It often seems like hiring a programmer is the best way to accomplish that and get your MVP out of the door.
+
+But in this post, I’ll explain why this belief can be misleading and cost you a lot of money, and what alternatives there are to test and validate your product idea in a much leaner way.
+
+Here’s one of the most important questions we usually ask ourselves when working on a new project:
+
+> “How can we get this product in front of an audience as quickly as possible?”
+
+You may have heard of [famo.us](http://famous.co/), a San Francisco startup known for their revolutionary open-source engineering platform? [It took them $30m to get their product in front of an audience](http://techcrunch.com/2015/11/06/nopen-source/).
+
+That’s a lot of money. And they recently laid off a chunk of their team and pivoted to focus on commercialising branded marketing apps, a problem completely unrelated to their initial focus.
+
+This case perfectly demonstrates why we always try to avoid spending any time and effort on solving technical challenges until there is certainty that your product is going to please a minimal segment of paying customers.
+
+## I don’t need to test the problem, because it’s obvious
+
+In [Running Lean](https://leanstack.com/running-lean-book/), Ash Maurya explains why you should run 30–60 ‘problem interviews’ to understand if the problem you want to solve actually exists.
+
+It’s true that the most successful startups spend a lot of their time working on challenging engineering problems. But there’s a long road to travel along before you need to worry about scaling. And before you hire your first programmer your question should always be: how can I minimise the risk that I’m working on the wrong problem?
+
+Some people are so convinced of their idea that they skip testing entirely and immediately get stuck into building and coding. It’s great that you’re convinced of the value of your idea. But don’t spend any time on development until you get conclusive validation from other people and hear them say: This is a problem worth solving!
+
+<figure>
+  <img
+    width="1300"
+    height="871"
+    src="https://cdn-images-1.medium.com/max/800/1*XvRVhDfP6AV6Ru5pghB4lQ.jpeg"
+  />
+  <figcaption>
+    _User interviews can help you minimise the risk of building the wrong thing_
+  </figcaption>
+</figure>
+
+Famo.us is just one of many startups who tried to build a solution based on the assumptions of their creators. They had plenty of developers signed up on their waiting list but this kind of validation didn’t prove anything with respect to customer needs or real-world use cases.
+
+If you immediately hire a programmer to start solving a hypothetical problem, you’re maximising the risk in an already risky process!
+
+Here a few things you should do way before you jump into development:
+
+- Understand and frame the problem
+- Talk to your users and gather some insights about how they’re solving the problem right now
+- Verify your hypothesis by figuring out whether your problem resonates with those users
+
+You see, you don’t need a developer to run user interviews, you don’t need a developer to talk to users and you definitely don’t need a developer to validate your hypothesis.
+
+Good developers usually cost a lot of money. Make sure you’re moving in the right direction before you put your foot on the gas.
+
+## I know that my problem is real. Can I hire a programmer now?
+
+Now let’s imagine you’ve thoroughly researched your problem, ran lot of user interviews, verified that your problem actually exists and validated that the problem-customer segment is not just your brother-in-law and his wife.
+
+Great, you’re now ready to formulate and test a solution. And what better way to do so than hiring a skilled programmer to get going on this?
+
+Wrong!
+
+Sorry, even though you’re now one step closer to building a million-dollar business and probably can’t wait to pitch your idea (and imaginary tech team) to investors, you still don’t really need a programmer!
+
+Why?
+
+Because you need to find out if the solution you propose really _solves_ the problem. And there are many ways to figure that out without writing a single line of code. In _The Pragmatic Programmer_, authors Andrew Hunt and David Thomas say:
+
+> Prototyping is a learning experience. Its value lies not in the code produced, but in the lessons learned.
+
+The book is from 1999, and it sure must have been a helluva lot harder back then to create a prototype than it is today. (Even though the value of doing it with pen and paper should never be underestimated.)
+
+<figure>
+  <img
+    width="1079"
+    height="717"
+    src="https://cdn-images-1.medium.com/max/800/1*TN-Gu-1gVd7q8ro0fzCxlg.jpeg"
+  />
+  <figcaption>
+    _Prototyping — even in it’s simplest form — can help you test your
+    hypothesis with little effort_
+  </figcaption>
+</figure>
+
+Here is a list of tools that you should probably try out before hiring somebody else to implement your potential solution:
+
+- Pen and paper!
+- [UXPin](https://www.uxpin.com/)
+- [Marvel](https://marvelapp.com/)
+- [Flinto](https://www.flinto.com/)
+- [Principle](http://principleformac.com/)
+- [Atomic.io](https://atomic.io/)
+
+There are not too many limits on what you can achieve with those tools. Most of them help you craft visually appealing experiences with slick interactions, page transitions and real content. Your users might not even notice that it’s a prototype (if that’s your intent).
+
+Most of them don’t require any previous programming or design skills, so even if you’re a non-techy, they allow you to experiment, test and ultimately collect plenty of user feedback. And a prototype is usually all you need to figure out if your idea is viable and satisfies a real market need.
+
+Even PowerPoint works, as [the story of Canvsly](https://www.smashingmagazine.com/2016/04/lessons-learned-from-a-first-time-appreneur/) illustrates. So don’t look for excuses!
+
+> I built a simple prototype in a few evenings using PowerPoint and Keynotopia and showed it to friends at a Diwali party the following month. Looking back, it was embarrassingly rough, but it presented a visual concept for how you could capture, organize and share your kids’ artwork, and everybody loved it  
+> – Amit Murumkar (founder of [Canvsly](http://www.canvsly.com/))
+
+## Do I ever need a programmer at all?
+
+Maybe not. [Given the fact that 90% of all startups fail](http://www.forbes.com/sites/neilpatel/2015/01/16/90-of-startups-will-fail-heres-what-you-need-to-know-about-the-10/#2d34cae555e1) you might well realise that your problem is not worth solving or your solution is not going to gain traction before you start spending money on hiring an expensive team of hackers.
+
+I’m not here to tell you that you should never hire a programmer though. I’m a programmer myself and I know there’s huge value in what I do for a living, when those skills are used at the right time.
+
+But the time that developers spend working on a product should be well invested, ideally on solutions that are worthwhile and have an impact.
+
+<figure>
+  <img
+    width="1300"
+    height="867"
+    src="https://cdn-images-1.medium.com/max/800/1*9UrInx2KQklfBAiGtT2obg.jpeg"
+  />
+  <figcaption>
+    Before jumping into code, make sure programmers work on problems
+    worth solving_
+  </figcaption>
+</figure>
+
+The way we do things at Hanno (as lean as possible) taught me how absurd it is to spend all your time and money on premature product development. I’ve worked on many side projects that failed because I didn’t know at that time why I would have to validate an idea at all. I was too excited about coding day in, day out anyway. Interestingly, the example of famo.us shows that those terrible mis-investments are not just a problem for inexperienced newcomers.
+
+Perhaps Famo.us’ mistake wasn’t completely down to their decision to focus all their energy on engineering. But many founders would certainly be well advised to postpone the decision of hiring a programmer until the pain is no longer bearable.
+
+Luckily, minimising that risk can be done without a lot of hassle. And there are a lot of really good resources out there to help you get to the point where you can certainly say: “This is a problem I need to solve”. And there are even more resources out there that can get you to a point where you can say: “This is the solution I want to build”.
+
+I hope this post will make you think twice next time you’re planning to hire a programmer, and will help you explore leaner, more affordable ways to testing and validating your potential idea.
+
+_Originally published on [Medium](https://marcelkalveram.medium.com/the-last-thing-you-need-is-a-programmer-4f082ae16ec1) on May 3, 2016._

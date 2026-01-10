@@ -1,0 +1,78 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2024-06-25',
+  title: 'Startup Lessons Part 1: Engineering Strategy Pre-Product Market Fit',
+  description:
+    'In the first post of this mini-series I discuss key decisions made to optimise Engineering for development speed, particularly in the pre-PMF phase.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+This post is part of the following mini-series:
+
+- **Startup Lessons Part 1: Engineering Strategy Pre-Product Market Fit**
+- [Startup Lessons Part 2: Scaling Beyond A One-Person Team](/articles/startup-lessons-part-2)
+- [Startup Lessons Part 3: From Engineering To Product](/articles/startup-lessons-part-3)
+
+Wow, looks like some time has passed since I wrote my last blog post. I think it's time to get back into a writing routine by sharing what I've been up to in the previous three years.
+
+In my last engagement—which started roughly at the beginning of 2021 and ended two months ago—I had the pleasure of setting up a web app from scratch, scaling the team to three developers, transitioning from Product Engineer to Product Owner, and stepping into the Product Manager role, all with the goal of seeking Product Market Fit.
+
+Since I learned a ton of new stuff along the way, I'd like to share some of the lessons I learned, what I would have done differently, and where I think Engineering and Product—two domains I'm very passionate about—are heading with the recent advances in the industry.
+
+## ♟️ The only reasonable engineering strategy pre-PMF
+
+Let's first talk about engineering. It's the area I'm most familiar with and had been working on for many years, so there's plenty of hands-on experience I could draw from when kicking off this new project.
+
+### With great power comes great responsibility
+
+The main advantage of working on a [greenfield project](https://en.wikipedia.org/wiki/Greenfield_project) is that you enjoy a lot of freedom and flexibility. Of course, being trusted to make all the right decisions right from the start also comes with plenty of responsibility as you are still figuring out how much weight those decisions will carry in the future.
+
+Based on what I know now, some were already quite critical and could not be reverted so easily.
+
+### Optimise for development speed
+
+While some decisions are no-brainers, and data can easily back them up (such as the popularity of specific tools, like [React](https://react.dev/)), other more nuanced ones require experience and intuition (e.g. whether to use [TypeScript](https://www.typescriptlang.org/)) to guide you.
+
+My main guiding principle was to optimise for development speed, which had proven to be the right way to go in many other early-stage startup projects I had worked on because getting something out the door is the only thing that counts if you are in the pre-Product Market Fit phase.
+
+## 🏗️ Aligning the tech stack with this engineering strategy
+
+Now that optimising for speed was defined very highly on our agenda, let me talk about some of the specific decisions I made regarding the tech stack, which was heavily focused on front-end technologies at this stage.
+
+### Obvious choices
+
+The following tools were popular and battle-tested, thus avoiding surprises and making it easy for new contributors to get up to speed.
+
+- **Firebase**: for prototyping purposes, [Firebase](https://firebase.google.com/) is a massive time-saver because you don't need to build out a backend, don't spend unnecessary time on setting up basic CRUD operations, don't need to maintain another repository (and all the DevOps work that involves) and don't have to worry about many common security concerns (e.g. sanitisation) as long as you follow [Firebase's security checklist](https://firebase.google.com/support/guides/security-checklist).
+- **React**: React was also an obvious choice as a front-end library because I had used it extensively in other projects and was fluent in writing JSX components. Starting anywhere else would have been an unnecessary overhead. From today's perspective, I would also pay more attention to libraries like [Vue](https://vuejs.org/) and [Svelte](https://svelte.dev/), but three years ago, React was simply the strongest candidate out there.
+- **Tailwind**: We used [Tailwind](https://tailwindcss.com/) and its companion library [Tailwind UI](https://tailwindui.com/) for the initial designs, and our designer (all credit goes to him for making that call) could draw from a comprehensive Tailwind asset library in Figma, making the transition from design to engineering a breeze. In the early days of a startup, I consider it unnecessary overhead to think about structuring and maintaining CSS when you can just use Tailwind instead.
+
+### Opinionated choices
+
+While the following were aligned with optimising for development speed, some of them raised concerns among other developers further down the line. Let me explain why:
+
+- **ReactFire**: I used [ReactFire](https://github.com/FirebaseExtended/reactfire) as a scaffolding library to connect React to Firebase quickly. It enables developers to run CRUD operations using simple hooks and eliminates the need to write your own API layer. While this massively speeds up initial bootstrapping, it also tightly couples Firebase to your app, making it more difficult to migrate away from it, for example if you aim to break up the Firebase monolith.
+- **TypeScript**: I have seen teams successfully use TypeScript (mainly more experienced ones) and some that struggled with it (those with less experience), so I had to be very careful as some early contributors to the codebase hadn't used it before. At this stage, it seemed to make more sense not to use it, as its learning curve would have slowed us down significantly. While this sped up development in the beginning, it also resulted in maintainability and scalability issues further down the road as the codebase grew (about two years after the initial bootstrap), and when those early contributors had long left the company.
+- **Unit testing**: A topic that polarises the community to a similar degree is [TDD](https://en.wikipedia.org/wiki/Test-driven_development). While it's a common practice in many engineering teams, I chose not to add it at this stage because I saw a significant danger in how frequently the platform would change in its early days. Adding unit tests didn't feel right, given that code would be thrown away or rewritten every few weeks. About six months into the project though, we added some lightweight end-to-end tests to improve platform reliability.
+
+## 🛫 Where did this take us?
+
+The above decisions helped speed up the initial application development, so that in the following 3-6 months, we built out the platform's three main features, including the onboarding process, which was an essential part of the sales funnel.
+
+**This meant our customers could already use the app and provide early feedback, which is critical for startups seeking Product Market Fit.**
+
+After implementing the core features, we integrated payment about twelve months into the project based on the increasing need to automate that part of the onboarding process and to further streamline the sales funnel.
+
+Around that time, the company also raised its first pre-seed round, allowing us to hire an additional developer. Hiring another person meant I had to switch gears from developing to sourcing and interviewing candidates, writing onboarding guides and supporting another person.
+
+In the next part, I will discuss the challenge of scaling beyond a one-person engineering team and my transition to becoming a hybrid between development lead and product owner.
+
+Click [here](/articles/startup-lessons-part-2) to read the second part of this mini-series.

@@ -1,0 +1,125 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import BrowserStatisticsGoogleAnalytics from './browser-statistics-google-analytics.jpg'
+import WomanUpsetAboutInternetExplorer from './woman-upset-about-internet-explorer.jpg'
+import InternetExplorerMeme from './internet-explorer-meme.jpg'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2014-01-31',
+  title: "Every developer's most hated discipline",
+  description:
+    "Who doesn't hate browser testing? There are probably few things more disappointing than firing up your website in an environment that is not your own, just to realize that everything gets screwed up.",
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<img
+  src={WomanUpsetAboutInternetExplorer.src}
+  alt="Internet Explorer Meme"
+  width="880"
+  height="404"
+/>
+
+Who doesn't hate browser testing? There are probably few things more disappointing than firing up your website in an environment that is not your own, just to realize that everything gets screwed up.
+
+Not to mention the effort that goes into documenting the errors, and somehow squeeze the work of bug fixing into your already crammed agenda. (let's ignore for the moment the endless time that goes into making your HTML5/CSS3 wizardry work in Internet Explorer 8...)
+
+## What's the problem?
+
+As it happens with highly unpleasant tasks, we postpone them, until they pop up as "urgent" or "unavoidable". Too late, you didn't plan enough time for testing, the stuff has to go live, and the uncertainty remains, until the overeager intern from your client's office proudly points out your imperfection.
+
+At this point we have already lost part of the trust that the client had in our superhuman web crafting abilities. We are now another average web design service provider, and have to make up for our lack of professionalism.
+
+Let's rewind to the beginning of the project and see what we could have done differently...
+
+## What to test
+
+An important question when it comes to testing is **what** you want to test.
+
+Unless you have a dedicated laboratory with a team of interns that operate day and night, you won't be able to test on each and every device out there, and you're probably better off choosing the right ones.
+
+Usually, a client has been running a tracking tool like Google Analytics, so you can get quite reliable data about your target group. Pick the most common browsers, operation systems and devices and make a list of priorities.
+
+The list usually looks something like this:
+
+1. **A-Grade browsers** – You're probably developing in one of these: Chrome, Firefox, Safari...
+2. **Internet Exploder** – Still the biggest pain in web development, that usually blows up everything...
+3. **Mobile devices** – High fragmentation: Use your analytics data to gain more insights
+
+For the mobile devices, if you don't have any analytics data, go to sites like [statscounter.com](http://gs.statcounter.com/) or [screensiz.es](http://screensiz.es/phone) to see what people are usually using to browse the web in your country.
+You should come up with a list of the most common devices, operating systems and screen sizes.
+
+The following screenshot illustrates some example data from Google Anayltics, which reveals that if we haven't tested on a Windows PC with Internet Explorer 8 and a screen resolution of 1280x800px we have completely missed our target group.
+
+<img
+  src={BrowserStatisticsGoogleAnalytics.src}
+  alt="Browser statistics from Google Anayltics"
+  width="760"
+  height="437"
+/>
+
+Time to take a deep breath...
+
+## How to test
+
+There are many ways to test and debug your websites, the best of course being able to test in a native environment. Since you probably don't have all the devices at hand, there are some online tools to help you out to at least simulate that experience:
+
+- [Browserstack](http://www.browserstack.com/) - A browser environment to test on a huge variety of platforms
+- [Testize](http://www.testize.com/) - Checks your website based on a variety of factors including cross-browser compatibility
+- [Browserling](https://browserling.com/) - A tool for Interactive cross-browser testing
+
+Personally, I have made good experience with the virtual machines that Microsoft is offering on [modern.ie](http://modern.ie).
+
+**Important**: If you don't have an SSD drive, you are probably not going to use your VMs a lot, because they will be horribly slow (I've gone through it). The testing results are usually painful enough, so your working environment should at least be fast and efficient.
+
+Another big challenge is mobile debugging (due to the absence of development tools in mobile browsers), but luckily there are some tools out there to close the gap, of which I use the following on a regular basis:
+
+- [Adobe Edge Inspect](http://html.adobe.com/edge/inspect/) - Allows you to do synchronized remote debugging from your desktop browser.
+- [Charles](http://www.charlesproxy.com/) - A great tool to inspect the network traffic on your mobile phone.
+
+For more info about mobile debugging, I have written [an article about it some time ago](http://marcelkalveram.com/2012/10/3-essential-debugging-tools-for-mobile-applications/).
+
+## Make it a habit
+
+Postponing tests until the very end is actually a pretty fundamental misconception of priorities, and it can be as dramatic as buying presents on the last day of Christmas.
+
+The procedure is a lot easier when running short, weekly development cycles and quick testing sessions at the end of each. This takes the tension of having to deal with all the uncertainty at the very end of the project, leaving less room for unexpected pitfalls and massive bug issues.
+
+However since cross-browser testing is extremely boring, we tend to procrastinate it most of the time.
+
+<img
+  src={InternetExplorerMeme.src}
+  alt="Internet Explorer Meme"
+  width="880"
+  height="404"
+/>
+
+Looks familiar?
+
+Well, when you have to deal with a lot of frontend code, I would recommend to keep 20 minutes at the end of the day free for testing. Fire up the virtual machine or one of the above mentioned tools with your most hated environment or browser (or just the one that you're most preoccupied about).
+
+Focus on one single environment, write down what you observe, and go home. Don't start fixing anything yet. You might be in a rage, and get obsessed with implementing quick and dirty workarounds...
+
+Instead, step back from the trouble. I'll promise that the next morning, after having reassessed the issues, you'll have the necessary calmness and accuracy to implement a proper solution.
+
+## Wrapping up
+
+I guess that if you are a developer you can somehow relate to what I said and I'm sure you have gone through similar situations during your career. And those of us who have worked in the business since the days of Mosaic and Netscape Navigator know what it's like to deal with really bad rendering engines.
+
+Although web standards have paved the way for a better future, we still have to test as much as possible to make our sites perform well in every browser, and due to the high fragmentation in the mobile market, on all devices as well.
+
+I hope that the tools and ideas I've shared will help you to gain the right focus and attitude to do what's necessary to develop a better testing routine. If you have any tips or inspiration on how to improve one's cross browser strategy, feel free to let us know in the comments.
+
+Thanks for reading.
+
+## Additional resources
+
+- [Cross Browser Testing](http://crossbrowsertesting.com/) - A service to check your website on a variety of platforms
+- [launchlist.net](http://launchlist.net/) - The ultimate website checklist application
+- [Pre-launch checklist](http://www.creatomatic.co.uk/about/blog/pre-lauch-checklist/) A free cross-browser checklist from the guys at Creatomatic
+- [Screenfly](http://quirktools.com/screenfly/) - An intuitive browser tool to test your website on various devices and screen resolution

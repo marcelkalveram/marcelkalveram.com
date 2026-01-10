@@ -1,0 +1,208 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Marcel Kalveram',
+  date: '2019-09-20',
+  title:
+    'Bridging the gap from JavaScript to native user preferences in React Native',
+  description:
+    'While integrating a GDPR opt-out feature into an app I ran into a few interesting technical challenges carrying over JavaScript application settings to native code and vice-versa.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://javascript.plainenglish.io/bridging-the-gap-from-javascript-to-native-user-preferences-in-react-native-c7e03891a10f',
+  },
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<figure>
+  <img
+    width="5184"
+    height="2826"
+    src="https://cdn-images-1.medium.com/max/800/0*R-wwa1ztIHwce6Fw"
+  />
+  <figcaption>
+    Photo by _[Andras
+    Kovacs](https://unsplash.com/@akovacsa?utm_source=medium&utm_medium=referral)_
+    on _[Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)_
+  </figcaption>
+</figure>
+
+## Bridging the gap from JavaScript to native user preferences in React Native
+
+Lately, Ive been working on integrating a GDPR opt-out feature into an app. This feature allows users to flip a switch to decide whether they want any privacy-related data to be tracked by our app or any of its third-party dependencies.
+
+From a legal standpoint, that's an interesting challenge, because if you could at any point use any of the tracked data to re-identify a person to which the data refers, it means that it has not been effectively anonymized, thus you're not complying with the GDPR guidelines.
+
+From a technical point of view, that means you have to completely disable any logic that may establish a connection to a third-party service sending user-specific information to a server, such as their IP Address, location, operating system, etc
+
+## Let’s narrow down the problem
+
+In our React Native project, we've been using some commonly used third-party libraries for tasks like analytics, logging and crash reporting. The bad news for developers is that most of these plugins have been developed way before GDPR came into existence.
+
+And even though some of them provide a simple way to opt-out of their services through a method call in the JavaScript layer, others require you to dig into the native code and disable the plugin _before_ it even gets initiated.
+
+If you look at the setup instructions for any of those third-party tools, then usually they ask you to include a snipped of native code into your app. This snipped initializes the native library with which you’re then able to communicate from your JS code via the React Native bridge.
+
+The question is: when a user opts out of GDPR from a part of the UI that’s written in JavaScript, how do we carry over that setting to the native layer, so that the next time the user starts the app, we can make sure it won’t load the third-party library any longer.
+
+<figure>
+  <img
+    width="1598"
+    height="1214"
+    src="https://cdn-images-1.medium.com/max/800/1*NlF4g_KKAMaJu8lPam7R6A.png"
+  />
+  <figcaption>
+    The problem were facing: how do we carry over settings made in the JS layer
+    to the native side?
+  </figcaption>
+</figure>
+
+## Native key-value stores in React Native
+
+React Native provides a `Settings` module out of the box. It allows us to read and write values from and to iOSs `NSUserDefaults`. We can use this in our native code to read parameters that have been set in the JS layer. Nice! 😎
+
+Unfortunately, theres no equivalent for Android, so we need to use an open-source library to plug that gap. One of them is [react-native-shared-preferences](https://www.npmjs.com/package/react-native-shared-preferences). It serves as a wrapper around `SharedPreferences`, the key-value store on Android. It lets us do (more or less) the exact same thing as the `Settings` API does for iOS.
+
+### Abstracting it all away
+
+But there’s an even better library that I only stumbled upon after I had implemented a barebones solution, based on my initial findings. The library [react-native-default-preference](https://github.com/kevinresol/react-native-default-preference#readme) is an abstraction for _both_ platforms and lets us read and write data in a unified way to exchange information between JavaScript and native. Woohoo 🎉
+
+Here’s an overview of the different key-value stores and which platforms they cover. On the left, you can see the two native libraries, on the right the one that comes with React Native out-of-the-box. At the bottom, I added the three solutions that help you cover both worlds.
+
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*rsTxdybNenCW4jcoEH1Trg.png" />
+  <figcaption>
+    _An overview of key-value store solutions in React Native (left: native,
+    right: JavaScript)_
+  </figcaption>
+</figure>
+
+### The JavaScript implementation
+
+Equipped with this plugin, we can now go ahead and implement some simple logic to read and write data to the native layer, and which both—native and JavaScript—are able to read from.
+
+```js
+import DefaultPreference from 'react-native-default-preference'
+
+DefaultPreference.set('`gdprOptOut`', 'yes').then(() => ...)
+```
+
+I’m getting/setting the value of the `gdprOptOut` parameter here, which I’ll later reuse in the native code examples. It’s a simple string (`yes`) that tells us whether the user has enabled privacy opt-out in our app. Note that it can’t be a boolean because every value has to be converted to a string first.
+
+Another benefit of this plugin is that it makes the abstraction available in an async fashion by wrapping a Promise around the results from `NSUserDefaults` (which by default is synchronous).
+
+## Accessing native key-value stores
+
+So far, so good! But how do we now access those variables on the native side? 🤷‍♂ 🤷‍♀
+
+For those unfamiliar with native iOS and Android, this simple challenge can become a very daunting task, given that:
+
+- you don’t know which libraries to import and where
+- you need to figure out where in your code to insert those statements
+- …and you have no idea how to write a conditional in Java or Objective-C
+
+### **Getting and setting preferences in iOS**
+
+In Objective-C, we can read values from a device’s user defaults by calling the `standardUserDefaults` method on the `NSUserDefaults` object. Then, we can extract the desired parameter using the `objectForKey` method on the returned `defaults` value.
+
+```objc
+NSUserDefaults defaults = [NSUserDefaults standardUserDefaults];
+NSString gdprOptOut = [defaults objectForKey:@"gdprOptOut"];
+```
+
+It’s important to note that the return value of `gdprOptOut` is going to be a string as well, so the method call we’ll have to use for the subsequent conditional has to be `isEqualToString`:
+
+```objc
+if ([gdprOptOut isEqualToString:@"no"]) {
+ [PrivacyService initWith:API_KEY];
+}
+```
+
+In this case, when the parameter is _not_ `no`(meaning that the user has not opted out of GDPR), we can safely initialize whatever service we’re going to use for tracking privacy data.
+
+**Where to insert this code?**
+
+In your `AppDelegate.m` you can now wrap your plugin’s initialization method with the conditional logic above. Usually, this can be found inside the `didFinishLaunchingWithOptions` method, which is responsible for all the setup logic of your app.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/800/1*v30bMqmUuFvxuj8WpzLBfw.png" />
+
+<figcaption>_Initialization logic for our privacy service in iOS’s AppDelegate.m_</figcaption>
+</figure>
+
+I’ve added an additional statement here that sets the value to `no` if it hasn’t been set at all: `if (!gdprOptOut) gdprOptOut = @"no";` (there’s probably a more elegant way to accomplish this in Objective-C 😊).
+
+### Getting and setting preferences in Android
+
+To retrieve a result from the `SharedPreferences` key-value store in Java, you need to grab the whole key-value store like this:
+
+```java
+SharedPreferences settings =
+  getApplicationContext().getSharedPreferences(
+    "KEY_VALUE_STORE_NAME", getApplicationContext().MODE_PRIVATE
+  );
+```
+
+There’s one additional parameter here you might not be aware of, the constant `KEY_VALUE_STORE_NAME`. This is the name of the store you’re working on.
+
+If you’re using `react-native-default-preference`, the default name for this store is `react-native` (as defined in [this file](https://github.com/kevinresol/react-native-default-preference/blob/master/android/src/main/java/com/kevinresol/react_native_default_preference/RNDefaultPreferenceModule.java#L22)). If you’re using `react-native-shared-preferences` , however, then the name is `wit_player_shared_preferences` by default 😕. That’s because the library author apparently built this library for a very specific purpose, but forgot to make the default name more generic. However, a [recent pull request](https://github.com/sriraman/react-native-shared-preferences/pull/13) has made this configurable from outside as well.
+
+> I’d recommend setting a store name in JavaScript all the time to avoid relying on those default values. You can use the `setName` method in either of the two plugins
+
+Now that we have access to the store, let’s see how we can read an actual value from it:
+
+```java
+String gdprOptOut = settings.**getString**("gdprOptOut", "no");
+```
+
+Oh, that was simple. If you’re wondering what the `"no"` bit means, that’s the default value in case it can’t find any stored item for the key you pass in.
+
+Next, we want to run a simple comparison to decide whether we should initialize our privacy service. In Java, this is quite simple:
+
+```java
+if (gdprOptOut.equals("no")) {
+  PrivacyService.init(this, API_KEY);
+}
+```
+
+Here, we’re just checking if the stored value is `no` (user has _not_ opted out yet), so we’re safe to initialize whatever service is going to track the user’s data.
+
+**Where to insert this code?**
+
+In Java, the file where all the initialization logic goes is usually `MainApplication.java`. You can wrap your plugin’s initialization method (most likely inside of the`onCreate` method) with the conditional logic above.
+
+![](https://cdn-images-1.medium.com/max/800/1*3kFJFBg5QRuGy6tWuo_CZg.png)
+
+Initialization logic for our privacy service in Android’s **MainApplication.java**
+
+## But there’s a caveat 😱
+
+Alright, we’ve managed to carry over the settings to the native iOS/Android code. But the native initialization logic only runs _once_, when the user opens the app and before the JavaScript kicks in.
+
+What that means is that there’s basically no way to opt-out without _restarting_ the entire app. Ouch! 🙇‍♂️ The solution for this (and I admit it’s not the most elegant one) is to ask the user to close and restart the app after opt-out.
+
+![](https://cdn-images-1.medium.com/max/800/1*6ssKicG7OJnc7yUeiYqnEA.png)
+
+## Let’s recap
+
+You should now be equipped with the knowledge to read and write user preferences in the JavaScript application layer and be able to read those values from the native iOS and Android layer. If your use case requires to also write to the stores in _native_, check out the documentation of the two native libraries we discussed:
+
+- [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences) on Android
+- [NSUserDefaults](https://developer.apple.com/documentation/foundation/nsuserdefaults) on iOS
+
+The two libraries available in JavaScript are:
+
+- [react-native-shared-preferences](https://github.com/sriraman/react-native-shared-preferences)
+- [react-native-default-preference](https://github.com/kevinresol/react-native-default-preference)
+
+I recently became a maintainer of the latter one, so if you have any suggestions on how to improve the library, please feel free to submit an [issue](https://github.com/kevinresol/react-native-default-preference/issues) or submit a PR.
+
+Hope you enjoyed this blog post. If you have any questions or comments, feel free to get in touch in the comments. Thanks a lot for reading!
+
+_Originally published in [JavaScript in Plain English](https://javascript.plainenglish.io/bridging-the-gap-from-javascript-to-native-user-preferences-in-react-native-c7e03891a10f) on September 20, 2019._
