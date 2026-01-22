@@ -1,5 +1,7 @@
 # Marcel Kalveram's Personal Website
 
+![Vercel](https://vercelbadge.vercel.app/api/marcelkalveram/marcelkalveram.com)
+
 This is my personal website, built using the [Spotlight](https://tailwindui.com/templates/spotlight) template from [Tailwind UI](https://tailwindui.com) as a starting point. I've extensively modified and refactored the original template to suit my personal needs and preferences, customizing the design, content structure, and functionality.
 
 The site is built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
