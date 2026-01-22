@@ -1,9 +1,8 @@
-const typographyPlugin = require('@tailwindcss/typography')
-
-const typographyStyles = require('./typography')
+import typographyPlugin from '@tailwindcss/typography'
+import typographyStyles from './typography.js'
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'selector',
   plugins: [typographyPlugin],
