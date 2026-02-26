@@ -122,7 +122,7 @@ Find concrete examples for React, Vue and other UI libraries in [the working imp
 
 ## Configuring Module Federation with Vite
 
-Next, I'm going to walk you through the remote and host setup for a React app. If you're already familiar with this part or not interested in implementation details, you may want to skip to one of the following sections:
+Next, I'm going to walk you through the remote and host setup for a React app with Vite. If you're already familiar with this part or not interested in implementation details, you may want to skip to one of the following sections:
 
 - [Advanced configuration options](#advanced-configuration-options)
 - [The Trade-offs with Module Federation](#trade-offs-with-module-federation)
@@ -368,7 +368,7 @@ For instance, using Tailwind CSS allows you to base everything on a common utili
 
 In a monolith, a missing function may cause a build error. In Module Federation, however, a missing remote module or a version mismatch happens at runtime.
 
-You cannot rely on the compiler to save you anymore. You must invest in Integration Testing (like Playwright or Cypress) that runs against the host and remotes together. Without automated end-to-end checks, you’re **just** hoping that the "bridge" between your apps hasn't collapsed.
+You cannot rely on the compiler to save you anymore. You must invest in Integration Testing (like Playwright or Cypress) that runs against the host and remotes together. Without automated end-to-end checks, you’re just hoping that the "bridge" between your apps hasn't collapsed.
 
 Let's explore testing in more detail.
 
@@ -409,7 +409,7 @@ Choosing to break away from a monolith is a significant architectural pivot. Bef
 
 ### Important considerations
 
-That said, Micro-frontends are probably more suitable for large organizations with multiple teams working on different parts of a large application. They solve organizational problems rather than technical ones.
+That said, Micro-frontends are probably more suitable for large organisations with multiple teams working on different parts of a large application. So on top of the technical problems they might solve, they can also help with organisational problems.
 
 Module Federation also does not eliminate the need for architecture — without governance, it may simply distribute the monolith's chaos and burden across repositories.
 
@@ -438,6 +438,8 @@ Even with a brilliant new architecture, the legacy monolith will likely remain p
 3. 🌅 **The "Sunset" Phase**: As more features migrate to the federated model, the monolith naturally shrinks until it becomes a simple "legacy host" that can eventually be replaced entirely.
 
 By treating the monolith as a temporary shell from which you transition to a new, modular architecture, you can modernize your stack without the risk of a "big bang" rewrite.
+
+## That's all for now
 
 I hope this post has given you a good overview of the benefits of Micro-Frontends and Module Federation, and the challenges you may face when adopting them.
 
