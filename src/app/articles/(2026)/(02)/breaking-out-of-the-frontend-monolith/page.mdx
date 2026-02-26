@@ -57,7 +57,7 @@ Unfortunately, this doesn't just affect engineers—it ultimately affects users 
 - 📉 **Performance**: Without clear ownership of global performance metrics, your app becomes sluggish over time.
 - 🐛 **Bugs**: Critical bug fixes that should take minutes end up taking days to navigate the release pipeline.
 
-In short: Your front-end architecture has become a **bottleneck** for the entire organization.
+In short: Your front-end architecture has become a **bottleneck** for the entire organisation.
 
 ## A Path Toward Autonomy
 
@@ -239,7 +239,7 @@ export default defineConfig({
   plugins: [
     federation({
       name: 'host', // or 'remote'
-      // Share core dependencies to ensure singleton behavior
+      // Share core dependencies to ensure singleton behaviour
       shared: ['react', 'react-dom', 'react-router-dom'],
     }),
   ],
@@ -427,7 +427,7 @@ As we’ve discussed, the most effective way to mitigate the "Cons" is to embrac
   </figcaption>
 </figure>
 
-Just be aware of the architectural and maintenance challenges this involves. If your monolith doesn't yet yield insurmountable technical challenges, modularizing it first may achieve similar benefits with less complexity.
+Just be aware of the architectural and maintenance challenges this involves. If your monolith doesn't yet yield insurmountable technical challenges, modularising it first may achieve similar benefits with less complexity.
 
 ### The Path to Decommissioning
 
@@ -437,10 +437,10 @@ Even with a brilliant new architecture, the legacy monolith will likely remain p
 2. 🗑️ **Strategic Decommissioning**: Use this transition to identify obsolete features. Don't port them; decommission them.
 3. 🌅 **The "Sunset" Phase**: As more features migrate to the federated model, the monolith naturally shrinks until it becomes a simple "legacy host" that can eventually be replaced entirely.
 
-By treating the monolith as a temporary shell from which you transition to a new, modular architecture, you can modernize your stack without the risk of a "big bang" rewrite.
+By treating the monolith as a temporary shell from which you transition to a new, modular architecture, you can modernise your stack without the risk of a "big bang" rewrite.
 
 ## That's all for now
 
 I hope this post has given you a good overview of the benefits of Micro-Frontends and Module Federation, and the challenges you may face when adopting them.
 
-In a future post, I'm going to explore the monorepo architecture in more detail, how to setup it up with Module Federation, and a gradual migration strategy for distributed front-ends.
+In a future post, I'm going to explore the monorepo architecture in more detail, how to set it up with Module Federation, and a gradual migration strategy for distributed front-ends.
