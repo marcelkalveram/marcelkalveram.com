@@ -4,27 +4,29 @@ import logoHanno from '@/images/logos/work/hanno.png'
 import logoJungmut from '@/images/logos/work/jungmut.png'
 import logoDelusha from '@/images/logos/work/delusha.png'
 import logoMVPR from '@/images/logos/work/mvpr.png'
+import logoArtificialLabs from '@/images/logos/work/artificial-labs.png' 
 
-export const resume = [
+export const resume = [ 
+  {
+    company: 'Artificial Labs',
+    title: 'Senior Product Engineer',
+    logo: logoArtificialLabs,
+    start: '2026',
+    end: 'Present',
+  },
   {
     company: 'Datamaran',
     title: 'Senior Product Engineer',
     logo: logoDatamaran,
     start: '2025',
-    end: {
-      label: 'Current',
-      dateTime: new Date().getFullYear().toString(),
-    },
+    end: '2026',
   },
   {
     company: 'MVPR',
     title: 'Lead Developer',
     logo: logoMVPR,
     start: '2021',
-    end: {
-      label: '2024',
-      dateTime: new Date().getFullYear().toString(),
-    },
+    end: '2024',
   },
   {
     company: 'Self-employed',
