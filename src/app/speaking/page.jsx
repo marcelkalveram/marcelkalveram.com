@@ -17,6 +17,13 @@ export default function Speaking() {
       <div className="space-y-20">
         <SpeakingSection title="International events">
           <Appearance
+            href="https://gamma.app/docs/Monoliths-Work-Until-They-Don't-sjez7gc56hsn5n1"
+            title="Monoliths work - until they don’t"
+            description="A practical account of breaking apart a frontend monolith with Vite and Module Federation to restore team velocity."
+            event="React Alicante, 2026"
+            cta="See slides on gamma.app"
+          />
+          <Appearance
             href="https://escp.eu/"
             title="Introduction to Web and App Development"
             description="A two-day lecture about the foundations of my craft for a group of ~20 students that I gave once a year at the ESCP campuses in Turin, Berlin and Paris."
