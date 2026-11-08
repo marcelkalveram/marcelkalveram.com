@@ -12,7 +12,7 @@ export const projectsPersonal = [
     year: '2026',
     tags: ['React', 'Next.JS', 'Vercel'],
     description:
-      'This web app lets teams collect honest, anonymous feedback in minutes, revealing the results only once at least three people have responded.',
+      'This app enables managers to collect upward feedback from their team using anonymised, AI-generated summaries.',
     link: {
       href: 'https://feedbot.tech/',
       label: 'feedbot.tech',
