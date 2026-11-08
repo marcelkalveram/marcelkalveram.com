@@ -4,8 +4,21 @@ import logoTheSustainableList from '@/images/logos/projects/the-sustainable-list
 import logoVlcTechHub from '@/images/logos/projects/vlc-tech-hub.png'
 import logoNuhouse from '@/images/logos/projects/nuhouse.png'
 import logoAwesomeProductEngineer from '@/images/logos/projects/awesome-product-engineer.png'
+import logoFeedbot from '@/images/logos/projects/feedbot.png'
 
 export const projectsPersonal = [
+  {
+    name: 'Feedbot',
+    year: '2026',
+    tags: ['React', 'Next.JS', 'Vercel'],
+    description:
+      'This web app lets teams collect honest, anonymous feedback in minutes, revealing the results only once at least three people have responded.',
+    link: {
+      href: 'https://feedbot.tech/',
+      label: 'feedbot.tech',
+    },
+    logo: logoFeedbot,
+  },
   {
     name: 'awesome-product-engineer',
     year: '2025',
